@@ -24,11 +24,59 @@ function Gameboard() {
     { number: 20, name: "Saturday" },
     { number: 21, name: "Sunday" },
   ];
+
+  // Här går vi igenom objektetg
+  //   const days;
+  //   const test = days.forEach((el) => {
+  //     if (el.number >= 7 && el.number <= 12) {
+  //       el.addClass = "column-row";
+  //     }
+  //   });
+
+  //   console.log(test);
   return (
     <div className="gameboard-container">
-      {days.map((day, index) => {
-        return <Tiles key={index} number={day.number} name={day.name} />;
-      })}
+      <div className="row-div-tiles">
+        {days.map((day, index) => {
+          return index >= 0 && index <= 6 ? (
+            <Tiles key={index} number={day} />
+          ) : (
+            ""
+          );
+        })}
+      </div>
+      {/* <div className="column-flex"> */}
+      <div className="column-div-tiles" style={{ flexDirection: "column" }}>
+        {days.map((day, index) => {
+          return index >= 7 && index <= 10 ? (
+            <Tiles key={index} number={day} />
+          ) : (
+            ""
+          );
+        })}
+      </div>
+      <div
+        className="column-div-tiles"
+        style={{ flexDirection: "column-reverse" }}
+      >
+        {days.map((day, index) => {
+          return index >= 17 && index <= 20 ? (
+            <Tiles key={index} number={day} />
+          ) : (
+            ""
+          );
+        })}
+      </div>
+      {/* </div> */}
+      <div className="row-div-tiles" style={{ flexDirection: "row-reverse" }}>
+        {days.map((day, index) => {
+          return index >= 11 && index <= 16 ? (
+            <Tiles key={index} number={day} />
+          ) : (
+            ""
+          );
+        })}
+      </div>
     </div>
   );
 }
