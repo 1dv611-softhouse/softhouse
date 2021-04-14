@@ -1,9 +1,7 @@
 function Tiles(props) {
   const { number } = props;
   return (
-    <div
-      className={(number.addClass ? number.addClass : "") + ` tiles-container`}
-    >
+    <div className={` tiles-container`}>
       <p>{number.number}</p>
       <p>{number.name}</p>
     </div>
