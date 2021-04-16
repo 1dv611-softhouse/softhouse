@@ -1,7 +1,6 @@
-import "./styles/style.css";
-import Dashboard from "./components/Dashboard";
-import Gameboard from "./components/Gameboard";
-import Highscore from "./components/Highscore";
+import './styles/style.css'
+import Dashboard from './components/Dashboard'
+import Gameboard from './components/Gameboard'
 
 function App() {
   return (
@@ -9,7 +8,7 @@ function App() {
       <Dashboard />
       <Gameboard />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

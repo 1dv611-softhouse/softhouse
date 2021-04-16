@@ -1,13 +1,7 @@
-import Header from './Header'
-import Highscore from './Highscore'
-import Profile from './Profile'
-import Options from './Options'
-
-function Dashboard() {
+function Profile() {
   return (
     <div className="dashboard-container">
-      <Header />
-      {/* <div className="picture-container">
+      <div className="picture-container">
         <img
           className="picture"
           src="https://i.pinimg.com/originals/ea/c5/6f/eac56f0157e9f08dd12659da8e4b364c.jpg"
@@ -31,11 +25,9 @@ function Dashboard() {
       </div>
       <div className="card-container">
         <div className="card"></div>
-      </div> */}
-      <Highscore />
-      <Options />
+      </div>
     </div>
   )
 }
 
-export default Dashboard
+export default Profile

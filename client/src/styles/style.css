@@ -1,4 +1,4 @@
-@import url("https://use.typekit.net/dmf3xst.css");
+@import url('https://use.typekit.net/dmf3xst.css');
 
 /* Global settings */
 * {
@@ -14,7 +14,7 @@
 
 /* Dasboard CSS */
 .dashboard-container {
-  height: 100vh;
+  height: 200vh; /* Ska ändras till 100vh sen. */
   width: 30vw;
   background: white;
   display: flex;
@@ -69,13 +69,14 @@
 
 .header {
   width: 100%;
-  height: 5vh;
+  min-height: 5vh;
   background-color: #37506a;
   position: relative;
 }
 
 .hamburger {
   left: 5px;
+  top: 5px;
   position: absolute;
   display: inline-block;
   cursor: pointer;
@@ -85,7 +86,7 @@
 .line2,
 .line3 {
   width: 35px;
-  height: 5px;
+  min-height: 5px;
   background-color: white;
   margin: 6px 0;
   transition: 0.4s;
@@ -197,9 +198,57 @@
 /* Highscore CSS */
 .highscore-container {
   height: 100vh;
-  width: 30vw;
+  width: 100%;
+  background-color: #37506a;
+  color: #fff;
+  font-size: 2em;
 }
 
+.highscore-header {
+  padding: 10px;
+}
+
+.highscore-list {
+  list-style-position: inside;
+  padding: 10px;
+}
+
+.highscore-list li {
+  padding: 10px 20px 10px 10px;
+}
+
+.highscore-list li span {
+  float: right;
+  color: #aec9e6;
+}
+
+/* Options container */
+.options-container {
+  height: 100vw;
+  width: 100%;
+  background-color: white;
+}
+
+.options-container ul li {
+  padding: 10px 20px 10px 10px;
+  width: 100%;
+  background-color: burlywood;
+  text-align: center;
+}
+
+.options-container .social-media-frame {
+  width: 100%;
+  height: 200px;
+  background-color: red;
+}
+
+.options-container ul li a {
+  font-size: 2em;
+  text-decoration: none;
+  color: #37506a;
+}
+
+/* Dice CSS */
 .dice {
   position: absolute;
   left: 50%;
@@ -209,4 +258,48 @@
   border: solid 1px rgb(190, 190, 190);
   border-radius: 1rem;
   filter: drop-shadow(0.3em 0.75em 0.9em);
+}
+
+/* För hamburgarmenyn */
+@media screen and (max-width: 1440px) {
+  .hamburger {
+    left: 5px;
+    top: 0px;
+    position: absolute;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .line1,
+  .line2,
+  .line3 {
+    width: 25px;
+    min-height: 3px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+
+  .change.line1 {
+    -webkit-transform: rotate(-50deg) translate(-8.5px, 4px);
+    transform: rotate(-50deg) translate(-8.5px, 4px);
+  }
+
+  .change.line2 {
+    opacity: 0;
+  }
+
+  .change.line3 {
+    -webkit-transform: rotate(50deg) translate(-8.5px, -4px);
+    transform: rotate(50deg) translate(-8.5px, -4px);
+  }
+}
+
+/* Customercard */
+.costumerCard {
+  color: white;
+  background-color: #37506a;
+  border-radius: 10px;
+  max-height: 15rem;
+  min-width: 10rem;
 }

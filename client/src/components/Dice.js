@@ -1,13 +1,13 @@
-import { useState } from "react";
-import imgs from "../pictures/images";
+import { useState } from 'react'
+import imgs from '../pictures/images'
 
 function Dice() {
-  const [dice, setDice] = useState(imgs[0]);
+  const [dice, setDice] = useState(imgs[0])
   const rollTheDice = () => {
-    const newDice = Math.floor(Math.random() * imgs.length);
-    setDice(imgs[newDice]);
-    console.log(newDice, "index i bild arrayen");
-  };
+    const newDice = Math.floor(Math.random() * imgs.length)
+    setDice(imgs[newDice])
+    console.log(newDice, 'index i bild arrayen')
+  }
 
   return (
     <img
@@ -16,7 +16,7 @@ function Dice() {
       className="dice"
       onClick={() => rollTheDice()}
     />
-  );
+  )
 }
 
-export default Dice;
+export default Dice

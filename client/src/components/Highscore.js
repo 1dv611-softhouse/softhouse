@@ -1,21 +1,41 @@
 function Highscore() {
   return (
     <div className="highscore-container">
-      <h1>Highscore</h1>
-      <ol>
-        <li>lenaandersson 30</li>
-        <li>håkanmelin33 38</li>
-        <li>jenseriksson 56</li>
-        <li>malin_josefsson 102</li>
-        <li>davidnilsson 234</li>
-        <li>tinapersson 254</li>
-        <li>hansrosqvist 376</li>
-        <li>linajakobsben 523</li>
-        <li>perlindqvist 700</li>
-        <li>jennydahlström 1200</li>
+      <h1 className="highscore-header">Highscore</h1>
+      <ol className="highscore-list">
+        <li>
+          lenaandersson <span>30</span>
+        </li>
+        <li>
+          håkanmelin33 <span>38</span>
+        </li>
+        <li>
+          jenseriksson <span>56</span>
+        </li>
+        <li>
+          malin_josefsson <span>102</span>
+        </li>
+        <li>
+          davidnilsson <span>234</span>
+        </li>
+        <li>
+          tinapersson <span>254</span>
+        </li>
+        <li>
+          hansrosqvist <span>376</span>
+        </li>
+        <li>
+          linajakobsben <span>523</span>
+        </li>
+        <li>
+          perlindqvist <span>700</span>
+        </li>
+        <li>
+          jennydahlström <span>1200</span>
+        </li>
       </ol>
     </div>
-  );
+  )
 }
 
-export default Highscore;
+export default Highscore
