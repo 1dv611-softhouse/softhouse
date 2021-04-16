@@ -1,4 +1,4 @@
-@import url('https://use.typekit.net/dmf3xst.css');
+@import url("https://use.typekit.net/dmf3xst.css");
 
 /* Variables */
 :root {
@@ -20,6 +20,17 @@
 
 /* Dasboard CSS */
 .dashboard-container {
+  height: 100vh;
+  width: 30vw;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border-right: rgb(212, 211, 211) solid 1px;
+}
+
+.dashboard-container1 {
   height: 95vh;
   width: 30vw;
   background: white;
@@ -28,6 +39,14 @@
   align-items: center;
   position: relative;
   border-right: rgb(212, 211, 211) solid 1px;
+}
+
+.highscore-container {
+  height: 100vh;
+  width: 100%;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 2em;
 }
 
 .scoreboard {
@@ -280,14 +299,18 @@
   justify-content: center;
   align-items: center;
   background: var(--primary-color);
-  transition: 5s ease;
   color: white;
   width: 100%;
-  display: none;
+  transform: translateX(-100%);
+  transition: all 0.7s ease;
+  opacity: 0;
+  display: flex;
 }
 
-.open-menu {
-  display: flex !important;
+.open-menu.main-menu {
+  transition: all 0.7s ease;
+  transform: translateX(0%);
+  opacity: 1;
 }
 
 /* Dice CSS */

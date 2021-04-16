@@ -1,6 +1,13 @@
-function Highscore(props) {
+import { useSpring, animated } from "react-spring";
+
+function Highscore() {
+  const props = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+  });
+
   return (
-    <div className="highscore-container">
+    <animated.div style={props} className="highscore-container">
       <h1 className="highscore-header">Highscore</h1>
       <ol className="highscore-list">
         <li>
@@ -34,8 +41,8 @@ function Highscore(props) {
           jennydahlström <span>1200</span>
         </li>
       </ol>
-    </div>
-  )
+    </animated.div>
+  );
 }
 
-export default Highscore
+export default Highscore;

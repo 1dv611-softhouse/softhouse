@@ -1,42 +1,42 @@
-import { useContext } from 'react'
-import socials from '../pictures/socials/images2'
-import { HeaderContext } from '../global/HeaderContext'
-import { HamburgerContext } from '../global/HamburgerContext'
+import { useContext } from "react";
+import socials from "../pictures/socials/images2";
+import { HeaderContext } from "../global/HeaderContext";
+import { HamburgerContext } from "../global/HamburgerContext";
 
 function Options() {
-  const { currentComponent, setCurrentComponent } = useContext(HeaderContext)
-  const { active, setActive } = useContext(HamburgerContext)
+  const { currentComponent, setCurrentComponent } = useContext(HeaderContext);
+  const { active, setActive } = useContext(HamburgerContext);
 
   const socialMediaLinks = [
-    'https://www.facebook.com/softhouseconsulting',
-    '',
-    'https://www.instagram.com/softhouseconsulting/',
-    '',
-    '',
-  ]
+    "https://www.facebook.com/softhouseconsulting",
+    "",
+    "https://www.instagram.com/softhouseconsulting/",
+    "",
+    "",
+  ];
 
   const closeMenu = (value) => {
-    setCurrentComponent(value)
-    setActive(!active)
-  }
+    setCurrentComponent(value);
+    setActive(!active);
+  };
 
   return (
     <div className="options-container">
       <ul>
         <li>
-          <p onClick={() => closeMenu('profile')}>Profile</p>
+          <p onClick={() => closeMenu("profile")}>Profile</p>
         </li>
         <li>
-          <p onClick={() => closeMenu('settings')}>Settings</p>
+          <p onClick={() => closeMenu("settings")}>Settings</p>
         </li>
         <li>
-          <p onClick={() => closeMenu('highscore')}>HighScore</p>
+          <p onClick={() => closeMenu("highscore")}>HighScore</p>
         </li>
         <li>
-          <p onClick={() => closeMenu('rules')}>Rules</p>
+          <p onClick={() => closeMenu("rules")}>Rules</p>
         </li>
         <li>
-          <p onClick={() => closeMenu('logout')}>Logout</p>
+          <p onClick={() => closeMenu("logout")}>Logout</p>
         </li>
       </ul>
 
@@ -46,11 +46,11 @@ function Options() {
             <a href={socialMediaLinks[index]}>
               <img src={img} />
             </a>
-          )
+          );
         })}
       </div>
     </div>
-  )
+  );
 }
 
-export default Options
+export default Options;

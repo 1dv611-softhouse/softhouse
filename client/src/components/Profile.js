@@ -1,8 +1,14 @@
-import Scoreboard from './Scoreboard.js'
+import Scoreboard from "./Scoreboard.js";
+import { useSpring, animated } from "react-spring";
 
 function Profile() {
+  const props = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+  });
+
   return (
-    <div className="dashboard-container">
+    <animated.div style={props} className="dashboard-container1">
       <div className="picture-container">
         <img
           className="picture"
@@ -12,8 +18,8 @@ function Profile() {
         <h1>Test testson</h1>
       </div>
       <Scoreboard />
-    </div>
-  )
+    </animated.div>
+  );
 }
 
-export default Profile
+export default Profile;
