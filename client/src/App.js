@@ -1,13 +1,19 @@
 import './styles/style.css'
 import Dashboard from './components/Dashboard'
 import Gameboard from './components/Gameboard'
+import { HeaderProvider } from './global/HeaderContext'
+import { HamburgerProvider } from './global/HamburgerContext'
 
 function App() {
   return (
-    <div className="container">
-      <Dashboard />
-      <Gameboard />
-    </div>
+    <HamburgerProvider>
+      <HeaderProvider>
+        <div className="container">
+          <Dashboard />
+          <Gameboard />
+        </div>
+      </HeaderProvider>
+    </HamburgerProvider>
   )
 }
 

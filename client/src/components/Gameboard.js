@@ -1,6 +1,7 @@
 import Dice from './Dice'
 import Tiles from './Tiles'
 import CostumerCard from './CostumerCard'
+import DailyStandupCard from './DailyStandupCard'
 
 function Gameboard() {
   const days = [
@@ -52,6 +53,7 @@ function Gameboard() {
             })}
           </div>
           {/* TODO Cards * 2 */}
+          <DailyStandupCard />
           <CostumerCard />
           <div className="column-div-tiles1">
             {days.map((day, index) => {

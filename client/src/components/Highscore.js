@@ -1,4 +1,4 @@
-function Highscore() {
+function Highscore(props) {
   return (
     <div className="highscore-container">
       <h1 className="highscore-header">Highscore</h1>

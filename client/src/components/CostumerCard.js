@@ -2,7 +2,7 @@ import customers from '../pictures/customers.png'
 
 function CostumerCard() {
   return (
-    <div className="costumerCard">
+    <div className="card-holder customer-card">
       <img
         src={customers}
         alt="Customers"
