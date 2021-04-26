@@ -2,7 +2,8 @@ function Rules() {
 
 
   return (
-      <div>
+      <div className="rules-container">
+          <h1 className="rules-header">Rules</h1>
         <p>
             The entire game board represents a sprint and each square represents a day in this sprint.
             You start at square 1, Monday.
@@ -12,7 +13,7 @@ function Rules() {
             Each time the player moves, Storypoints drop by as many points as you currently have in Velocity.
             The goal is to get down to 0 Storypoints. Velocity shows how fast the project is progressing. Higher sum on Velocity means that more Storypoints disappear with each move the player makes; the project goes faster.
         </p>
-      <ul>
+      <ul className="rules-list">
         <li>Something happens that affects the project's Velocity.</li>
         <li>Something happens and you are presented with 2-3 choices. The choice you make affects the project's Velocity.</li>
       </ul>

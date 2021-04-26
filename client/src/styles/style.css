@@ -396,3 +396,23 @@
 }
 
 /* Card holder CSS ends */
+
+/* Rules CSS */
+
+.rules-container {
+  padding: 8%;
+  font-size: large;
+  background-color: var(--primary-color);
+  height: 100%;
+  color: white;
+}
+
+.rules-container > * {
+  margin: 10px 0;
+}
+
+.rules-list {
+  margin-left: 10px;
+}
+
+/* Rules CSS  ends*/
