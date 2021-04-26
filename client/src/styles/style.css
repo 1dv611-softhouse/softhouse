@@ -400,15 +400,16 @@
 /* Rules CSS */
 
 .rules-container {
-  padding: 8%;
+  padding: 0 6% 0 6%;
   font-size: large;
   background-color: var(--primary-color);
   height: 100%;
   color: white;
+  overflow: auto;
 }
 
 .rules-container > * {
-  margin: 10px 0;
+  margin: 5% 0;
 }
 
 .rules-list {
