@@ -1,8 +1,9 @@
-import '../styles/header.css'
+import "../styles/header.css";
 import { useEffect, useState, useContext } from "react";
 import { HamburgerContext } from "../global/HamburgerContext";
 import socials from "../pictures/socials/images2";
 import Options from "./Options";
+import logo from "../pictures/softhouselogo.png";
 
 function Header() {
   const { active, setActive } = useContext(HamburgerContext);
@@ -13,6 +14,7 @@ function Header() {
         className={(active ? "open-menu" : "") + " main-menu"}
         style={active ? { display: "flex" } : null}
       >
+        <img src={logo} className="logo" />
         <Options />
       </div>
 

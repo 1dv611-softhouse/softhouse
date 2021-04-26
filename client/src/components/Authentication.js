@@ -1,20 +1,45 @@
 // import './styles/signin.css'
-import '../styles/authentication.css'
+import Socials from "./Socials.js";
+import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import { Auth } from "aws-amplify";
 
 function Authentication() {
+  const signIn = (e) => {
+    e.preventDefault();
+    console.log("Sign In");
+  };
+
+  const socialMediaLinks = [
+    "https://www.facebook.com/softhouseconsulting",
+    "",
+    "https://www.instagram.com/softhouseconsulting/",
+    "",
+    "",
+  ];
+
   return (
     <div className="authentication-container">
-      <form class="signin-form">
-        <div class="signin-row">
+      <h1>Sign in</h1>
+      <form className="signin-form">
+        <div className="signin-row">
           <label for="signin-username">Username</label>
-          <input type="text" id="signin-username" />
+          <input type="text" className="input-data" id="signin-username" />
         </div>
-        <div class="signin-row">
+        <div className="signin-row">
           <label for="signin-password">Password</label>
-          <input type="password" id="signin-password" />
+          <input type="password" className="input-data" id="signin-password" />
         </div>
-        <input type="submit" name="submit" value="Sign in" />
+        <input
+          type="submit"
+          name="submit"
+          value="Sign in"
+          onClick={(e) => signIn(e)}
+        />
       </form>
+      <p>
+        Don't have an account yet? <a href="">Sign up</a> now
+      </p>
+      {/* <Socials /> */}
     </div>
   );
 }

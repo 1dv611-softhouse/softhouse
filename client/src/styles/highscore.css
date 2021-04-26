@@ -16,10 +16,6 @@
   padding: 10px;
 }
 
-.highscore-list li {
-  padding: 10px 0px 10px 0px;
-}
-
 .highscore-list li span {
   float: right;
   color: #aec9e6;

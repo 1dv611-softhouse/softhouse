@@ -1,0 +1,67 @@
+/* Active card CSS */
+
+.card h1 {
+  text-align: center;
+  color: white;
+}
+
+.card .active-card-question {
+  color: white;
+}
+
+.card {
+  padding: 10px;
+}
+
+.card-label-container input[type="radio"] {
+  opacity: 0;
+}
+
+.card-label-container {
+  font-size: 1em;
+  color: white;
+  padding-left: 25px;
+}
+
+.card-label-container {
+  position: relative;
+}
+
+.card-label-container .alt {
+  height: 16px;
+  width: 16px;
+  background-color: none;
+  border: 2px solid white;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+/* On mouse-over, add a grey background color */
+.card-label-container:hover input ~ .alt {
+  background-color: #ccc;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.alt:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.card-label-container input:checked ~ .alt:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.card-label-container .alt:after {
+  top: 3px;
+  left: 3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+}

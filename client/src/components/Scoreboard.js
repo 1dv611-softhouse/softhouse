@@ -1,4 +1,5 @@
-import '../styles/scoreboard.css'
+import "../styles/scoreboard.css";
+import ActiveCard from "./ActiveCard";
 
 function Scoreboard() {
   return (
@@ -18,10 +19,10 @@ function Scoreboard() {
         </div>
       </div>
       <div className="card-container">
-        <div className="card"></div>
+        <ActiveCard />
       </div>
     </>
-  )
+  );
 }
 
-export default Scoreboard
+export default Scoreboard;

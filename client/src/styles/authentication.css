@@ -4,15 +4,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.authentication-container h1 {
+  color: var(--primary-color);
+  font-family: futura-pt, sans-serif;
+  font-size: 3em;
 }
 
 .signin-form {
   display: flex;
   flex-direction: column;
+  margin: 30px 0px 0px 0px;
 }
 
 .signin-row {
-  padding: 20px 0px 20px 0px;
+  padding: 0px 0px 20px 0px;
 }
 
 .signin-row > * {
@@ -35,12 +43,23 @@ label {
   font-size: 1.5em;
   color: var(--primary-color);
   padding: 10px;
+  transition: all ease-in 300ms;
 }
 
 input:focus {
   outline: 0;
 }
 
+.signin-row input:focus {
+  border: 3px solid var(--primary-color);
+  background-color: #ebeff5;
+  transition: all ease-in 200ms;
+}
+
 .signin-form input[type="submit"]:hover {
   cursor: pointer;
+  color: #ffffff;
+  transition: all ease-in 300ms;
+  background-color: var(--primary-color);
+  border: 3px solid var(--primary-color);
 }

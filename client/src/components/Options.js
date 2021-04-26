@@ -1,4 +1,4 @@
-import '../styles/options.css'
+import "../styles/options.css";
 import { useContext } from "react";
 import socials from "../pictures/socials/images2";
 import { HeaderContext } from "../global/HeaderContext";

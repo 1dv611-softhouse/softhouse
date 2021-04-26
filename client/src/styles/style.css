@@ -27,9 +27,16 @@
   height: 8rem;
   border: solid 3px var(--primary-color);
   border-radius: 1rem;
-  /* filter: drop-shadow(0.3em 0.75em 0.9em); */
+  transition: all 0.3s ease;
 }
 
+.dice:hover {
+  transform: translate(-50%) scale(1.1);
+  -webkit-box-shadow: -2px -1px 24px -6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -2px -1px 24px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: -2px -1px 24px -6px rgba(0, 0, 0, 0.75);
+}
+/*TODO: flytta media query till respektive style komonent*/
 /* För hamburgarmenyn */
 @media screen and (max-width: 1600px) {
   .hamburger {

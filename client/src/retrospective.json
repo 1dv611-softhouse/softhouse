@@ -1,0 +1,59 @@
+{
+  "main-information": {
+    "title": "Retrospective",
+    "description": "Nicely played. You have now reached the retrospective. This means you get to invest some story points. Choose what you think will benefit you, the process and the company the most."
+  },
+  "retrospectives": [
+    {
+      "level": 1,
+      "categories": [
+        {
+          "strategy": "More documentation",
+          "velocity": "10"
+        },
+        {
+          "strategy": "Increase communication",
+          "velocity": "-50"
+        },
+        {
+          "strategy": "Apply waterfall model",
+          "velocity": "-100"
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "categories": [
+        {
+          "strategy": "Take a coffe break",
+          "velocity": "10"
+        },
+        {
+          "strategy": "Throw an afterwork with your colleagues",
+          "velocity": "200"
+        },
+        {
+          "strategy": "Skip all daily standups to save time",
+          "velocity": "-500"
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "categories": [
+        {
+          "strategy": "Offer cookies to raise the mood",
+          "velocity": "100"
+        },
+        {
+          "strategy": "Something else...",
+          "velocity": "-50"
+        },
+        {
+          "strategy": "Something else...",
+          "velocity": "-100"
+        }
+      ]
+    }
+  ]
+}

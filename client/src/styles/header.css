@@ -62,3 +62,16 @@
   transform: translateX(0%);
   opacity: 1;
 }
+
+.logo {
+  width: 50%;
+  position: absolute;
+  top: 0;
+}
+
+@media screen and (max-width: 1600px) {
+  .logo {
+    top: 5vh;
+    width: 35%;
+  }
+}
