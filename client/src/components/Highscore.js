@@ -1,6 +1,8 @@
 import { useSpring, animated } from "react-spring";
 
 function Highscore() {
+
+  // Vad gör detta? Jag ser ingen skillnad när jag tar bort det. /Pernilla
   const props = useSpring({
     opacity: 1,
     from: { opacity: 0 },

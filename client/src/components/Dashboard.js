@@ -1,5 +1,6 @@
 import Header from './Header'
 import Highscore from './Highscore'
+import Rules from './Rules'
 import Profile from './Profile'
 import Options from './Options'
 import { HeaderContext } from '../global/HeaderContext'
@@ -12,6 +13,8 @@ function Dashboard() {
     //TODO: Lägg till alla options
     if (currentComponent === 'highscore') {
       return <Highscore />
+    } else if (currentComponent === 'rules') {
+      return <Rules />
     } else {
       return <Profile />
     }
