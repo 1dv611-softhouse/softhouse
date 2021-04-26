@@ -1,4 +1,4 @@
-import customers from '../pictures/customers.png'
+import customers from "../pictures/customers.png";
 
 function CostumerCard() {
   return (
@@ -10,7 +10,7 @@ function CostumerCard() {
         className="customersPic"
       />
     </div>
-  )
+  );
 }
 
-export default CostumerCard
+export default CostumerCard;

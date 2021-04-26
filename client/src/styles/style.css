@@ -308,7 +308,6 @@
 }
 
 .open-menu.main-menu {
-  transition: all 0.7s ease;
   transform: translateX(0%);
   opacity: 1;
 }
