@@ -1,15 +1,7 @@
-import { useSpring, animated } from "react-spring";
-
 function Highscore() {
-
   // Vad gör detta? Jag ser ingen skillnad när jag tar bort det. /Pernilla
-  const props = useSpring({
-    opacity: 1,
-    from: { opacity: 0 },
-  });
-
   return (
-    <animated.div style={props} className="highscore-container">
+    <div className="highscore-container">
       <h1 className="highscore-header">Highscore</h1>
       <ol className="highscore-list">
         <li>
@@ -43,7 +35,7 @@ function Highscore() {
           jennydahlström <span>1200</span>
         </li>
       </ol>
-    </animated.div>
+    </div>
   );
 }
 
