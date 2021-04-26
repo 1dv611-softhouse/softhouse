@@ -1,3 +1,4 @@
+import '../styles/header.css'
 import { useEffect, useState, useContext } from "react";
 import { HamburgerContext } from "../global/HamburgerContext";
 import socials from "../pictures/socials/images2";

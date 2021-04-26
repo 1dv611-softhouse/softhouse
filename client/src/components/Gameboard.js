@@ -1,3 +1,4 @@
+import '../styles/gameboard.css'
 import Dice from './Dice'
 import Tiles from './Tiles'
 import CostumerCard from './CostumerCard'
@@ -7,7 +8,7 @@ function Gameboard() {
   const days = [
     { number: 1, name: 'Monday' },
     { number: 2, name: 'Tuesday' },
-    { number: 3, name: 'Wednesday' },
+    { number: 3, name: 'Wednesday' } ,
     { number: 4, name: 'Thursday' },
     { number: 5, name: 'Friday' },
     { number: 6, name: 'Saturday' },

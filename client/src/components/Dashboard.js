@@ -1,3 +1,4 @@
+import '../styles/dashboard.css'
 import Header from './Header'
 import Highscore from './Highscore'
 import Rules from './Rules'

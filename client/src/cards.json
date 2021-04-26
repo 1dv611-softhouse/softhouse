@@ -1,0 +1,54 @@
+[
+    {
+      "category": "daily-stand-up-card",
+      "question": "What is a Scrum-master?",
+      "answers": [
+        {
+          "answer": "The Scrum-master is responsible for the prioritizing of requirements.",
+          "correct": false,
+          "story-points": 300
+        },
+        {
+          "answer": "It's an agile working method.",
+          "correct": false,
+          "story-points": 200
+        },
+        {
+          "answer": "The Scrum Master is responsible for ensuring that Scrum is used in the process.",
+          "correct": true,
+          "story-points": -300
+        }
+      ]
+    },
+    {
+      "category": "customer-card",
+      "question": "A client contacts you regarding a change in the product you are developing. The customer wants the product to also support the German language. Where do you place the new requirement?",
+      "answers": [
+        {
+          "answer": "Product backlog",
+          "correct": true,
+          "story-points": -200
+        },
+        {
+          "answer": "In the burndown chart",
+          "correct": false,
+          "story-points": 500
+        },
+        {
+          "answer": "In the daily standup.",
+          "correct": false,
+          "story-points": 300
+        }
+      ]
+    },
+    {
+      "category": "normal-day-card",
+      "information": "It's a normal day at the office. Nothing special to notice. Have a great day!",
+      "fun-fact": "Did you know that Softhouse was founded in 1996 in Malmö and has since grown to 7 offices around Sweden?"
+    },
+    {
+      "category": "day-of-illness-card",
+      "information": "Oh no, you've caught a cold. You therefore stay at home to rest. Today your colleagues therefore have a little extra to do.",
+      "consequence": "The work phase is a little slower today as there is a more to do."
+    }
+  ]

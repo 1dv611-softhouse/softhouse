@@ -1,0 +1,24 @@
+/* Tiles CSS */
+.tiles-container {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+.tiles-container:nth-child(2n + 2) {
+  color: var(--primary-color);
+  background-color: #fff;
+  border: 3px solid var(--primary-color);
+}
+
+.tiles-container:nth-child(3n + 3) {
+  background-color: var(--primary-color);
+  color: #fff;
+}

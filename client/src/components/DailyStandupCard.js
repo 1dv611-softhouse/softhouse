@@ -1,3 +1,4 @@
+import '../styles/cards.css'
 import customer from '../pictures/customer.png'
 
 function DailyStandupCard() {

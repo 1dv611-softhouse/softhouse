@@ -1,3 +1,4 @@
+import '../styles/profile.css'
 import Scoreboard from "./Scoreboard.js";
 import { useSpring, animated } from "react-spring";
 
@@ -8,7 +9,7 @@ function Profile() {
   });
 
   return (
-    <animated.div style={props} className="dashboard-container1">
+    <animated.div style={props} className="profile-container">
       <div className="picture-container">
         <img
           className="picture"

@@ -1,3 +1,4 @@
+import '../styles/cards.css'
 import customers from "../pictures/customers.png";
 
 function CostumerCard() {

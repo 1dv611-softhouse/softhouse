@@ -1,3 +1,5 @@
+import '../styles/scoreboard.css'
+
 function Scoreboard() {
   return (
     <>
