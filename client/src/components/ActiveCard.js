@@ -1,6 +1,7 @@
 import "../styles/active-card.css";
 import { CurrentCardContext } from "../global/CurrentCardContext";
 import { TileContext } from '../global/TileContext'
+import { HasAnsweredContext } from '../global/HasAnsweredContext'
 import cards from "../cards.json";
 import sound from "../flip.mp3";
 import { useContext, useEffect, useState } from "react";
@@ -9,6 +10,7 @@ function ActiveCard() {
   const audio = new Audio(sound);
   const { currentCard, setCurrentCard } = useContext(CurrentCardContext);
   const { currentTile, setCurrentTile } = useContext(TileContext);
+  const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext);
   const [cardTitle, setCardTitle] = useState("");
   const [toggle, setToggle] = useState("");
   const [highlight, setHighlight] = useState(false);
@@ -78,6 +80,7 @@ function ActiveCard() {
 
   const renderCard = () => {
     if(currentCard.alternatives) {
+      setHasAnswered(false)
       return renderAlternatives()
     } else {
       if(currentCard.category === 'normal-day-card') {
@@ -129,6 +132,7 @@ function ActiveCard() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setHasAnswered(true)
     console.log(toggle)
   }
 

@@ -9,6 +9,7 @@ import { PlayerPositionProvider } from "./global/PlayerPositionContext";
 import { CurrentCardProvider } from "./global/CurrentCardContext";
 import { DaysProvider } from './global/DaysContext'
 import { TileProvider } from './global/TileContext'
+import { HasAnsweredProvider } from './global/HasAnsweredContext'
 
 function App() {
   return (
@@ -18,11 +19,13 @@ function App() {
           <CurrentCardProvider>
             <DaysProvider>
               <TileProvider>
-            <div className="container">
-              <Dashboard />
-              <Gameboard />
-            </div>
-            {/* <Authentication /> */}
+                <HasAnsweredProvider>
+                  <div className="container">
+                    <Dashboard />
+                    <Gameboard />
+                  </div>
+                  {/* <Authentication /> */}
+            </HasAnsweredProvider>
              </TileProvider>
             </DaysProvider>
           </CurrentCardProvider>
