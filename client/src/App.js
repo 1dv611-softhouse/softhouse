@@ -7,6 +7,8 @@ import { HeaderProvider } from "./global/HeaderContext";
 import { HamburgerProvider } from "./global/HamburgerContext";
 import { PlayerPositionProvider } from "./global/PlayerPositionContext";
 import { CurrentCardProvider } from "./global/CurrentCardContext";
+import { DaysProvider } from './global/DaysContext'
+import { TileProvider } from './global/TileContext'
 
 function App() {
   return (
@@ -14,11 +16,15 @@ function App() {
       <HeaderProvider>
         <PlayerPositionProvider>
           <CurrentCardProvider>
+            <DaysProvider>
+              <TileProvider>
             <div className="container">
               <Dashboard />
               <Gameboard />
             </div>
             {/* <Authentication /> */}
+             </TileProvider>
+            </DaysProvider>
           </CurrentCardProvider>
         </PlayerPositionProvider>
       </HeaderProvider>

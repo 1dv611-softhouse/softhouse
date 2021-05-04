@@ -1,7 +1,7 @@
 import "../styles/tiles.css";
 import player from "../pictures/user.png";
 import { PlayerPositionContext } from "../global/PlayerPositionContext";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 
 function Tiles(props) {
   const { number } = props;

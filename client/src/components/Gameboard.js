@@ -3,33 +3,39 @@ import Dice from "./Dice";
 import Tiles from "./Tiles";
 import CostumerCard from "./CostumerCard";
 import DailyStandupCard from "./DailyStandupCard";
+import { DaysContext } from '../global/DaysContext'
+import { useContext, useEffect } from "react";
 
 function Gameboard() {
-  // TODO: kommentar att det är 22 värden pga day of illness
-  const days = [
-    { number: 1, name: "Monday", boardValue: 1 },
-    { number: 2, name: "Tuesday", boardValue: 2 },
-    { number: 3, name: "Wednesday", boardValue: 3 },
-    { number: 4, name: "Thursday", boardValue: 4 },
-    { number: 5, name: "Friday", boardValue: 5 },
-    { number: 6, name: "Saturday", boardValue: 6 },
-    { number: 7, name: "Sunday", boardValue: 7 },
-    { number: 8, name: "Monday", boardValue: 8 },
-    { number: 9, name: "Tuesday", boardValue: 9 },
-    { number: 10, name: "Wednesday", boardValue: 10 },
-    { number: 11, name: "Thursday", boardValue: 11 },
-    { number: 12, name: "Day of illness", boardValue: "" },
-    { number: 13, name: "Friday", boardValue: 12 },
-    { number: 14, name: "Saturday", boardValue: 13 },
-    { number: 15, name: "Sunday", boardValue: 14 },
-    { number: 16, name: "Monday", boardValue: 15 },
-    { number: 17, name: "Tuesday", boardValue: 16 },
-    { number: 18, name: "Wednesday", boardValue: 17 },
-    { number: 19, name: "Thursday", boardValue: 18 },
-    { number: 20, name: "Friday", boardValue: 19 },
-    { number: 21, name: "Saturday", boardValue: 20 },
-    { number: 22, name: "Sunday", boardValue: 21 },
-  ];
+  const { days, setDays } = useContext(DaysContext);
+
+  useEffect(() => {
+    setDays([
+      { number: 1, name: "Monday", boardValue: 1, color: "white" },
+      { number: 2, name: "Tuesday", boardValue: 2, color: "white" },
+      { number: 3, name: "Wednesday", boardValue: 3, color: "blue" },
+      { number: 4, name: "Thursday", boardValue: 4, color: "white" },
+      { number: 5, name: "Friday", boardValue: 5, color: "orange" },
+      { number: 6, name: "Saturday", boardValue: 6, color: "blue"  },
+      { number: 7, name: "Sunday", boardValue: 7, color: "orange"  },
+      { number: 8, name: "Monday", boardValue: 8 , color: "orange" },
+      { number: 9, name: "Tuesday", boardValue: 9, color: "white" },
+      { number: 10, name: "Wednesday", boardValue: 10, color: "blue" },
+      { number: 11, name: "Thursday", boardValue: 11, color: "white" },
+      { number: 12, name: "Day of illness", boardValue: "", color: "" },
+      { number: 13, name: "Friday", boardValue: 12, color: "white" },
+      { number: 14, name: "Saturday", boardValue: 13, color: "blue"  },
+      { number: 15, name: "Sunday", boardValue: 14, color: "white" },
+      { number: 16, name: "Monday", boardValue: 15, color: "orange" },
+      { number: 17, name: "Tuesday", boardValue: 16, color: "blue"  },
+      { number: 18, name: "Wednesday", boardValue: 17, color: "orange" },
+      { number: 19, name: "Thursday", boardValue: 18, color: "orange" },
+      { number: 20, name: "Friday", boardValue: 19, color: "white" },
+      { number: 21, name: "Saturday", boardValue: 20, color: "blue"  },
+      { number: 22, name: "Sunday", boardValue: 21, color: "white" },
+    ])
+  }, []);
+
   return (
     <div className="gameboard-container">
       <div className="gameboard">

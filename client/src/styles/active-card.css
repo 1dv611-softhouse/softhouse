@@ -1,22 +1,3 @@
-/* Active card CSS */
-
-.card h1 {
-  text-align: center;
-  color: white;
-}
-
-.card .active-card-question {
-  color: white;
-}
-
-.card {
-  padding: 10px;
-}
-
-.card-label-container input[type="radio"] {
-  opacity: 0;
-}
-
 .card-label-container {
   font-size: 1em;
   color: white;
@@ -27,41 +8,104 @@
   position: relative;
 }
 
-.card-label-container .alt {
-  height: 16px;
-  width: 16px;
-  background-color: none;
-  border: 2px solid white;
-  border-radius: 50%;
+.card-label-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.card-label-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.alt {
   position: absolute;
   top: 0;
   left: 0;
-  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  background-color: #ffffff;
+  border-radius: 50%;
 }
 
-/* On mouse-over, add a grey background color */
-.card-label-container:hover input ~ .alt {
-  background-color: #ccc;
+.card-label-container input:checked ~ .alt:after {
+  background-color: var(--secondary-color);
 }
 
-/* Create the indicator (the dot/circle - hidden when not checked) */
 .alt:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-/* Show the indicator (dot/circle) when checked */
 .card-label-container input:checked ~ .alt:after {
   display: block;
 }
 
-/* Style the indicator (dot/circle) */
 .card-label-container .alt:after {
-  top: 3px;
-  left: 3px;
-  width: 6px;
-  height: 6px;
+  top: 3.5px;
+  left: 3.5px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: white;
+}
+
+.card-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.active-card-question {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.card-label-container {
+  font-size: 1em;
+}
+
+.btn {
+  color: white;
+  background-color: var(--secondary-color);
+  width: 100px;
+  padding: 5px;
+  border: 1px solid white;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  background: white;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.card {
+  min-height: 35vh;
+  background: var(--secondary-color);
+  width: 90%;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.card-highlight {
+  min-height: 35vh;
+  background-color: #eda369;
+  overflow-y: auto;
+  width: 95%;
+  padding: 10px;
 }

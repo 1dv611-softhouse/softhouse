@@ -25,7 +25,7 @@ function Options() {
     <div className="options-container">
       <ul>
         <li>
-          <p onClick={() => closeMenu("profile")}>Profile</p>
+          <p data-testid="profile-option" onClick={() => closeMenu("profile")}>Profile</p>
         </li>
         <li>
           <p onClick={() => closeMenu("settings")}>Settings</p>
@@ -45,7 +45,7 @@ function Options() {
         {socials.map((img, index) => {
           return (
             <a href={socialMediaLinks[index]}>
-              <img src={img} />
+              <img src={img} alt="Social media"/>
             </a>
           );
         })}

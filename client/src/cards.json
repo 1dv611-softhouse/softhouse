@@ -7,17 +7,17 @@
       {
         "answer": "The Scrum-master is responsible for the prioritizing of requirements.",
         "correct": false,
-        "story-points": 300
+        "velocity": -3
       },
       {
         "answer": "It's an agile working method.",
         "correct": false,
-        "story-points": 200
+        "velocity": -2
       },
       {
         "answer": "The Scrum Master is responsible for ensuring that Scrum is used in the process.",
         "correct": true,
-        "story-points": -300
+        "velocity": 2
       }
     ]
   },
@@ -29,17 +29,17 @@
       {
         "answer": "Product backlog",
         "correct": true,
-        "story-points": -200
+        "velocity": 2
       },
       {
         "answer": "In the burndown chart",
         "correct": false,
-        "story-points": 500
+        "velocity": -5
       },
       {
         "answer": "In the daily standup.",
         "correct": false,
-        "story-points": 300
+        "velocity": -3
       }
     ]
   },
@@ -63,18 +63,36 @@
       {
         "answer": "Product backlog",
         "correct": true,
-        "story-points": -200
+        "velocity": 2
       },
       {
         "answer": "In the burndown chart",
         "correct": false,
-        "story-points": 500
+        "velocity": -5
       },
       {
         "answer": "In the daily standup.",
         "correct": false,
-        "story-points": 300
+        "velocity": -3
       }
     ]
+  },
+  {
+    "_id": 6,
+    "category": "normal-day-card",
+    "information": "It's a normal day. Keep on playing.",
+    "fun-fact": "Did you know that Softhouse was founded in 1996 in Malmö and has since grown to 7 offices around Sweden?"
+  },
+  {
+    "_id": 7,
+    "category": "normal-day-card",
+    "information": "It's a normal day at the office. Nothing special to notice. Have a great day!",
+    "fun-fact": "Did you know that Sofhouse has an office in Sarajevo?"
+  },
+  {
+    "_id": 8,
+    "category": "normal-day-card",
+    "information": "It's a calm day at the office. Keep rolling the dice!",
+    "fun-fact": "Did you know that Sofhouse offers over 25.000 courses?"
   }
 ]

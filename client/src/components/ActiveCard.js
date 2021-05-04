@@ -1,79 +1,131 @@
 import "../styles/active-card.css";
 import { CurrentCardContext } from "../global/CurrentCardContext";
+import { TileContext } from '../global/TileContext'
+import cards from "../cards.json";
+import sound from "../flip.mp3";
 import { useContext, useEffect, useState } from "react";
 
 function ActiveCard() {
+  const audio = new Audio(sound);
   const { currentCard, setCurrentCard } = useContext(CurrentCardContext);
+  const { currentTile, setCurrentTile } = useContext(TileContext);
   const [cardTitle, setCardTitle] = useState("");
+  const [toggle, setToggle] = useState("");
+  const [highlight, setHighlight] = useState(false);
 
   useEffect(() => {
-    // Om kort objektet inte är tomt
-    if (Object.keys(currentCard).length !== 0) {
-      if (currentCard.category === "customer-card") {
+    //TODO: Bryt ut för att inte gå emot DRY
+    let customerCards;
+    let randomValue;
+    let card;
+
+    setTimeout(() => { 
+      setHighlight(false)
+      const cardDiv = document.querySelector('.card')
+      console.log(cardDiv)
+      if (currentTile.color === "blue") {
+        setHighlight(true)
+        audio.play();
+        customerCards = cards.filter((el) => el.category === "customer-card");
+      
+        randomValue = Math.floor(Math.random() * customerCards.length);
+        card = customerCards[randomValue];
+    
+        setCurrentCard(card);
         setCardTitle("Customer");
-      } else if (currentCard.category === "daily-stand-up-card") {
+      } else if (currentTile.color === "orange") {
+        setHighlight(true)
+        audio.play();
+        customerCards = cards.filter(
+          (el) => el.category === "daily-stand-up-card"
+        );
+      
+        randomValue = Math.floor(Math.random() * customerCards.length);
+        card = customerCards[randomValue];
+
+        setCurrentCard(card);
         setCardTitle("Daily Stand Up");
+      } else if (currentTile.color === "white") {
+        customerCards = cards.filter(
+          (el) => el.category === "normal-day-card"
+        );
+    
+        randomValue = Math.floor(Math.random() * customerCards.length);
+        card = customerCards[randomValue];
+
+        setCurrentCard(card);
+        setCardTitle("Normal Day");
+      } else if (currentTile.color === ""){
+        setHighlight(true)
+        audio.play();
+        customerCards = cards.filter(
+          (el) => el.category === "day-of-illness-card"
+        );
+    
+        randomValue = Math.floor(Math.random() * customerCards.length);
+        card = customerCards[randomValue];
+
+        setCurrentCard(card);
+        setCardTitle("Day of illness");
       }
-    }
-  }, [currentCard]);
+    }, 500);
+
+    setTimeout(() => {
+      setHighlight(false)
+    }, 1000)
+  
+  }, [currentTile]);
 
   const renderCard = () => {
+
     // Om kort objektet inte är tomt
     if (Object.keys(currentCard).length !== 0) {
 
       if(currentCard.alternatives) {
-        console.log(currentCard)
         return renderAlternatives()
-      }
-      
-      // return (
-      //   <>
-      //     <h1>{cardTitle}</h1>
-
-      //     <p className="active-card-question">{currentCard.question}</p>
-
-      //     <form action="" method="POST">
-      //       <label class="card-label-container">
-      //         This is a litle alternative
-      //         <input type="radio" checked="checked" name="radio" />
-      //         <span class="alt"></span>
-      //       </label>
-      //     </form>
-      //   </>
-      // );
-    } else {
+      } else {
       return (
         <>
-          <h1>Welcome</h1>
-          <br />
-          <h2>Click the dice to start the game!</h2>
+          <h1>{cardTitle}</h1>
+        {/* Ej alternativ kort */}
         </>
       );
+      }
     }
   };
 
   const renderAlternatives = () => {
     return (
       <>
-        <h1>{cardTitle}</h1>
+        <h1 className="card-header">{cardTitle}</h1>
 
         <p className="active-card-question">{currentCard.question}</p>
 
-        <form action="" method="POST">
+        <form onSubmit={e => handleSubmit(e)}>
           {currentCard.alternatives.map(alternative => (<>
-           <label class="card-label-container">
-            {alternative.answer}
-            <input type="radio" checked="checked" name="radio" />
-            <span class="alt"></span>
-          </label> <br />
+            <label className="card-label-container">
+              {alternative.answer}
+              <input type="radio" value={alternative.answer} onChange={(e) => handleToggle(e)} name="radio" />
+              <span className="alt"></span>
+             </label>
           </>))}
-         
+
+          <input type="submit" value="Reply" className="btn" />
         </form>
       </>
     );
   }
 
-  return <div className="card">{renderCard()}</div>;
+  const handleToggle = (e) => {
+    setToggle(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(toggle)
+  }
+
+  return <div className={highlight ? "card-highlight" : "card"}>{renderCard()}</div>;
 }
 
 export default ActiveCard;
