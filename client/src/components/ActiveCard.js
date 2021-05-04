@@ -77,20 +77,19 @@ function ActiveCard() {
   }, [currentTile]);
 
   const renderCard = () => {
-
-    // Om kort objektet inte är tomt
-    if (Object.keys(currentCard).length !== 0) {
-
-      if(currentCard.alternatives) {
-        return renderAlternatives()
-      } else {
-      return (
-        <>
-          <h1>{cardTitle}</h1>
-        {/* Ej alternativ kort */}
-        </>
-      );
+    if(currentCard.alternatives) {
+      return renderAlternatives()
+    } else {
+      if(currentCard.category === 'normal-day-card') {
+        return (
+          <>
+            <h1 className="card-header">{cardTitle}</h1>
+            <p className="active-card-question">{currentCard.information}</p>
+            <p className="fun-fact">{currentCard.funFact}</p>
+          </>
+        );
       }
+  
     }
   };
 
