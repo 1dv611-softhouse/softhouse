@@ -53,7 +53,8 @@
     "_id": 4,
     "category": "day-of-illness-card",
     "information": "Oh no, you've caught a cold. You therefore stay at home to rest. Today your colleagues therefore have a little extra to do.",
-    "consequence": "The work phase is a little slower today as there is a more to do."
+    "consequence": "The work phase gets a little slower. You loose 3 velocity points.",
+    "velocity": -3
   },
   {
     "_id": 5,

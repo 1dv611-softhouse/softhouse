@@ -88,6 +88,14 @@ function ActiveCard() {
             <p className="fun-fact">{currentCard.funFact}</p>
           </>
         );
+      } else if(currentCard.category === 'day-of-illness-card') {
+        return (
+          <>
+            <h1 className="card-header">{cardTitle}</h1>
+            <p className="active-card-question">{currentCard.information}</p>
+            <p className="fun-fact">{currentCard.consequence}</p>
+          </>
+        );
       }
   
     }
