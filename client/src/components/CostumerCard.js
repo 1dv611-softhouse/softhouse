@@ -17,7 +17,7 @@ function CostumerCard() {
 
     const card = customerCards[randomValue];
 
-    const id = card._id;
+    // const id = card._id;
 
     // Om man inte ska kunna rendera samma kort flera gånger:
     // if (renderedCards.includes(id)) {

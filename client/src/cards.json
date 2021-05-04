@@ -3,7 +3,7 @@
     "_id": 1,
     "category": "daily-stand-up-card",
     "question": "What is a Scrum-master?",
-    "answers": [
+    "alternatives": [
       {
         "answer": "The Scrum-master is responsible for the prioritizing of requirements.",
         "correct": false,
@@ -25,7 +25,7 @@
     "_id": 2,
     "category": "customer-card",
     "question": "A client contacts you regarding a change in the product you are developing. The customer wants the product to also support the German language. Where do you place the new requirement?",
-    "answers": [
+    "alternatives": [
       {
         "answer": "Product backlog",
         "correct": true,
@@ -59,7 +59,7 @@
     "_id": 5,
     "category": "customer-card",
     "question": "Exempel fråga",
-    "answers": [
+    "alternatives": [
       {
         "answer": "Product backlog",
         "correct": true,
