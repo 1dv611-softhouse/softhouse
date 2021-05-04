@@ -23,8 +23,7 @@ function ActiveCard() {
 
     setTimeout(() => { 
       setHighlight(false)
-      const cardDiv = document.querySelector('.card')
-      console.log(cardDiv)
+
       if (currentTile.color === "blue") {
         setHighlight(true)
         audio.play();
@@ -80,7 +79,6 @@ function ActiveCard() {
 
   const renderCard = () => {
     if(currentCard.alternatives) {
-      setHasAnswered(false)
       return renderAlternatives()
     } else {
       if(currentCard.category === 'normal-day-card') {
@@ -105,6 +103,7 @@ function ActiveCard() {
   };
 
   const renderAlternatives = () => {
+    setHasAnswered(false)
     return (
       <>
         <h1 className="card-header">{cardTitle}</h1>
@@ -131,8 +130,11 @@ function ActiveCard() {
   }
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
     setHasAnswered(true)
+
+    console.log(hasAnswered)
     console.log(toggle)
   }
 

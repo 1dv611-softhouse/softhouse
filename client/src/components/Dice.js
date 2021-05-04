@@ -26,14 +26,14 @@ function Dice() {
   }, [days, currentPositionValue, setCurrentTile]);
 
   const rollTheDice = () => {
-    if(hasAnswered) {
-      const newDice = Math.floor(Math.random() * imgs.length);
-      const diceValue = newDice + 1;
-      setDice(imgs[newDice]);
-      setCurrentPositionValue(currentPositionValue + diceValue);
-      // console.log(diceValue, "index i bild arrayen");
-      audio.play();
-    }
+    //TODO: Funkar inte....
+    // if(!hasAnswered) return
+    const newDice = Math.floor(Math.random() * imgs.length);
+    const diceValue = newDice + 1;
+    setDice(imgs[newDice]);
+    setCurrentPositionValue(currentPositionValue + diceValue);
+    // console.log(diceValue, "index i bild arrayen");
+    audio.play();
   };
 
   return (
