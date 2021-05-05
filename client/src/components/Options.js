@@ -36,9 +36,9 @@ function Options() {
         <li>
           <p onClick={() => closeMenu("rules")}>Rules</p>
         </li>
-        <li>
+        {/* <li>
           <p onClick={() => closeMenu("logout")}>Logout</p>
-        </li>
+        </li> */}
       </ul>
 
       <div className="social-media-icons">

@@ -48,8 +48,8 @@ describe('Testing the options component', () => {
         expect(wrapperMount.find('.options-container').length).toEqual(1)
     })
 
-    it('There should be 5 options to choose from', () => {
-        expect(wrapperMount.find('p').length).toEqual(5)
+    it('There should be 4 options to choose from', () => {
+        expect(wrapperMount.find('p').length).toEqual(4)
      })
 
      it('Should contain a P element with textcontent: Profile', () => {
