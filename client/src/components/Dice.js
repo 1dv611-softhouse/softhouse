@@ -27,8 +27,6 @@ function Dice() {
   }, [days, currentPositionValue, setCurrentTile])
 
   const rollTheDice = () => {
-    // console.log(currentCard)
-
     if (hasAnswered === false) return
 
     const newDice = Math.floor(Math.random() * imgs.length)
@@ -38,13 +36,6 @@ function Dice() {
     setCurrentPositionValue(currentPositionValue + diceValue)
 
     audio.play()
-
-    // console.log(currentCard.alternatives)
-    // if (currentCard.alternatives === undefined) {
-    //   setHasAnswered(true)
-    // } else {
-    //   setHasAnswered(false)
-    // }
   }
 
   return (

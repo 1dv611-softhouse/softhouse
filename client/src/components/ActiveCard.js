@@ -16,14 +16,16 @@ function ActiveCard() {
   const [highlight, setHighlight] = useState(false)
 
   useEffect(() => {
+    setHasAnswered(false)
+
     setTimeout(() => {
       if (currentTile.color === 'blue') {
         audio.play()
 
         const card = createRandomCard('customer-card')
 
-        if (card.alternatives) {
-          setHasAnswered(false)
+        if (!card.alternatives) {
+          setHasAnswered(true)
         }
 
         setCurrentCard(card)
@@ -33,8 +35,8 @@ function ActiveCard() {
 
         const card = createRandomCard('daily-stand-up-card')
 
-        if (card.alternatives) {
-          setHasAnswered(false)
+        if (!card.alternatives) {
+          setHasAnswered(true)
         }
 
         setCurrentCard(card)
@@ -43,14 +45,14 @@ function ActiveCard() {
         setHighlight(true)
 
         const card = createRandomCard('normal-day-card')
-
+        setHasAnswered(true)
         setCurrentCard(card)
         setCardTitle('Normal Day')
       } else if (currentTile.color === '') {
         audio.play()
 
         const card = createRandomCard('day-of-illness-card')
-
+        setHasAnswered(true)
         setCurrentCard(card)
         setCardTitle('Day of illness')
       }
