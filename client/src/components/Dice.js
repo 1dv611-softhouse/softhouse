@@ -3,6 +3,7 @@ import imgs from "../pictures/images";
 import { PlayerPositionContext } from "../global/PlayerPositionContext";
 import { DaysContext } from '../global/DaysContext'
 import { TileContext } from '../global/TileContext'
+import { CurrentCardContext } from '../global/CurrentCardContext'
 import { HasAnsweredContext } from '../global/HasAnsweredContext'
 import sound from "../diceroll.mp3";
 
@@ -13,6 +14,7 @@ function Dice() {
   const { days, setDays } = useContext(DaysContext);
   const { currentTile, setCurrentTile } = useContext(TileContext);
   const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext);
+  const { currentCard, setCurrentCard } = useContext(CurrentCardContext);
   const [dice, setDice] = useState(imgs[0]);
   const audio = new Audio(sound);
 
@@ -26,14 +28,18 @@ function Dice() {
   }, [days, currentPositionValue, setCurrentTile]);
 
   const rollTheDice = () => {
-    //TODO: Funkar inte....
-    // if(!hasAnswered) return
+    if(hasAnswered === false) return
+
     const newDice = Math.floor(Math.random() * imgs.length);
     const diceValue = newDice + 1;
+
     setDice(imgs[newDice]);
     setCurrentPositionValue(currentPositionValue + diceValue);
-    // console.log(diceValue, "index i bild arrayen");
+
     audio.play();
+
+    console.log(currentCard)
+    if (currentCard.alternatives) setHasAnswered(false)
   };
 
   return (

@@ -103,7 +103,7 @@ function ActiveCard() {
   };
 
   const renderAlternatives = () => {
-    setHasAnswered(false)
+    // setHasAnswered(false)
     return (
       <>
         <h1 className="card-header">{cardTitle}</h1>
@@ -120,22 +120,34 @@ function ActiveCard() {
           </>))}
 
           <input type="submit" value="Reply" className="btn" />
+          <button onClick={() => test()}>TEST!!!!!!!!!!</button>
         </form>
       </>
     );
+  }
+
+  const test = (e) => {
+    setHasAnswered(true)
   }
 
   const handleToggle = (e) => {
     setToggle(e.target.value)
   }
 
-  const handleSubmit = (e) => {
-
+  const handleSubmit =  (e) => {
     e.preventDefault();
     setHasAnswered(true)
 
-    console.log(hasAnswered)
-    console.log(toggle)
+    //iterera currentcard alternatives. 
+    //if answer = toggle ändra velocity according to answer
+    currentCard.alternatives.forEach(alternative => {
+      console.log(alternative)
+      // if(alternative === toggle) {
+      //   console.log('Alt: ' + alternative)
+      //   console.log('Toggle: ' + toggle)
+      // }
+    })
+    // console.log(hasAnswered)
   }
 
   return <div className={highlight ? "card-highlight" : "card"}>{renderCard()}</div>;

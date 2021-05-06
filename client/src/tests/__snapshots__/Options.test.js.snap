@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Testing the options component should match the snapshot 1`] = `"<div class=\\"options-container\\"><ul><li><p data-testid=\\"profile-option\\">Profile</p></li><li><p>Settings</p></li><li><p>HighScore</p></li><li><p>Rules</p></li></ul><div class=\\"social-media-icons\\"><a href=\\"https://www.facebook.com/softhouseconsulting\\"><img src=\\"1.png\\" alt=\\"Social media\\"/></a><a href=\\"\\"><img src=\\"2.png\\" alt=\\"Social media\\"/></a><a href=\\"https://www.instagram.com/softhouseconsulting/\\"><img src=\\"3.png\\" alt=\\"Social media\\"/></a><a href=\\"\\"><img src=\\"4.png\\" alt=\\"Social media\\"/></a><a href=\\"\\"><img src=\\"5.png\\" alt=\\"Social media\\"/></a></div></div>"`;

@@ -10,10 +10,8 @@ function Options() {
 
   const socialMediaLinks = [
     "https://www.facebook.com/softhouseconsulting",
-    "",
     "https://www.instagram.com/softhouseconsulting/",
-    "",
-    "",
+    "https://se.linkedin.com/company/softhouse"
   ];
 
   const closeMenu = (value) => {
@@ -44,7 +42,7 @@ function Options() {
       <div className="social-media-icons">
         {socials.map((img, index) => {
           return (
-            <a href={socialMediaLinks[index]}>
+            <a href={socialMediaLinks[index]} target="_blank" rel="noopener noreferrer">
               <img src={img} alt="Social media"/>
             </a>
           );

@@ -8,8 +8,25 @@
       "level": 1,
       "categories": [
         {
-          "strategy": "More documentation",
-          "velocity": "10"
+          "strategy": "Bjud på en fika för att öka pruduktiviteten hos dina kollegor.",
+          "consequences": [
+            {
+              "velocity": -50,
+              "consequence": "Åh nej, du spillde ut kaffet på hela bordet. Tre datorer förstördes!"
+            },
+            {
+              "velocity": 100,
+              "consequence": "Fikan var väldigt uppskattad av dina kollegor. Ni jobbar på riktigt bra nu!"
+            },
+            {
+              "velocity": -50,
+              "consequence": "Typiskt, fikan var alldeles för gammal. Produktiviteten sjunker på grund av magsjuka."
+            },
+            {
+              "velocity": 150,
+              "consequence": "Fikan var en succé. Det var lång tid sedan ni jobbade så här bra. Stämningen är på topp."
+            }
+          ]
         },
         {
           "strategy": "Increase communication",
