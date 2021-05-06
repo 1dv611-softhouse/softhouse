@@ -1,6 +1,5 @@
 import '../styles/highscore.css'
 function Highscore() {
-  // Vad gör detta? Jag ser ingen skillnad när jag tar bort det. /Pernilla
   return (
     <div className="highscore-container">
       <h1 className="highscore-header">Highscore</h1>
@@ -37,7 +36,7 @@ function Highscore() {
         </li>
       </ol>
     </div>
-  );
+  )
 }
 
-export default Highscore;
+export default Highscore

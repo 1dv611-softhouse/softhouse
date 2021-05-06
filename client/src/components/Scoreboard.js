@@ -1,12 +1,15 @@
-import "../styles/scoreboard.css";
-import ActiveCard from "./ActiveCard";
+import '../styles/scoreboard.css'
+import ActiveCard from './ActiveCard'
 import { VelocityContext } from '../global/VelocityContext'
 import { StorypointsContext } from '../global/StorypointsContext'
-import { useContext } from "react";
+import { useContext } from 'react'
 
 function Scoreboard() {
-  const { currentStorypoints, setCurrentStorypoints } = useContext(StorypointsContext)
+  const { currentStorypoints, setCurrentStorypoints } = useContext(
+    StorypointsContext
+  )
   const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
+
   return (
     <>
       <div className="scoreboard">
@@ -27,7 +30,7 @@ function Scoreboard() {
         <ActiveCard />
       </div>
     </>
-  );
+  )
 }
 
-export default Scoreboard;
+export default Scoreboard

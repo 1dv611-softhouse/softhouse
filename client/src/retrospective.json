@@ -1,15 +1,16 @@
 {
-  "main-information": {
+  "mainInformation": {
     "title": "Retrospective",
     "description": "Nicely played. You have now reached the retrospective. This means you get to invest some story points. Choose what you think will benefit you, the process and the company the most."
   },
   "retrospectives": [
     {
-      "level-1": [
+      "level1": [
         {
           "categories": [
             {
-              "strategy": "Bjud på en fika för att öka pruduktiviteten hos dina kollegor.",
+              "strategy": "Bjud på en fika för att öka pruduktiviteten hos dina kollegor",
+              "cost": 200,
               "consequences": [
                 {
                   "velocity": -50,
@@ -31,6 +32,7 @@
             },
             {
               "strategy": "Anordna en kubbturnering efter jobbet",
+              "cost": 100,
               "consequences": [
                 {
                   "velocity": -50,
@@ -53,8 +55,8 @@
           ]
         }
       ],
-      "level-2": [],
-      "level-3": []
+      "level2": [],
+      "level3": []
     }
   ]
 }

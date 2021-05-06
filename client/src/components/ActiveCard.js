@@ -2,6 +2,7 @@ import '../styles/active-card.css'
 import { CurrentCardContext } from '../global/CurrentCardContext'
 import { TileContext } from '../global/TileContext'
 import { HasAnsweredContext } from '../global/HasAnsweredContext'
+import { VelocityContext } from '../global/VelocityContext'
 import cards from '../cards.json'
 import sound from '../flip.mp3'
 import { useContext, useEffect, useState } from 'react'
@@ -11,33 +12,29 @@ function ActiveCard() {
   const { currentCard, setCurrentCard } = useContext(CurrentCardContext)
   const { currentTile, setCurrentTile } = useContext(TileContext)
   const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext)
+  const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
   const [cardTitle, setCardTitle] = useState('')
   const [toggle, setToggle] = useState('')
   const [highlight, setHighlight] = useState(false)
+  const [consequence, setConsequence] = useState('')
 
   useEffect(() => {
     setHasAnswered(false)
 
     setTimeout(() => {
       if (currentTile.color === 'blue') {
+        setHighlight(true)
         audio.play()
 
         const card = createRandomCard('customer-card')
 
-        if (!card.alternatives) {
-          setHasAnswered(true)
-        }
-
         setCurrentCard(card)
         setCardTitle('Customer')
       } else if (currentTile.color === 'orange') {
+        setHighlight(true)
         audio.play()
 
         const card = createRandomCard('daily-stand-up-card')
-
-        if (!card.alternatives) {
-          setHasAnswered(true)
-        }
 
         setCurrentCard(card)
         setCardTitle('Daily Stand Up')
@@ -67,12 +64,23 @@ function ActiveCard() {
     const customerCards = cards.filter((el) => el.category === cardCategory)
 
     const randomValue = Math.floor(Math.random() * customerCards.length)
-    return customerCards[randomValue]
+
+    const card = customerCards[randomValue]
+
+    if (!card.alternatives) {
+      setHasAnswered(true)
+    }
+
+    return card
   }
 
   const renderCard = () => {
     if (currentCard.alternatives) {
-      return renderAlternatives()
+      if (!hasAnswered) {
+        return renderAlternatives()
+      } else {
+        return renderConsequence()
+      }
     } else {
       if (currentCard.category === 'normal-day-card') {
         return (
@@ -95,7 +103,6 @@ function ActiveCard() {
   }
 
   const renderAlternatives = () => {
-    // setHasAnswered(false)
     return (
       <>
         <h1 className="card-header">{cardTitle}</h1>
@@ -130,17 +137,24 @@ function ActiveCard() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setHasAnswered(true)
 
-    //iterera currentcard alternatives.
-    //if answer = toggle ändra velocity according to answer
     currentCard.alternatives.forEach((alternative) => {
-      // console.log(alternative)
-      // if(alternative === toggle) {
-      //   console.log('Alt: ' + alternative)
-      //   console.log('Toggle: ' + toggle)
-      // }
+      if (alternative.answer === toggle) {
+        const velocity = alternative.velocity
+        setCurrentVelocity(currentVelocity + velocity)
+        setConsequence(alternative.consequence)
+      }
     })
+
+    setHasAnswered(true)
+  }
+
+  const renderConsequence = () => {
+    return (
+      <>
+        <h2>{consequence}</h2>
+      </>
+    )
   }
 
   return (
