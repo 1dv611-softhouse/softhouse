@@ -1,0 +1,8 @@
+.retrospective-frame {
+  background-color: black;
+  opacity: 0.5;
+  height: 60%;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+}

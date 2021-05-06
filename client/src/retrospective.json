@@ -5,72 +5,56 @@
   },
   "retrospectives": [
     {
-      "level": 1,
-      "categories": [
+      "level-1": [
         {
-          "strategy": "Bjud på en fika för att öka pruduktiviteten hos dina kollegor.",
-          "consequences": [
+          "categories": [
             {
-              "velocity": -50,
-              "consequence": "Åh nej, du spillde ut kaffet på hela bordet. Tre datorer förstördes!"
+              "strategy": "Bjud på en fika för att öka pruduktiviteten hos dina kollegor.",
+              "consequences": [
+                {
+                  "velocity": -50,
+                  "consequence": "Åh nej, du spillde ut kaffet på hela bordet. Tre datorer förstördes!"
+                },
+                {
+                  "velocity": 100,
+                  "consequence": "Fikan var väldigt uppskattad av dina kollegor. Ni jobbar på riktigt bra nu!"
+                },
+                {
+                  "velocity": -50,
+                  "consequence": "Typiskt, fikan var alldeles för gammal. Produktiviteten sjunker på grund av magsjuka."
+                },
+                {
+                  "velocity": 150,
+                  "consequence": "Fikan var en succé. Det var lång tid sedan ni jobbade så här bra. Stämningen är på topp."
+                }
+              ]
             },
             {
-              "velocity": 100,
-              "consequence": "Fikan var väldigt uppskattad av dina kollegor. Ni jobbar på riktigt bra nu!"
-            },
-            {
-              "velocity": -50,
-              "consequence": "Typiskt, fikan var alldeles för gammal. Produktiviteten sjunker på grund av magsjuka."
-            },
-            {
-              "velocity": 150,
-              "consequence": "Fikan var en succé. Det var lång tid sedan ni jobbade så här bra. Stämningen är på topp."
+              "strategy": "Anordna en kubbturnering efter jobbet",
+              "consequences": [
+                {
+                  "velocity": -50,
+                  "consequence": "Typiskt, vädret är allt för dåligt för att spela. Besvikelsen drar ner kollegornas produktivitet."
+                },
+                {
+                  "velocity": 50,
+                  "consequence": "Vilken bra idé! Kubbturneringen var en hit! Stämningen är riktigt bra på jobbet."
+                },
+                {
+                  "velocity": 200,
+                  "consequence": "Ni lärde känna varandra bättre genom aktiviteten. Samarbetet har aldrig varit bättre!"
+                },
+                {
+                  "velocity": 10,
+                  "consequence": "Synd, kubbturneringen verkade inte vara någon hit. Kanske ni ska testa en annan aktivitet nästa gång."
+                }
+              ]
             }
           ]
-        },
-        {
-          "strategy": "Increase communication",
-          "velocity": "-50"
-        },
-        {
-          "strategy": "Apply waterfall model",
-          "velocity": "-100"
         }
-      ]
-    },
-    {
-      "level": 2,
-      "categories": [
-        {
-          "strategy": "Take a coffe break",
-          "velocity": "10"
-        },
-        {
-          "strategy": "Throw an afterwork with your colleagues",
-          "velocity": "200"
-        },
-        {
-          "strategy": "Skip all daily standups to save time",
-          "velocity": "-500"
-        }
-      ]
-    },
-    {
-      "level": 3,
-      "categories": [
-        {
-          "strategy": "Offer cookies to raise the mood",
-          "velocity": "100"
-        },
-        {
-          "strategy": "Something else...",
-          "velocity": "-50"
-        },
-        {
-          "strategy": "Something else...",
-          "velocity": "-100"
-        }
-      ]
+      ],
+      "level-2": [],
+      "level-3": []
     }
   ]
 }

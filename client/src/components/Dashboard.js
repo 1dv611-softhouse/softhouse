@@ -4,6 +4,7 @@ import Highscore from './Highscore'
 import Rules from './Rules'
 import Profile from './Profile'
 import Options from './Options'
+import Retrospective from './Retrospective'
 import { HeaderContext } from '../global/HeaderContext'
 import { useEffect, useState, useContext } from 'react'
 
@@ -24,6 +25,7 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
       <Header />
+      <Retrospective />
       {renderComponent()}
     </div>
   )

@@ -1,46 +1,51 @@
-import { useState, useContext, useEffect } from "react";
-import imgs from "../pictures/images";
-import { PlayerPositionContext } from "../global/PlayerPositionContext";
+import { useState, useContext, useEffect } from 'react'
+import imgs from '../pictures/images'
+import { PlayerPositionContext } from '../global/PlayerPositionContext'
 import { DaysContext } from '../global/DaysContext'
 import { TileContext } from '../global/TileContext'
 import { CurrentCardContext } from '../global/CurrentCardContext'
 import { HasAnsweredContext } from '../global/HasAnsweredContext'
-import sound from "../diceroll.mp3";
+import sound from '../diceroll.mp3'
 
 function Dice() {
   const { currentPositionValue, setCurrentPositionValue } = useContext(
     PlayerPositionContext
-  );
-  const { days, setDays } = useContext(DaysContext);
-  const { currentTile, setCurrentTile } = useContext(TileContext);
-  const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext);
-  const { currentCard, setCurrentCard } = useContext(CurrentCardContext);
-  const [dice, setDice] = useState(imgs[0]);
-  const audio = new Audio(sound);
+  )
+  const { days, setDays } = useContext(DaysContext)
+  const { currentTile, setCurrentTile } = useContext(TileContext)
+  const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext)
+  const { currentCard, setCurrentCard } = useContext(CurrentCardContext)
+  const [dice, setDice] = useState(imgs[0])
+  const audio = new Audio(sound)
 
-  
   useEffect(() => {
-    days.forEach(day => {
-      if(currentPositionValue === day.number) {
-        setCurrentTile({color: day.color, number: day.number})
+    days.forEach((day) => {
+      if (currentPositionValue === day.number) {
+        setCurrentTile({ color: day.color, number: day.number })
       }
     })
-  }, [days, currentPositionValue, setCurrentTile]);
+  }, [days, currentPositionValue, setCurrentTile])
 
   const rollTheDice = () => {
-    if(hasAnswered === false) return
+    // console.log(currentCard)
 
-    const newDice = Math.floor(Math.random() * imgs.length);
-    const diceValue = newDice + 1;
+    if (hasAnswered === false) return
 
-    setDice(imgs[newDice]);
-    setCurrentPositionValue(currentPositionValue + diceValue);
+    const newDice = Math.floor(Math.random() * imgs.length)
+    const diceValue = newDice + 1
 
-    audio.play();
+    setDice(imgs[newDice])
+    setCurrentPositionValue(currentPositionValue + diceValue)
 
-    console.log(currentCard)
-    if (currentCard.alternatives) setHasAnswered(false)
-  };
+    audio.play()
+
+    // console.log(currentCard.alternatives)
+    // if (currentCard.alternatives === undefined) {
+    //   setHasAnswered(true)
+    // } else {
+    //   setHasAnswered(false)
+    // }
+  }
 
   return (
     <img
@@ -49,7 +54,7 @@ function Dice() {
       className="dice"
       onClick={() => rollTheDice()}
     />
-  );
+  )
 }
 
-export default Dice;
+export default Dice
