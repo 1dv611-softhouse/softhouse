@@ -19,9 +19,12 @@ function ActiveCard() {
   const [consequence, setConsequence] = useState('')
 
   useEffect(() => {
-    setHasAnswered(false)
+    // Om satt här fixar tärningsbugg(en av dem)
+    // setHasAnswered(false)
 
     setTimeout(() => {
+      //Om satt här fixar konsekvensbubugg
+      setHasAnswered(false)
       if (currentTile.color === 'blue') {
         setHighlight(true)
         audio.play()
@@ -42,6 +45,7 @@ function ActiveCard() {
         setHighlight(true)
 
         const card = createRandomCard('normal-day-card')
+
         setHasAnswered(true)
         setCurrentCard(card)
         setCardTitle('Normal Day')
@@ -76,11 +80,7 @@ function ActiveCard() {
 
   const renderCard = () => {
     if (currentCard.alternatives) {
-      if (!hasAnswered) {
-        return renderAlternatives()
-      } else {
-        return renderConsequence()
-      }
+      return renderAlternatives()
     } else {
       if (currentCard.category === 'normal-day-card') {
         return (
@@ -103,32 +103,37 @@ function ActiveCard() {
   }
 
   const renderAlternatives = () => {
-    return (
-      <>
-        <h1 className="card-header">{cardTitle}</h1>
-
-        <p className="active-card-question">{currentCard.question}</p>
-
-        <form onSubmit={(e) => handleSubmit(e)}>
-          {currentCard.alternatives.map((alternative) => (
-            <>
-              <label className="card-label-container">
-                {alternative.answer}
-                <input
-                  type="radio"
-                  value={alternative.answer}
-                  onChange={(e) => handleToggle(e)}
-                  name="radio"
-                />
-                <span className="alt"></span>
-              </label>
-            </>
-          ))}
-
-          <input type="submit" value="Reply" className="btn" />
-        </form>
-      </>
-    )
+    if (!hasAnswered) {
+      return (
+        <>
+          <h1 className="card-header">{cardTitle}</h1>
+  
+          <p className="active-card-question">{currentCard.question}</p>
+  
+          <form onSubmit={(e) => handleSubmit(e)}>
+            {currentCard.alternatives.map((alternative) => (
+              <>
+                <label className="card-label-container">
+                  {alternative.answer}
+                  <input
+                    type="radio"
+                    value={alternative.answer}
+                    onChange={(e) => handleToggle(e)}
+                    name="radio"
+                  />
+                  <span className="alt"></span>
+                </label>
+              </>
+            ))}
+  
+            <input type="submit" value="Reply" className="btn" />
+          </form>
+        </>
+      )
+    } else {
+      return renderConsequence()
+    }
+   
   }
 
   const handleToggle = (e) => {
@@ -152,13 +157,16 @@ function ActiveCard() {
   const renderConsequence = () => {
     return (
       <>
-        <h2>{consequence}</h2>
+        <h1 className="card-header">Consequence</h1>
+        <p className="active-card-question">{consequence}</p>
       </>
     )
   }
 
   return (
+    <>
     <div className={highlight ? 'card-highlight' : 'card'}>{renderCard()}</div>
+    </>
   )
 }
 
