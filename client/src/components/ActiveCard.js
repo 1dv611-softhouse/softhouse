@@ -20,11 +20,11 @@ function ActiveCard() {
 
   useEffect(() => {
     // Om satt här fixar tärningsbugg(en av dem)
-    // setHasAnswered(false)
+    setHasAnswered(false)
 
     setTimeout(() => {
       //Om satt här fixar konsekvensbubugg
-      setHasAnswered(false)
+      // setHasAnswered(false)
       if (currentTile.color === 'blue') {
         setHighlight(true)
         audio.play()
@@ -107,9 +107,9 @@ function ActiveCard() {
       return (
         <>
           <h1 className="card-header">{cardTitle}</h1>
-  
+
           <p className="active-card-question">{currentCard.question}</p>
-  
+
           <form onSubmit={(e) => handleSubmit(e)}>
             {currentCard.alternatives.map((alternative) => (
               <>
@@ -125,7 +125,7 @@ function ActiveCard() {
                 </label>
               </>
             ))}
-  
+
             <input type="submit" value="Reply" className="btn" />
           </form>
         </>
@@ -133,7 +133,6 @@ function ActiveCard() {
     } else {
       return renderConsequence()
     }
-   
   }
 
   const handleToggle = (e) => {
@@ -165,7 +164,9 @@ function ActiveCard() {
 
   return (
     <>
-    <div className={highlight ? 'card-highlight' : 'card'}>{renderCard()}</div>
+      <div className={highlight ? 'card-highlight' : 'card'}>
+        {renderCard()}
+      </div>
     </>
   )
 }

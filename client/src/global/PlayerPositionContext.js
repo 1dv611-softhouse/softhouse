@@ -1,12 +1,12 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext } from 'react'
 
-export const PlayerPositionContext = createContext();
+export const PlayerPositionContext = createContext()
 
 export const PlayerPositionProvider = (props) => {
-  const [currentPositionValue, setCurrentPositionValue] = useState(1);
+  const [currentPositionValue, setCurrentPositionValue] = useState(1)
   if (currentPositionValue > 22) {
-    const newValue = currentPositionValue - 22;
-    setCurrentPositionValue(newValue);
+    const newValue = currentPositionValue - 22
+    setCurrentPositionValue(newValue)
   }
   return (
     <PlayerPositionContext.Provider
@@ -14,5 +14,5 @@ export const PlayerPositionProvider = (props) => {
     >
       {props.children}
     </PlayerPositionContext.Provider>
-  );
-};
+  )
+}

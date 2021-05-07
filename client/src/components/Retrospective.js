@@ -2,15 +2,15 @@ import '../styles/retrospective.css'
 import retrospective from '../retrospective.json'
 
 function Retrospective() {
-  function getTitle() {
+  const getTitle = () => {
     return retrospective.mainInformation.title
   }
 
-  function getPreamble() {
+  const getPreamble = () => {
     return retrospective.mainInformation.description
   }
 
-  function generateRandomAlternatives() {
+  const generateRandomAlternatives = () => {
     const randomValue = Math.floor(
       Math.random() * retrospective.retrospectives[0].level1.length
     )
@@ -20,24 +20,37 @@ function Retrospective() {
     return randomCategory
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('submit')
+  }
+
   return (
     <div className="retrospective-layer">
       <div className="retrospective-frame">
         <h1>{getTitle()}</h1>
         <p>{getPreamble()}</p>
-        <form className="retrospective-form">
-          {generateRandomAlternatives().categories.map((alternative) => {
+        <form className="retrospective-form" onSubmit={(e) => handleSubmit(e)}>
+          {generateRandomAlternatives().categories.map((alternative, index) => {
             return (
               <>
-                <input type="checkbox" id="jens" />
-                <label for="jens">
+                <label className="retrospective-checkbox-container" for={index}>
+                  <input
+                    className="retrospective-checkbox"
+                    type="checkbox"
+                    key={index}
+                  />
+                  <span class="checkmark-retrospective-custom"></span>
                   {alternative.strategy} [{alternative.cost}]
                 </label>
-                <br></br>
               </>
             )
           })}
-          <input type="submit" value="Invest story points" className="form-button-retrospective"/>
+          <input
+            type="submit"
+            value="Invest story points"
+            className="form-button-retrospective"
+          />
         </form>
       </div>
     </div>
