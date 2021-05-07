@@ -97,7 +97,6 @@ function Gameboard() {
         </div>
       </div>
       {retrospective ? <Retrospective /> : ''}
-      <Retrospective />
     </div>
   )
 }

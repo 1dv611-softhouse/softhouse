@@ -34,14 +34,10 @@ function Retrospective() {
           {generateRandomAlternatives().categories.map((alternative, index) => {
             return (
               <>
-                <label className="retrospective-checkbox-container" for={index}>
-                  <input
-                    className="retrospective-checkbox"
-                    type="checkbox"
-                    key={index}
-                  />
-                  <span class="checkmark-retrospective-custom"></span>
+                <label class="retrospective-checkbox-container">
                   {alternative.strategy} [{alternative.cost}]
+                  <input type="checkbox" />
+                  <span class="checkmark-retrospective-custom"></span>
                 </label>
               </>
             )
