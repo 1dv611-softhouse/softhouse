@@ -61,6 +61,7 @@ function ActiveCard() {
                     value={alternative.answer}
                     onChange={(e) => handleToggle(e)}
                     name="radio"
+                    required
                   />
                   <span className="alt"></span>
                 </label>
