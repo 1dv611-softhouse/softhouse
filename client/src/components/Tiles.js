@@ -18,7 +18,7 @@ function Tiles(props) {
   };
 
   return (
-    <div className={` tiles-container`}>
+    <div className={` tiles-container tile-color-${number.color}`}>
       {currentPosition()}
       <p>{number.boardValue}</p>
       <p>{number.name}</p>

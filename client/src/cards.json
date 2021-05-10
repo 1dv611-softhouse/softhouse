@@ -2,6 +2,7 @@
   {
     "_id": 1,
     "category": "daily-stand-up-card",
+    "title": "Daily StandUp",
     "question": "What is a Scrum-master?",
     "alternatives": [
       {
@@ -27,6 +28,7 @@
   {
     "_id": 2,
     "category": "customer-card",
+    "title": "Customer",
     "question": "A client contacts you regarding a change in the product you are developing. The customer wants the product to also support the German language. Where do you place the new requirement?",
     "alternatives": [
       {
@@ -52,12 +54,14 @@
   {
     "_id": 3,
     "category": "normal-day-card",
+    "title": "Normal day",
     "information": "It's a normal day at the office. Nothing special to notice. Have a great day!",
     "funFact": "Did you know that Softhouse was founded in 1996 in Malmö and has since grown to 7 offices around Sweden?"
   },
   {
     "_id": 4,
     "category": "day-of-illness-card",
+    "title": "Day of illness",
     "information": "Oh no, you've caught a cold. You therefore stay at home to rest. Today your colleagues therefore have a little extra to do.",
     "consequence": "The work phase gets a little slower. You loose 3 velocity points.",
     "velocity": -3
@@ -65,6 +69,7 @@
   {
     "_id": 5,
     "category": "customer-card",
+    "title": "Customer",
     "question": "Exempel fråga",
     "alternatives": [
       {
@@ -90,18 +95,21 @@
   {
     "_id": 6,
     "category": "normal-day-card",
+    "title": "Normal day",
     "information": "It's a normal day. Keep on playing.",
     "funFact": "Did you know that Softhouse was founded in 1996 in Malmö and has since grown to 7 offices around Sweden?"
   },
   {
     "_id": 7,
     "category": "normal-day-card",
+    "title": "Normal Day",
     "information": "It's a normal day at the office. Nothing special to notice. Have a great day!",
     "funFact": "Did you know that Sofhouse has an office in Sarajevo?"
   },
   {
     "_id": 8,
     "category": "normal-day-card",
+    "title": "Normal Day",
     "information": "It's a calm day at the office. Keep rolling the dice!",
     "funFact": "Did you know that Sofhouse offers over 25.000 courses?"
   }
