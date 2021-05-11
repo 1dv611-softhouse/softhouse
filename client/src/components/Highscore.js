@@ -55,11 +55,11 @@ function Highscore() {
       </ol>
 
       {/* Ta bort detta form när funktionen flyttas */}
-      <form>
+      {/* <form>
         <input type="text" id="asdfUsername" />
         <input type="number" id="asdfScore" />
         <button onClick={(e) => sendHighscore(e)}>Sicka highscore</button>
-      </form>
+      </form> */}
     </div>
   )
 }

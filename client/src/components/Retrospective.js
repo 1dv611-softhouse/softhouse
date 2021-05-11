@@ -71,7 +71,6 @@ function Retrospective() {
             consP.textContent += randomCon.consequence
             constDiv.appendChild(consP)
             velocityCost = velocityCost + randomCon.velocity
-            // setCurrentVelocity(currentVelocity + randomCon.velocity)
           }
         })
       })

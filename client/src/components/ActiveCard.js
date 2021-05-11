@@ -50,7 +50,7 @@ function ActiveCard() {
           </>
         )
       } else {
-        return <p>Click dice to start the game</p>
+        return <h1 className="card-header">Click dice to start the game</h1>
       }
     }
   }
