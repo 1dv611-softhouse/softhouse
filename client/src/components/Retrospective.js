@@ -27,8 +27,30 @@ function Retrospective() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-        // setCurrentVelocity()
-      // setCurrentStorypoints(currentStorypoints + )
+    const strategies = JSON.parse(toggle)
+    console.log(strategies)
+
+    // for(let i = 0; i < strategies.length; i++) {
+    //   console.log(strategies[i])
+    // }
+
+    // strategies.forEach(strat => {
+    //   // const strategy = JSON.parse(strat
+    //   console.log(
+    //     strat.strategy)
+    // })
+    let div =  document.querySelector('.retrospective-frame')
+    div.textContent = ''
+
+    const header = document.createElement('h1')
+    const text = document.createElement('p')
+    const consequence = document.createElement('p')
+    header.textContent = 'Consequences'
+    text.textContent = 'You have now made your investment choises. The consequences of your choises are displayed below.'
+    // consequence.textContent = {}
+    
+    div.appendChild(header)
+    div.appendChild(text)
   }
 
   const handleToggle = (e) => {
@@ -48,19 +70,6 @@ function Retrospective() {
     }
   }
 
-  const generateConsequenses = () => {
-    let div =  document.querySelector('.retrospective-frame')
-    div.textContent = ''
-
-    const header = document.createElement('h1')
-    const text = document.createElement('p')
-    header.textContent = 'Consequences'
-    text.textContent = 'You have now made your investment choises. The consequences of your choises are displayed below.'
-    
-    div.appendChild(header)
-    div.appendChild(text)
-  }
-
   return (
     <div className="retrospective-layer">
       <div className="retrospective-frame">
@@ -74,7 +83,7 @@ function Retrospective() {
                 <label class="retrospective-checkbox-container">
                   {strategy.strategy} [{strategy.cost}]
                   <input type="checkbox" 
-                    value={strategy.strategy}
+                    value={JSON.stringify(strategy)}
                     onChange={(e) => handleToggle(e)}
                     />
                   <span class="checkmark-retrospective-custom"></span>
@@ -86,7 +95,6 @@ function Retrospective() {
             type="submit"
             value="Invest story points"
             className="form-button-retrospective"
-            onClick={() => generateConsequenses()}
           />
         </form>
         

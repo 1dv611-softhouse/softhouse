@@ -2,7 +2,7 @@ import './styles/style.css'
 import './styles/authentication.css'
 import Dashboard from './components/Dashboard'
 import Gameboard from './components/Gameboard'
-// import Authentication from "./components/Authentication";
+import Signin from "./components/Signin";
 import { HeaderProvider } from './global/HeaderContext'
 import { HamburgerProvider } from './global/HamburgerContext'
 import { PlayerPositionProvider } from './global/PlayerPositionContext'
@@ -14,6 +14,7 @@ import { VelocityProvider } from './global/VelocityContext'
 import { StorypointsProvider } from './global/StorypointsContext'
 import { HighlightProvider } from './global/HighlightContext'
 import { RetrospectiveProvider } from './global/RetrospectiveContext'
+import { UsernameProvider } from './global/UsernameContext'
 
 function App() {
   return (
@@ -28,11 +29,13 @@ function App() {
                     <StorypointsProvider>
                       <HighlightProvider>
                         <RetrospectiveProvider>
-                          <div className="container">
-                            <Dashboard />
-                            <Gameboard />
-                          </div>
-                          {/* <Authentication /> */}
+                          <UsernameProvider>
+                            <div className="container">
+                              <Dashboard />
+                              <Gameboard />
+                              
+                            </div>
+                          </UsernameProvider>
                         </RetrospectiveProvider>
                       </HighlightProvider>
                     </StorypointsProvider>
