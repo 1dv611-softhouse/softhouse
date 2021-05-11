@@ -13,6 +13,7 @@ import { HasAnsweredProvider } from './global/HasAnsweredContext'
 import { VelocityProvider } from './global/VelocityContext'
 import { StorypointsProvider } from './global/StorypointsContext'
 import { HighlightProvider } from './global/HighlightContext'
+import { RetrospectiveProvider } from './global/RetrospectiveContext'
 
 function App() {
   return (
@@ -26,11 +27,13 @@ function App() {
                   <VelocityProvider>
                     <StorypointsProvider>
                       <HighlightProvider>
-                      <div className="container">
-                        <Dashboard />
-                        <Gameboard />
-                      </div>
-                      {/* <Authentication /> */}
+                        <RetrospectiveProvider>
+                          <div className="container">
+                            <Dashboard />
+                            <Gameboard />
+                          </div>
+                          {/* <Authentication /> */}
+                        </RetrospectiveProvider>
                       </HighlightProvider>
                     </StorypointsProvider>
                   </VelocityProvider>

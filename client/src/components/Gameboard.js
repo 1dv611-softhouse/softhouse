@@ -6,6 +6,7 @@ import DailyStandupCard from './DailyStandupCard'
 import Retrospective from './Retrospective'
 import { PlayerPositionContext } from '../global/PlayerPositionContext'
 import { DaysContext } from '../global/DaysContext'
+import { RetrospectiveContext } from '../global/RetrospectiveContext'
 import { useContext, useEffect, useState } from 'react'
 
 function Gameboard() {
@@ -13,7 +14,7 @@ function Gameboard() {
   const { currentPositionValue, setCurrentPositionValue } = useContext(
     PlayerPositionContext
   )
-  const [retrospective, setRetrospective] = useState(false)
+  const { retrospective, setRetrospective } = useContext(RetrospectiveContext)
 
   useEffect(() => {
     if (currentPositionValue > 22) {

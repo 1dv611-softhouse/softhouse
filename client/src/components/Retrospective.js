@@ -1,31 +1,28 @@
 import '../styles/retrospective.css'
-import retrospective from '../retrospective.json'
+import retrospectiveJSON from '../retrospective.json'
 import { VelocityContext } from '../global/VelocityContext'
 import { StorypointsContext } from '../global/StorypointsContext'
-
+import { RetrospectiveContext } from '../global/RetrospectiveContext'
 import { useState, useContext, useEffect } from 'react'
 
 function Retrospective() {
   const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
   const { currentStorypoints, setCurrentStorypoints } = useContext(StorypointsContext)
+  const { retrospective, setRetrospective } = useContext(RetrospectiveContext)
   const [toggle, setToggle] = useState([])
 
   const getTitle = () => {
-    return retrospective.mainInformation.title
+    return retrospectiveJSON.mainInformation.title
   }
 
   const getPreamble = () => {
-    return retrospective.mainInformation.description
+    return retrospectiveJSON.mainInformation.description
   }
 
-  const generateRandomAlternatives = () => {
-    //TODO kolla av storypoint = vilken level av retro man ska få
-    const randomValue = Math.floor(
-      Math.random() * retrospective.retrospectives[0].level1.length
-    )
-    const randomCategory = retrospective.retrospectives[0].level1[randomValue]
+  const generateLevelStrategies = () => {
+    //TODO kolla av storypoint = vilken level av strategies man ska få
    
-    return randomCategory
+    return retrospectiveJSON.retrospectives[0].level1
   }
 
   const handleSubmit = (e) => {
@@ -52,24 +49,32 @@ function Retrospective() {
   }
 
   const generateConsequenses = () => {
-    alert('This is a test!!!')
-    // Hämta array med svar. T.ex. 
-    alert(toggle)
+    let div =  document.querySelector('.retrospective-frame')
+    div.textContent = ''
+
+    const header = document.createElement('h1')
+    const text = document.createElement('p')
+    header.textContent = 'Consequences'
+    text.textContent = 'You have now made your investment choises. The consequences of your choises are displayed below.'
+    
+    div.appendChild(header)
+    div.appendChild(text)
   }
 
   return (
     <div className="retrospective-layer">
       <div className="retrospective-frame">
         <h1>{getTitle()}</h1>
+
         <p>{getPreamble()}</p>
         <form className="retrospective-form" onSubmit={(e) => handleSubmit(e)}>
-          {generateRandomAlternatives().map((alternative, index) => {
+          {generateLevelStrategies().map((strategy, index) => {
             return (
               <>
                 <label class="retrospective-checkbox-container">
-                  {alternative.strategy} [{alternative.cost}]
+                  {strategy.strategy} [{strategy.cost}]
                   <input type="checkbox" 
-                    value={alternative.strategy}
+                    value={strategy.strategy}
                     onChange={(e) => handleToggle(e)}
                     />
                   <span class="checkmark-retrospective-custom"></span>
@@ -84,6 +89,7 @@ function Retrospective() {
             onClick={() => generateConsequenses()}
           />
         </form>
+        
       </div>
     </div>
   )
