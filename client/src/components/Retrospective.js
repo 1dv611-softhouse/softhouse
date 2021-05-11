@@ -5,11 +5,15 @@ import { StorypointsContext } from '../global/StorypointsContext'
 import { RetrospectiveContext } from '../global/RetrospectiveContext'
 import { useState, useContext, useEffect } from 'react'
 
+//TODO: ändra level beroende på storypoints (useeffect?)
+
 function Retrospective() {
   const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
-  const { currentStorypoints, setCurrentStorypoints } = useContext(StorypointsContext)
+  const { currentStorypoints, setCurrentStorypoints } =
+    useContext(StorypointsContext)
   const { retrospective, setRetrospective } = useContext(RetrospectiveContext)
   const [toggle, setToggle] = useState([])
+  const [level, setLevel] = useState('level1')
 
   const getTitle = () => {
     return retrospectiveJSON.mainInformation.title
@@ -20,58 +24,119 @@ function Retrospective() {
   }
 
   const generateLevelStrategies = () => {
-    //TODO kolla av storypoint = vilken level av strategies man ska få
-   
-    return retrospectiveJSON.retrospectives[0].level1
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const strategies = JSON.parse(toggle)
-    console.log(strategies)
-
-    // for(let i = 0; i < strategies.length; i++) {
-    //   console.log(strategies[i])
-    // }
-
-    // strategies.forEach(strat => {
-    //   // const strategy = JSON.parse(strat
-    //   console.log(
-    //     strat.strategy)
-    // })
-    let div =  document.querySelector('.retrospective-frame')
-    div.textContent = ''
-
-    const header = document.createElement('h1')
-    const text = document.createElement('p')
-    const consequence = document.createElement('p')
-    header.textContent = 'Consequences'
-    text.textContent = 'You have now made your investment choises. The consequences of your choises are displayed below.'
-    // consequence.textContent = {}
-    
-    div.appendChild(header)
-    div.appendChild(text)
+    return retrospectiveJSON.retrospectives[level]
   }
 
   const handleToggle = (e) => {
-    
-    const strategy = e.target.value 
+    const strategy = e.target.value
 
-    if(!toggle.includes(strategy)) {
+    // If target is chosen add it to toggle state
+    if (!toggle.includes(strategy)) {
       setToggle([...toggle, strategy])
-      
-    } else if(toggle.includes(strategy)) {
+    }
+    // If target is unchosen remove from toggle state
+    else if (toggle.includes(strategy)) {
       const index = toggle.indexOf(strategy)
 
       if (index !== -1) {
-        toggle.splice(index, 1);
+        toggle.splice(index, 1)
         setToggle(toggle)
       }
     }
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    renderConsequences()
+  }
+
+  const renderConsequences = () => {
+    const div = document.querySelector('.retrospective-frame')
+    const header = document.createElement('h1')
+    const text = document.createElement('p')
+    const constDiv = document.createElement('div')
+    let consP = document.createElement('p')
+    let velP = document.createElement('p')
+
+    let velocityCost = 0
+
+    if (toggle.length !== 0) {
+      addToStoryPoints()
+
+      retrospectiveJSON.retrospectives[level].forEach((el) => {
+        toggle.forEach((strat) => {
+          if (strat === el.strategy) {
+            const randomCon = getRandomConsequence(el)
+
+            consP.textContent += randomCon.consequence
+            constDiv.appendChild(consP)
+            velocityCost = velocityCost + randomCon.velocity
+            // setCurrentVelocity(currentVelocity + randomCon.velocity)
+          }
+        })
+      })
+
+      text.textContent =
+        'You have now made your investment choises. The consequences of your choises are displayed below.'
+    } else {
+      text.textContent =
+        'You decided not to choose any alternatives. Your story point-score remains the same.'
+    }
+
+    // Ser till att krysset visas när man klickat submit
+    document.querySelector('.close-wrapper-retrospective').style.display =
+      'flex'
+
+    div.textContent = ''
+    header.textContent = 'Consequences'
+    div.appendChild(header)
+    div.appendChild(text)
+
+    if (consP != undefined) {
+      div.appendChild(constDiv)
+      velP.textContent =
+        'Your velocity has changed by ' + velocityCost + ' points'
+      div.appendChild(velP)
+      changeVelocity(velocityCost)
+    }
+  }
+
+  const addToStoryPoints = () => {
+    let storypointCost = 0
+
+    retrospectiveJSON.retrospectives[level].forEach((el) => {
+      toggle.forEach((strat) => {
+        if (strat === el.strategy) {
+          storypointCost = storypointCost + el.cost
+        }
+      })
+    })
+
+    setCurrentStorypoints(currentStorypoints + storypointCost)
+  }
+
+  const getRandomConsequence = (el) => {
+    const randomValue = Math.floor(Math.random() * el.consequences.length)
+    return el.consequences[randomValue]
+  }
+
+  const changeVelocity = (velocityToAdd) => {
+    if (currentVelocity + velocityToAdd <= 0) {
+      setCurrentVelocity(0)
+    } else {
+      setCurrentVelocity(currentVelocity + velocityToAdd)
+    }
+  }
+
   return (
     <div className="retrospective-layer">
+      <div
+        className="close-wrapper-retrospective"
+        onClick={() => setRetrospective(false)}
+      >
+        <div className="close-line1"></div>
+        <div className="close-line2"></div>
+      </div>
       <div className="retrospective-frame">
         <h1>{getTitle()}</h1>
 
@@ -82,10 +147,11 @@ function Retrospective() {
               <>
                 <label class="retrospective-checkbox-container">
                   {strategy.strategy} [{strategy.cost}]
-                  <input type="checkbox" 
-                    value={JSON.stringify(strategy)}
+                  <input
+                    type="checkbox"
+                    value={strategy.strategy}
                     onChange={(e) => handleToggle(e)}
-                    />
+                  />
                   <span class="checkmark-retrospective-custom"></span>
                 </label>
               </>
@@ -97,7 +163,6 @@ function Retrospective() {
             className="form-button-retrospective"
           />
         </form>
-        
       </div>
     </div>
   )

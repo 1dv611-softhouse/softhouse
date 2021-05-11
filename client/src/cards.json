@@ -3,25 +3,25 @@
     "_id": 1,
     "category": "daily-stand-up-card",
     "title": "Daily StandUp",
-    "question": "What is a Scrum-master?",
+    "question": "Oh no, the project leader was late to the meeting again! What do you do?",
     "alternatives": [
       {
-        "answer": "The Scrum-master is responsible for the prioritizing of requirements.",
+        "answer": "Nothing, we can wait! We've got all time in the world.",
         "correct": false,
         "velocity": -3,
-        "consequence": "Some kind of consequence"
+        "consequence": "Well, something should be done. This behaviour can't continue."
       },
       {
-        "answer": "It's an agile working method.",
+        "answer": "The person who is late for a meeting has to pay 1$, which is shared by the team.",
         "correct": false,
         "velocity": -2,
-        "consequence": "Some kind of consequence"
+        "consequence": "That's a great idea! This will encourage the staff to keep comming in time."
       },
       {
-        "answer": "The Scrum Master is responsible for ensuring that Scrum is used in the process.",
+        "answer": "There has to be some consequences. The project leader has to bake cookies to the next meeting.",
         "correct": true,
         "velocity": 2,
-        "consequence": "Some kind of consequence"
+        "consequence": "Thats a wise decision! Very wise indeed!"
       }
     ]
   },
@@ -44,7 +44,7 @@
         "consequence": "Some kind of consequence"
       },
       {
-        "answer": "In the daily standup.",
+        "answer": "In the daily standup",
         "correct": false,
         "velocity": -3,
         "consequence": "Some kind of consequence"
@@ -70,25 +70,25 @@
     "_id": 5,
     "category": "customer-card",
     "title": "Customer",
-    "question": "Exempel fråga",
+    "question": "The customer wonders if you can add a short function two weeks before the hand over. It is critical, she says! What do you do?",
     "alternatives": [
       {
-        "answer": "Product backlog",
+        "answer": "Of course, we can handle that! We probably need to change the order of priority in the sprint backlog.",
         "correct": true,
         "velocity": 2,
-        "consequence": "Some kind of consequence"
+        "consequence": "Well spoken! Good that you mention that the priorities change."
       },
       {
-        "answer": "In the burndown chart",
+        "answer": "Sorry, that's not possible. We have enough to do!",
         "correct": false,
         "velocity": -5,
-        "consequence": "Some kind of consequence"
+        "consequence": "That was not a good answer. You need to make sure the customer is satisfied."
       },
       {
-        "answer": "In the daily standup.",
+        "answer": "Forget it! It will be as planned. We work according to the waterfall model.",
         "correct": false,
-        "velocity": -3,
-        "consequence": "Some kind of consequence"
+        "velocity": -10,
+        "consequence": "That answer was not appreciated by the customer."
       }
     ]
   },

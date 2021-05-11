@@ -2,7 +2,8 @@ import './styles/style.css'
 import './styles/authentication.css'
 import Dashboard from './components/Dashboard'
 import Gameboard from './components/Gameboard'
-import Signin from "./components/Signin";
+import UsernameModal from './components/UsernameModal'
+
 import { HeaderProvider } from './global/HeaderContext'
 import { HamburgerProvider } from './global/HamburgerContext'
 import { PlayerPositionProvider } from './global/PlayerPositionContext'
@@ -33,7 +34,7 @@ function App() {
                             <div className="container">
                               <Dashboard />
                               <Gameboard />
-                              
+                              <UsernameModal />
                             </div>
                           </UsernameProvider>
                         </RetrospectiveProvider>

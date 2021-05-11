@@ -3,15 +3,15 @@ import { CurrentCardContext } from '../global/CurrentCardContext'
 import { HasAnsweredContext } from '../global/HasAnsweredContext'
 import { VelocityContext } from '../global/VelocityContext'
 import { HighlightContext } from '../global/HighlightContext'
+import info from '../pictures/info.png'
 
 import { useContext, useState } from 'react'
 
 function ActiveCard() {
-
   const { currentCard, setCurrentCard } = useContext(CurrentCardContext)
   const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext)
   const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
-  const {highlight, setHighlight} = useContext(HighlightContext)
+  const { highlight, setHighlight } = useContext(HighlightContext)
   const [toggle, setToggle] = useState('')
   const [consequence, setConsequence] = useState('')
 
@@ -24,7 +24,15 @@ function ActiveCard() {
           <>
             <h1 className="card-header">{currentCard.title}</h1>
             <p className="active-card-question">{currentCard.information}</p>
-            <p className="fun-fact">{currentCard.funFact}</p>
+            <div className="fun-fact-wrapper">
+              <div className="icon-fun-fact">
+                <img src={info} />
+              </div>
+
+              <div className="text-fun-fact">
+                <p className="fun-fact">{currentCard.funFact}</p>
+              </div>
+            </div>
           </>
         )
       } else if (currentCard.category === 'day-of-illness-card') {
@@ -32,13 +40,17 @@ function ActiveCard() {
           <>
             <h1 className="card-header">{currentCard.title}</h1>
             <p className="active-card-question">{currentCard.information}</p>
-            <p className="fun-fact">{currentCard.consequence}</p>
+            <div className="fun-fact-wrapper">
+              <div className="icon-fun-fact"></div>
+
+              <div className="text-fun-fact">
+                <p className="fun-fact">{currentCard.consequence}</p>
+              </div>
+            </div>
           </>
         )
       } else {
-        return (
-          <p>Click dice to start the game</p>
-        )
+        return <p>Click dice to start the game</p>
       }
     }
   }
@@ -86,13 +98,20 @@ function ActiveCard() {
 
     currentCard.alternatives.forEach((alternative) => {
       if (alternative.answer === toggle) {
-        const velocity = alternative.velocity
-        setCurrentVelocity(currentVelocity + velocity)
+        changeVelocity(alternative.velocity)
         setConsequence(alternative.consequence)
       }
     })
 
     setHasAnswered(true)
+  }
+
+  const changeVelocity = (velocityToAdd) => {
+    if (currentVelocity + velocityToAdd <= 0) {
+      setCurrentVelocity(0)
+    } else {
+      setCurrentVelocity(currentVelocity + velocityToAdd)
+    }
   }
 
   const renderConsequence = () => {

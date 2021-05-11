@@ -3,9 +3,9 @@ import React, { useState, createContext } from 'react'
 export const UsernameContext = createContext()
 
 export const UsernameProvider = (props) => {
-  const [username, setCurrentUsername] = useState('Guest')
+  const [username, setUsername] = useState('Guest')
   return (
-    <UsernameContext.Provider value={{ username, setCurrentUsername }}>
+    <UsernameContext.Provider value={{ username, setUsername }}>
       {props.children}
     </UsernameContext.Provider>
   )

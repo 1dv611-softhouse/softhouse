@@ -135,3 +135,43 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+.close-wrapper-retrospective {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  display: none;
+}
+
+.close-wrapper-retrospective .close-line1 {
+  position: absolute;
+  width: 50px;
+  height: 10px;
+  background-color: white;
+  transform: rotate(-45deg);
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
+
+.close-wrapper-retrospective .close-line2 {
+  position: absolute;
+  width: 50px;
+  height: 10px;
+  background-color: white;
+  transform: rotate(45deg);
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
+
+.close-wrapper-retrospective:hover .close-line1,
+.close-wrapper-retrospective:hover .close-line2 {
+  transform: rotate(-360deg);
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}

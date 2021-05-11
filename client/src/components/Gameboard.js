@@ -49,7 +49,6 @@ function Gameboard() {
     ])
   }, [currentPositionValue])
 
-
   return (
     <div className="gameboard-container">
       <div className="gameboard">

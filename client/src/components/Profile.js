@@ -1,12 +1,16 @@
 import '../styles/profile.css'
-import Scoreboard from "./Scoreboard.js";
-import { useSpring, animated } from "react-spring";
+import Scoreboard from './Scoreboard.js'
+import { useSpring, animated } from 'react-spring'
+import { useContext } from 'react'
+import { UsernameContext } from '../global/UsernameContext'
 
 function Profile() {
   const props = useSpring({
     opacity: 1,
-    from: { opacity: 0 },
-  });
+    from: { opacity: 0 }
+  })
+
+  const { username, setUsername } = useContext(UsernameContext)
 
   return (
     <animated.div style={props} className="profile-container">
@@ -16,11 +20,11 @@ function Profile() {
           src="https://i.pinimg.com/originals/ea/c5/6f/eac56f0157e9f08dd12659da8e4b364c.jpg"
           alt=""
         />
-        <h1>Test testson</h1>
+        <h1>{username}</h1>
       </div>
       <Scoreboard />
     </animated.div>
-  );
+  )
 }
 
-export default Profile;
+export default Profile
