@@ -11,9 +11,9 @@ function Tiles(props) {
 
   const currentPosition = () => {
     if (number.number === 1 && currentPositionValue === 1) {
-      return <img src={player} style={{ width: "16px" }} />;
+      return <img src={player} style={{ width: "30px" }} />;
     } else if (number.number === currentPositionValue) {
-      return <img src={player} style={{ width: "16px" }} />;
+      return <img src={player} style={{ width: "30px" }} />;
     }
   };
 
