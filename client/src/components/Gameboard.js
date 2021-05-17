@@ -26,7 +26,12 @@ function Gameboard() {
 
   useEffect(() => {
     if (currentPositionValue > 22) {
-      setRetrospective(true)
+      // TODO: dubbelkolla så det inte är endast < 3 det ska vara
+      if(retrospective.level <= 3)
+      setRetrospective({
+        state: true,
+        level: retrospective.level
+      })
       const newValue = currentPositionValue - 22
       setCurrentPositionValue(newValue)
     }
@@ -121,7 +126,7 @@ function Gameboard() {
           })}
         </div>
       </div>
-      {retrospective ? <Retrospective /> : ''}
+      {retrospective.state ? <Retrospective /> : ''}
     </div>
   )
 }

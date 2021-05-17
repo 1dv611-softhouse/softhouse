@@ -3,9 +3,7 @@ import retrospectiveJSON from '../retrospective.json'
 import { VelocityContext } from '../global/VelocityContext'
 import { StorypointsContext } from '../global/StorypointsContext'
 import { RetrospectiveContext } from '../global/RetrospectiveContext'
-import { useState, useContext, useEffect } from 'react'
-
-//TODO: ändra level beroende på storypoints (useeffect?)
+import { useState, useContext } from 'react'
 
 function Retrospective() {
   const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
@@ -14,7 +12,7 @@ function Retrospective() {
   const { retrospective, setRetrospective } = useContext(RetrospectiveContext)
 
   const [toggle, setToggle] = useState([])
-  const [level, setLevel] = useState('level1')
+  const [level, setLevel] = useState('level' + (retrospective.level))
 
   const getTitle = () => {
     return retrospectiveJSON.mainInformation.title
@@ -92,7 +90,7 @@ function Retrospective() {
     div.appendChild(header)
     div.appendChild(text)
 
-    if (consP != undefined) {
+    if (consP !== undefined) {
       div.appendChild(constDiv)
       velP.textContent =
         'Your velocity has changed by ' + velocityCost + ' points'
@@ -128,11 +126,22 @@ function Retrospective() {
     }
   }
 
+
+  const setStates = () => {
+    setRetrospective({
+      state: false,
+      level: retrospective.level + 1
+    })
+    // console.log(retrospective.level + 1)
+    // const newLevel = 'level' + (retrospective.level + 1)
+    // setLevel(newLevel)
+  }
+
   return (
     <div className="retrospective-layer">
       <div
         className="close-wrapper-retrospective"
-        onClick={() => setRetrospective(false)}
+        onClick={() => setStates()}
       >
         <div className="close-line1"></div>
         <div className="close-line2"></div>
