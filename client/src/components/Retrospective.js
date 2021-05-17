@@ -75,7 +75,7 @@ function Retrospective() {
       })
 
       text.textContent =
-        'You have now made your investment choises. The consequences of your choises are displayed below.'
+        'You have now made your choises and the consequences are displayed below.'
     } else {
       text.textContent =
         'You decided not to choose any alternatives. Your story point-score remains the same.'
@@ -160,7 +160,7 @@ function Retrospective() {
           })}
           <input
             type="submit"
-            value="Invest story points"
+            value="Submit choices"
             className="form-button-retrospective"
           />
         </form>
