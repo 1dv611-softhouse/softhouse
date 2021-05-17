@@ -126,22 +126,14 @@ function Retrospective() {
     }
   }
 
-
-  const setStates = () => {
-    setRetrospective({
-      state: false,
-      level: retrospective.level + 1
-    })
-    // console.log(retrospective.level + 1)
-    // const newLevel = 'level' + (retrospective.level + 1)
-    // setLevel(newLevel)
-  }
-
   return (
     <div className="retrospective-layer">
       <div
         className="close-wrapper-retrospective"
-        onClick={() => setStates()}
+        onClick={() => setRetrospective({
+          state: false,
+          level: retrospective.level + 1
+        })}
       >
         <div className="close-line1"></div>
         <div className="close-line2"></div>
