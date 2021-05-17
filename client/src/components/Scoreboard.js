@@ -5,25 +5,19 @@ import { StorypointsContext } from '../global/StorypointsContext'
 import { useContext } from 'react'
 
 function Scoreboard() {
-  const { currentStorypoints, setCurrentStorypoints } = useContext(
-    StorypointsContext
-  )
-  const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
+  const { currentStorypoints } = useContext(StorypointsContext)
+  const { currentVelocity } = useContext(VelocityContext)
 
   return (
     <>
       <div className="scoreboard">
-        <div className="scoreboard-item">
+        <div className="scoreboard-item storypoints">
           <h1>Story points</h1>
           <p>{currentStorypoints}</p>
         </div>
-        <div className="scoreboard-item">
+        <div className="scoreboard-item velocity">
           <h1>Velocity</h1>
           <p>{currentVelocity}</p>
-        </div>
-        <div className="scoreboard-item">
-          <h1>Rounds left</h1>
-          <p>60</p>
         </div>
       </div>
       <div className="card-container">

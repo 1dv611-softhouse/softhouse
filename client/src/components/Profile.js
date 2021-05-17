@@ -10,7 +10,7 @@ function Profile() {
     from: { opacity: 0 }
   })
 
-  const { username, setUsername } = useContext(UsernameContext)
+  const { username } = useContext(UsernameContext)
 
   return (
     <animated.div style={props} className="profile-container">

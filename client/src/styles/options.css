@@ -15,14 +15,14 @@
   align-items: center;
 }
 
-.options-container ul li p {
+.options-container ul li {
   font-size: 2em;
   color: white;
   cursor: pointer;
   transition: 0.2s ease;
 }
 
-.options-container ul li p:hover {
+.options-container ul li:hover {
   color: rgb(177, 177, 177);
 }
 

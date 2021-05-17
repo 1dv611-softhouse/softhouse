@@ -5,53 +5,36 @@ import { VelocityContext } from '../global/VelocityContext'
 import { HighlightContext } from '../global/HighlightContext'
 import info from '../pictures/info.png'
 
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 
 function ActiveCard() {
-  const { currentCard, setCurrentCard } = useContext(CurrentCardContext)
+  const { currentCard } = useContext(CurrentCardContext)
   const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext)
   const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
-  const { highlight, setHighlight } = useContext(HighlightContext)
+  const { highlight } = useContext(HighlightContext)
+
   const [toggle, setToggle] = useState('')
   const [consequence, setConsequence] = useState('')
+
+  useEffect(() => {
+    // TODO: Tycker det är fult att denna if-sats görs både här och nere i renderNoAlternatives(). Men vet inte hur jag ska göra.
+    // Om jag gör changeVelocity(currentCard.velocity) i renderNoAlternatives() tas det bort velocity poäng flera ggr.
+    if (
+      currentCard.category === 'day-of-illness-card' ||
+      currentCard.category === 'customer-card' ||
+      currentCard.category === 'daily-stand-up-card'
+    ) {
+      if (currentCard.alternatives === undefined) {
+        changeVelocity(currentCard.velocity)
+      }
+    }
+  }, [currentCard])
 
   const renderCard = () => {
     if (currentCard.alternatives) {
       return renderAlternatives()
     } else {
-      if (currentCard.category === 'normal-day-card') {
-        return (
-          <>
-            <h1 className="card-header">{currentCard.title}</h1>
-            <p className="active-card-question">{currentCard.information}</p>
-            <div className="fun-fact-wrapper">
-              <div className="icon-fun-fact">
-                <img src={info} />
-              </div>
-
-              <div className="text-fun-fact">
-                <p className="fun-fact">{currentCard.funFact}</p>
-              </div>
-            </div>
-          </>
-        )
-      } else if (currentCard.category === 'day-of-illness-card') {
-        return (
-          <>
-            <h1 className="card-header">{currentCard.title}</h1>
-            <p className="active-card-question">{currentCard.information}</p>
-            <div className="fun-fact-wrapper">
-              <div className="icon-fun-fact"></div>
-
-              <div className="text-fun-fact">
-                <p className="fun-fact">{currentCard.consequence}</p>
-              </div>
-            </div>
-          </>
-        )
-      } else {
-        return <h1 className="card-header">Click dice to start the game</h1>
-      }
+      return renderNoAlternatives()
     }
   }
 
@@ -87,6 +70,50 @@ function ActiveCard() {
     } else {
       return renderConsequence()
     }
+  }
+
+  const renderNoAlternatives = () => {
+    if (currentCard.category === 'normal-day-card') {
+      return renderNormalDay()
+    } else if (
+      currentCard.category === 'day-of-illness-card' ||
+      currentCard.category === 'customer-card' ||
+      currentCard.category === 'daily-stand-up-card'
+    ) {
+      return (
+        <>
+          <h1 className="card-header">{currentCard.title}</h1>
+          <p className="active-card-question">{currentCard.information}</p>
+          <div className="fun-fact-wrapper">
+            <div className="icon-fun-fact"></div>
+
+            <div className="text-fun-fact">
+              <p className="fun-fact">{currentCard.consequence}</p>
+            </div>
+          </div>
+        </>
+      )
+    } else {
+      return <h1 className="card-header">Click dice to start the game</h1>
+    }
+  }
+
+  const renderNormalDay = () => {
+    return (
+      <>
+        <h1 className="card-header">{currentCard.title}</h1>
+        <p className="active-card-question">{currentCard.information}</p>
+        <div className="fun-fact-wrapper">
+          <div className="icon-fun-fact">
+            <img alt="information" src={info} />
+          </div>
+
+          <div className="text-fun-fact">
+            <p className="fun-fact">{currentCard.funFact}</p>
+          </div>
+        </div>
+      </>
+    )
   }
 
   const handleToggle = (e) => {

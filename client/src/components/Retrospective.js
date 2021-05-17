@@ -12,6 +12,7 @@ function Retrospective() {
   const { currentStorypoints, setCurrentStorypoints } =
     useContext(StorypointsContext)
   const { retrospective, setRetrospective } = useContext(RetrospectiveContext)
+
   const [toggle, setToggle] = useState([])
   const [level, setLevel] = useState('level1')
 

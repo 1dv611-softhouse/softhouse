@@ -1,55 +1,50 @@
-import "../styles/options.css";
-import { useContext } from "react";
-import socials from "../pictures/socials/images2";
-import { HeaderContext } from "../global/HeaderContext";
-import { HamburgerContext } from "../global/HamburgerContext";
+import '../styles/options.css'
+import { useContext } from 'react'
+import socials from '../pictures/socials/images2'
+import { HeaderContext } from '../global/HeaderContext'
+import { HamburgerContext } from '../global/HamburgerContext'
 
 function Options() {
-  const { currentComponent, setCurrentComponent } = useContext(HeaderContext);
-  const { active, setActive } = useContext(HamburgerContext);
+  const { setCurrentComponent } = useContext(HeaderContext)
+  const { active, setActive } = useContext(HamburgerContext)
 
   const socialMediaLinks = [
-    "https://www.facebook.com/softhouseconsulting",
-    "https://www.instagram.com/softhouseconsulting/",
-    "https://se.linkedin.com/company/softhouse"
-  ];
+    'https://www.facebook.com/softhouseconsulting',
+    'https://www.instagram.com/softhouseconsulting/',
+    'https://se.linkedin.com/company/softhouse'
+  ]
 
   const closeMenu = (value) => {
-    setCurrentComponent(value);
-    setActive(!active);
-  };
+    setCurrentComponent(value)
+    setActive(!active)
+  }
 
   return (
     <div className="options-container">
       <ul>
-        <li>
-          <p data-testid="profile-option" onClick={() => closeMenu("profile")}>Profile</p>
+        <li data-testid="profile-option" onClick={() => closeMenu('profile')}>
+          Profile
         </li>
-        <li>
-          <p onClick={() => closeMenu("settings")}>Settings</p>
-        </li>
-        <li>
-          <p onClick={() => closeMenu("highscore")}>HighScore</p>
-        </li>
-        <li>
-          <p onClick={() => closeMenu("rules")}>Rules</p>
-        </li>
-        {/* <li>
-          <p onClick={() => closeMenu("logout")}>Logout</p>
-        </li> */}
+        <li onClick={() => closeMenu('highscore')}>HighScore</li>
+        <li onClick={() => closeMenu('rules')}>Rules</li>
       </ul>
 
       <div className="social-media-icons">
         {socials.map((img, index) => {
           return (
-            <a href={socialMediaLinks[index]} target="_blank" rel="noopener noreferrer">
-              <img src={img} alt="Social media"/>
+            <a
+              key={index}
+              href={socialMediaLinks[index]}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={img} alt="Social media" />
             </a>
-          );
+          )
         })}
       </div>
     </div>
-  );
+  )
 }
 
-export default Options;
+export default Options

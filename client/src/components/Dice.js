@@ -1,31 +1,38 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import imgs from '../pictures/images'
 import { PlayerPositionContext } from '../global/PlayerPositionContext'
 import { DaysContext } from '../global/DaysContext'
 import { TileContext } from '../global/TileContext'
 import { CurrentCardContext } from '../global/CurrentCardContext'
 import { HasAnsweredContext } from '../global/HasAnsweredContext'
+import { HighlightContext } from '../global/HighlightContext'
+import { VelocityContext } from '../global/VelocityContext'
+import { StorypointsContext } from '../global/StorypointsContext'
+import { UsernameContext } from '../global/UsernameContext'
+
 import sound from '../diceroll.mp3'
 import cardSound from '../flip.mp3'
 import cards from '../cards.json'
-import { HighlightContext } from '../global/HighlightContext'
 
-
-function Dice() {
-  const { currentPositionValue, setCurrentPositionValue } = useContext(
-    PlayerPositionContext
-  )  
-  const {highlight, setHighlight} = useContext(HighlightContext)
-  const { days, setDays } = useContext(DaysContext)
-  const { currentTile, setCurrentTile } = useContext(TileContext)
+function Dice(props) {
+  const { changeModalState } = props
+  const { setCurrentPositionValue } = useContext(PlayerPositionContext)
+  const { setHighlight } = useContext(HighlightContext)
+  const { days } = useContext(DaysContext)
+  const { setCurrentTile } = useContext(TileContext)
   const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext)
-  const { currentCard, setCurrentCard } = useContext(CurrentCardContext)
+  const { setCurrentCard } = useContext(CurrentCardContext)
+  const { currentVelocity } = useContext(VelocityContext)
+  const { currentStorypoints, setCurrentStorypoints } =
+    useContext(StorypointsContext)
+  const { username } = useContext(UsernameContext)
+
   const [dice, setDice] = useState(imgs[0])
   const audio = new Audio(sound)
   const flip = new Audio(cardSound)
 
   const rollTheDice = () => {
-    if (hasAnswered === false) return
+    if (hasAnswered === false || currentStorypoints <= 0) return
 
     const newDice = Math.floor(Math.random() * imgs.length)
     const diceValue = newDice + 1
@@ -33,50 +40,79 @@ function Dice() {
     setDice(imgs[newDice])
     setPlayerPosition(diceValue)
 
+    if (currentStorypoints - currentVelocity <= 0) {
+      setCurrentStorypoints(0)
+      sendHighscore(username)
+      changeModalState(true)
+      // alert('DU VANN!!!!!!!!!!!')
+    } else {
+      setCurrentStorypoints(currentStorypoints - currentVelocity)
+    }
+
     audio.play()
   }
 
-  const setPlayerPosition = (diceValue) => {
+  const sendHighscore = (username) => {
+    // ÄNDRA TILL EN ALGORITM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    const score = currentVelocity
+    try {
+      fetch(
+        'https://irv6hogkji.execute-api.eu-west-1.amazonaws.com/Production',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            username,
+            score
+          })
+        }
+      )
+        .then((response) => response.json())
+        .then((r) => console.log(r))
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
 
-    setCurrentPositionValue(prevstate => {
+  const setPlayerPosition = (diceValue) => {
+    setCurrentPositionValue((prevstate) => {
       const newValue = prevstate + diceValue
 
       days.forEach((day) => {
         if (newValue === day.number) {
           setCurrentTile({ color: day.color, number: day.number })
           setHasAnswered(false)
-          let card;
 
-            if (day.color === 'blue') {
-              card = createRandomCard('customer-card')
-              doActions(true, true)
-            } else if (day.color === 'orange') {
-              card = createRandomCard('daily-stand-up-card')
-              doActions(true, true)
-            } else if (day.color === 'white') {
-              card = createRandomCard('normal-day-card')
-              setHasAnswered(true)
-              doActions(true, false)
-            } else if (day.color === 'red') {
-              card = createRandomCard('day-of-illness-card')
-              setHasAnswered(true)
-              doActions(true, true)
-            }
-
-          setCurrentCard(card)
+          if (day.color === 'blue') {
+            const card = createRandomCard('customer-card')
+            doActions(true, true)
+            setCurrentCard(card)
+          } else if (day.color === 'orange') {
+            const card = createRandomCard('daily-stand-up-card')
+            doActions(true, true)
+            setCurrentCard(card)
+          } else if (day.color === 'white') {
+            const card = createRandomCard('normal-day-card')
+            setHasAnswered(true)
+            doActions(true, false)
+            setCurrentCard(card)
+          } else if (day.color === 'red') {
+            const card = createRandomCard('day-of-illness-card')
+            setHasAnswered(true)
+            doActions(true, true)
+            setCurrentCard(card)
+          }
         }
       })
-      
       return newValue
     })
   }
 
   const doActions = (highlight, audio) => {
     setTimeout(() => {
-      if(highlight && audio) {
+      if (highlight && audio) {
         flip.play()
         setHighlight(true)
-      } else if(highlight && !audio) {
+      } else if (highlight && !audio) {
         setHighlight(true)
       }
     }, 500)

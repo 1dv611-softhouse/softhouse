@@ -41,31 +41,26 @@ function UsernameModal() {
       data={{
         background: '#ffffffa8;'
       }}
-      style={
-        {
-          overlay: {
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            zIndex: 15,
-            overflow: 'auto'
-          },
-          content: {
-            position: 'absolute',
-            top: '30%',
-            left: '30%',
-            right: '30%',
-            bottom: '30%',
-            zIndex: 15,
-            overflow: 'auto',
-            border: '5px solid #dc823d',
-            borderRadius: '30px'
-          }
+      style={{
+        overlay: {
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          zIndex: 15,
+          overflow: 'auto'
+        },
+        content: {
+          position: 'absolute',
+          top: '30%',
+          left: '30%',
+          right: '30%',
+          bottom: '30%',
+          zIndex: 15,
+          overflow: 'auto',
+          border: '5px solid #dc823d',
+          borderRadius: '30px'
         }
-        /* Object indicating styles to be used for the modal.
-     It has two keys, `overlay` and `content`.
-     See the `Styles` section for more details. */
-      }
+      }}
     >
       <div className="username-container">
         <h1>Select username</h1>

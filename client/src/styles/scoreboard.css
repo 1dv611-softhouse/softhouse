@@ -25,6 +25,14 @@
   color: var(--primary-color);
 }
 
+.storypoints {
+  padding-left: 20%;
+}
+
+.velocity {
+  padding-right: 20%;
+}
+
 .card-container {
   width: 100%;
   display: flex;
