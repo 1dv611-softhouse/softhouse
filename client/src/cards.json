@@ -91,15 +91,15 @@
   {
     "category": "customer-card",
     "title": "Customer",
-    "information": "SOMETHING BAD",
-    "consequence": "The work phase gets a little slower. You loose 4 velocity points.",
+    "information": "The customer emails you to say that the appointment you had to discuss requirement priorities needs to be canceled.",
+    "consequence": "This results in that your team spends one week implementing the wrong requirements. The work phase gets a little slower. You loose 4 velocity points.",
     "velocity": -4
   },
   {
     "category": "customer-card",
     "title": "Customer",
-    "information": "SOMETHING GOOD",
-    "consequence": "The work phase gets a little slower. You loose 2 velocity points.",
+    "information": "The customer emails you and says that a requirement can be removed from the backlog.",
+    "consequence": "The work phase gets a little faster. You gain 4 velocity points.",
     "velocity": 4
   },
   {
