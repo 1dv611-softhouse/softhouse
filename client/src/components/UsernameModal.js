@@ -4,14 +4,20 @@ import { useEffect, useState, useContext } from 'react'
 
 import React from 'react'
 import ReactModal from 'react-modal'
+import Cookies from 'universal-cookie'
+const cookies = new Cookies()
 
 function UsernameModal() {
   const { username, setUsername } = useContext(UsernameContext)
   const [isOpen, setIsOpen] = useState(true)
 
+  const usernameCookieKey = 'Username::Cookie'
+
   useEffect(() => {
-    if (document.cookie) {
-      setUsername(document.cookie)
+    const usernameCookie = cookies.get(usernameCookieKey)
+
+    if (usernameCookie) {
+      setUsername(usernameCookie)
       closeModal()
     }
   }, [])
@@ -26,14 +32,18 @@ function UsernameModal() {
     if (name.length === 0) return
 
     setUsername(name)
-    document.cookie = name
+    setCookie(usernameCookieKey, name)
 
     closeModal()
   }
 
+  const setCookie = (key, value) =>
+    cookies.set(key, value, { path: '/', sameSite: 'lax' })
+
   return (
     <ReactModal
       isOpen={isOpen}
+      ariaHideApp={false}
       data={{
         background: '#ffffffa8;'
       }}

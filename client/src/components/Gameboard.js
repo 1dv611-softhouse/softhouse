@@ -27,11 +27,11 @@ function Gameboard() {
   useEffect(() => {
     if (currentPositionValue > 22) {
       // TODO: dubbelkolla så det inte är endast < 3 det ska vara
-      if(retrospective.level <= 3)
-      setRetrospective({
-        state: true,
-        level: retrospective.level
-      })
+      if (retrospective.level <= 3)
+        setRetrospective({
+          state: true,
+          level: retrospective.level
+        })
       const newValue = currentPositionValue - 22
       setCurrentPositionValue(newValue)
     }
@@ -45,6 +45,7 @@ function Gameboard() {
   return (
     <div className="gameboard-container">
       <ReactModal
+        ariaHideApp={false}
         isOpen={isOpen}
         data={{
           background: '#ffffffa8;'
