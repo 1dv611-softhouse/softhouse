@@ -9,13 +9,9 @@ function UsernameModal() {
   const { username, setUsername } = useContext(UsernameContext)
   const [isOpen, setIsOpen] = useState(true)
 
-  const usernameStorage = 'SessionStorage::Username'
-
   useEffect(() => {
-    const storage = window.sessionStorage.getItem(usernameStorage)
-
-    if (storage !== null && storage.length > 0) {
-      setUsername(storage)
+    if (document.cookie) {
+      setUsername(document.cookie)
       closeModal()
     }
   }, [])
@@ -29,8 +25,8 @@ function UsernameModal() {
 
     if (name.length === 0) return
 
-    window.sessionStorage.setItem(usernameStorage, name)
     setUsername(name)
+    document.cookie = name
 
     closeModal()
   }
