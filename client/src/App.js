@@ -1,8 +1,5 @@
 import './styles/style.css'
-import './styles/authentication.css'
-import Dashboard from './components/Dashboard'
-import Gameboard from './components/Gameboard'
-import UsernameModal from './components/UsernameModal'
+import Game from './components/Game'
 
 import { HeaderProvider } from './global/HeaderContext'
 import { HamburgerProvider } from './global/HamburgerContext'
@@ -16,6 +13,8 @@ import { StorypointsProvider } from './global/StorypointsContext'
 import { HighlightProvider } from './global/HighlightContext'
 import { RetrospectiveProvider } from './global/RetrospectiveContext'
 import { UsernameProvider } from './global/UsernameContext'
+import { VelocityListProvider } from './global/VelocityListContext'
+import { PlayerMoveProvider } from './global/PlayerMoveContext'
 
 function App() {
   return (
@@ -31,11 +30,13 @@ function App() {
                       <HighlightProvider>
                         <RetrospectiveProvider>
                           <UsernameProvider>
-                            <div className="container">
-                              <Dashboard />
-                              <Gameboard />
-                              <UsernameModal />
-                            </div>
+                            <VelocityListProvider>
+                              <PlayerMoveProvider>
+                                <div className="container">
+                                  <Game />
+                                </div>
+                              </PlayerMoveProvider>
+                            </VelocityListProvider>
                           </UsernameProvider>
                         </RetrospectiveProvider>
                       </HighlightProvider>

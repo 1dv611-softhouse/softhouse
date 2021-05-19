@@ -2,6 +2,7 @@ import '../styles/active-card.css'
 import { CurrentCardContext } from '../global/CurrentCardContext'
 import { HasAnsweredContext } from '../global/HasAnsweredContext'
 import { VelocityContext } from '../global/VelocityContext'
+import { VelocityListContext } from '../global/VelocityListContext'
 import { HighlightContext } from '../global/HighlightContext'
 import info from '../pictures/info.png'
 
@@ -11,10 +12,12 @@ function ActiveCard() {
   const { currentCard } = useContext(CurrentCardContext)
   const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext)
   const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
+  const { velocityList, addToVelovityList } = useContext(VelocityListContext)
   const { highlight } = useContext(HighlightContext)
 
   const [toggle, setToggle] = useState('')
   const [consequence, setConsequence] = useState('')
+  const [points, setPoints] = useState(0)
 
   useEffect(() => {
     // TODO: Tycker det är fult att denna if-sats görs både här och nere i renderNoAlternatives(). Men vet inte hur jag ska göra.
@@ -125,7 +128,11 @@ function ActiveCard() {
 
     currentCard.alternatives.forEach((alternative) => {
       if (alternative.answer === toggle) {
-        changeVelocity(alternative.velocity)
+        if (currentCard.category !== 'normal-day-card') {
+          changeVelocity(alternative.velocity)
+        } else {
+          setPoints(points + alternative.points)
+        }
         setConsequence(alternative.consequence)
       }
     })
@@ -139,6 +146,8 @@ function ActiveCard() {
     } else {
       setCurrentVelocity(currentVelocity + velocityToAdd)
     }
+
+    addToVelovityList([...velocityList, currentVelocity])
   }
 
   const renderConsequence = () => {
@@ -152,7 +161,7 @@ function ActiveCard() {
 
   return (
     <>
-      <div className={highlight ? 'card-highlight' : 'card'}>
+      <div className={highlight ? 'card card-highlight' : 'card'}>
         {renderCard()}
       </div>
     </>

@@ -3,16 +3,18 @@ import retrospectiveJSON from '../retrospective.json'
 import { VelocityContext } from '../global/VelocityContext'
 import { StorypointsContext } from '../global/StorypointsContext'
 import { RetrospectiveContext } from '../global/RetrospectiveContext'
+import { VelocityListContext } from '../global/VelocityListContext'
 import { useState, useContext } from 'react'
 
 function Retrospective() {
   const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
+  const { velocityList, addToVelovityList } = useContext(VelocityListContext)
   const { currentStorypoints, setCurrentStorypoints } =
     useContext(StorypointsContext)
   const { retrospective, setRetrospective } = useContext(RetrospectiveContext)
 
   const [toggle, setToggle] = useState([])
-  const [level, setLevel] = useState('level' + (retrospective.level))
+  const [level, setLevel] = useState('level' + retrospective.level)
 
   const getTitle = () => {
     return retrospectiveJSON.mainInformation.title
@@ -124,16 +126,20 @@ function Retrospective() {
     } else {
       setCurrentVelocity(currentVelocity + velocityToAdd)
     }
+
+    addToVelovityList([...velocityList, currentVelocity])
   }
 
   return (
     <div className="retrospective-layer">
       <div
         className="close-wrapper-retrospective"
-        onClick={() => setRetrospective({
-          state: false,
-          level: retrospective.level + 1
-        })}
+        onClick={() =>
+          setRetrospective({
+            state: false,
+            level: retrospective.level + 1
+          })
+        }
       >
         <div className="close-line1"></div>
         <div className="close-line2"></div>

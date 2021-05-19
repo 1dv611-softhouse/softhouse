@@ -8,25 +8,35 @@ import { PlayerPositionContext } from '../global/PlayerPositionContext'
 import { DaysContext } from '../global/DaysContext'
 import { RetrospectiveContext } from '../global/RetrospectiveContext'
 import { VelocityContext } from '../global/VelocityContext'
+import { VelocityListContext } from '../global/VelocityListContext'
+import { PlayerMoveContext } from '../global/PlayerMoveContext'
 
 import { useContext, useEffect, useState } from 'react'
 import ReactModal from 'react-modal'
 
+import { deletePlayerState } from '../Models/StateModel'
+import { TileContext } from '../global/TileContext'
+import { CurrentCardContext } from '../global/CurrentCardContext'
+import { StorypointsContext } from '../global/StorypointsContext'
+
 function Gameboard() {
-  const { days } = useContext(DaysContext)
+  const { days, setDays } = useContext(DaysContext)
   const { currentPositionValue, setCurrentPositionValue } = useContext(
     PlayerPositionContext
   )
+  const { currentTile, setCurrentTile } = useContext(TileContext)
+  const { currentCard, setCurrentCard } = useContext(CurrentCardContext)
+  const { currentStorypoints, setCurrentStorypoints } =
+    useContext(StorypointsContext)
   const { retrospective, setRetrospective } = useContext(RetrospectiveContext)
-  const { currentVelocity } = useContext(VelocityContext)
+  const { setCurrentVelocity, currentVelocity } = useContext(VelocityContext)
+  const { velocityList, addToVelovityList } = useContext(VelocityListContext)
+  const { currentPlayerMove, setPlayerMove } = useContext(PlayerMoveContext)
 
-  const [isOpen, setIsOpen] = useState(
-    window.sessionStorage.getItem('markusohlen::test') ? true : false
-  )
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
     if (currentPositionValue > 22) {
-      // TODO: dubbelkolla så det inte är endast < 3 det ska vara
       if (retrospective.level <= 3)
         setRetrospective({
           state: true,
@@ -39,7 +49,18 @@ function Gameboard() {
 
   const resetGame = (e) => {
     e.preventDefault()
+
+    deletePlayerState()
     throw new Error()
+  }
+
+  const getScore = () => {
+    const nrOfMoves = currentPlayerMove
+    const sum = velocityList.reduce((a, b) => a + b, 0)
+    const average = sum / velocityList.length
+    const finalScore = Number(((average / nrOfMoves) * 100).toFixed(0))
+
+    return finalScore
   }
 
   return (
@@ -73,7 +94,7 @@ function Gameboard() {
       >
         <div className="endscreen">
           <h1>Game finished!</h1>
-          <h1>You got a score of {currentVelocity}</h1>
+          <h1>You got a score of {getScore()}</h1>
 
           <a href="" onClick={(e) => resetGame(e)}>
             Play again
@@ -82,7 +103,7 @@ function Gameboard() {
       </ReactModal>
 
       <div className="gameboard">
-        <Dice changeModalState={setIsOpen} />
+        <Dice changeModalState={setIsOpen} getScore={getScore} />
         <div className="row-div-tiles">
           {days.map((day, index) => {
             return index >= 0 && index <= 6 ? (

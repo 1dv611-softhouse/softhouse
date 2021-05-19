@@ -127,6 +127,106 @@
     "funFact": "Did you know that Sofhouse offers over 25.000 courses?"
   },
   {
+    "category": "normal-day-card",
+    "title": "Normal Day",
+    "question": "En fråga om scrum och med alternativ",
+    "alternatives": [
+      {
+        "answer": "RÄTT SVAR",
+        "correct": true,
+        "points": 10,
+        "consequence": "Correct! Your earn 5 points to your highscore."
+      },
+      {
+        "answer": "FEL SVAR",
+        "correct": false,
+        "points": 0,
+        "consequence": "Wrong answer. No points where added to your highscore."
+      },
+      {
+        "answer": "FEL SVAR",
+        "correct": false,
+        "points": 0,
+        "consequence": "Wrong answer. No points where added to your highscore."
+      }
+    ]
+  },
+  {
+    "category": "normal-day-card",
+    "title": "Normal Day",
+    "question": "En till fråga om scrum och med alternativ",
+    "alternatives": [
+      {
+        "answer": "FEL SVAR",
+        "correct": false,
+        "points": 0,
+        "consequence": "Wrong answer. No points where added to your highscore."
+      },
+      {
+        "answer": "RÄTT SVAR",
+        "correct": true,
+        "points": 10,
+        "consequence": "Correct! Your earn 5 points to your highscore."
+      },
+      {
+        "answer": "FEL SVAR",
+        "correct": false,
+        "points": 0,
+        "consequence": "Wrong answer. No points where added to your highscore."
+      }
+    ]
+  },
+  {
+    "category": "normal-day-card",
+    "title": "Normal Day",
+    "question": "En till fråga om scrum och med alternativ",
+    "alternatives": [
+      {
+        "answer": "FEL SVAR",
+        "correct": false,
+        "points": 0,
+        "consequence": "Wrong answer. No points where added to your highscore."
+      },
+      {
+        "answer": "RÄTT SVAR",
+        "correct": true,
+        "points": 10,
+        "consequence": "Correct! Your earn 5 points to your highscore."
+      },
+      {
+        "answer": "FEL SVAR",
+        "correct": false,
+        "points": 0,
+        "consequence": "Wrong answer. No points where added to your highscore."
+      }
+    ]
+  },
+  {
+    "category": "normal-day-card",
+    "title": "Normal Day",
+    "question": "En till fråga om scrum och med alternativ",
+    "alternatives": [
+      {
+        "answer": "FEL SVAR",
+        "correct": false,
+        "points": 0,
+        "consequence": "Wrong answer. No points where added to your highscore."
+      },
+      {
+        "answer": "RÄTT SVAR",
+        "correct": true,
+        "points": 10,
+        "consequence": "Correct! Your earn 5 points to your highscore."
+      },
+      {
+        "answer": "FEL SVAR",
+        "correct": false,
+        "points": 0,
+        "consequence": "Wrong answer. No points where added to your highscore."
+      }
+    ]
+  },
+  {
     "category": "day-of-illness-card",
     "title": "Day of illness",
     "information": "Oh no, you've caught a cold. You therefore stay at home to rest. Today your colleagues therefore have a little extra to do.",
