@@ -9,7 +9,11 @@ const setPlayerState = (playerState) =>
     sameSite: 'lax'
   })
 
-const getPlayerState = () => cookies.get(cookieName)
+const getPlayerState = () => {
+  const c = cookies.get(cookieName)
+
+  return cookies.get(cookieName)
+}
 
 const deletePlayerState = () => cookies.remove(cookieName)
 

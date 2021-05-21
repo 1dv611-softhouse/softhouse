@@ -69,6 +69,11 @@
   top: 0;
 }
 
+.created-by {
+  position: absolute;
+  bottom: 10%;
+}
+
 @media screen and (max-width: 1600px) {
   .logo {
     top: 5vh;

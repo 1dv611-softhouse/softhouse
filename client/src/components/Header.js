@@ -16,6 +16,12 @@ function Header() {
       >
         <img src={logo} className="logo" />
         <Options />
+        <div className="created-by">
+          <p>
+            Created by: Adrian Rosales, Pernilla Göth, Markus Öhlén &#38; Mikael
+            Eriksson
+          </p>
+        </div>
       </div>
 
       <div className="header">
