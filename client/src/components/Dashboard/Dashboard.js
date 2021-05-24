@@ -15,6 +15,9 @@ import { useContext } from 'react'
 function Dashboard() {
   const { currentComponent } = useContext(HeaderContext)
 
+  /**
+   * @returns The component that should be rendered on the Dashboard.
+   */
   const renderComponent = () => {
     if (currentComponent === 'highscore') {
       return <Highscore />

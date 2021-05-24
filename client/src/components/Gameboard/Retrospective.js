@@ -22,18 +22,35 @@ function Retrospective() {
   const [toggle, setToggle] = useState([])
   const [level, setLevel] = useState('level' + retrospective.level)
 
+  /**
+   * 
+   * @returns The title of the Retrospective.
+   */
   const getTitle = () => {
     return retrospectiveJSON.mainInformation.title
   }
 
+  /**
+   * 
+   * @returns The description of the Retrospective.
+   */
   const getPreamble = () => {
     return retrospectiveJSON.mainInformation.description
   }
 
+  /**
+   * 
+   * @returns The alternatives of the Retrospective according to level.
+   */
   const generateLevelStrategies = () => {
     return retrospectiveJSON.retrospectives[level]
   }
 
+  /**
+   * Change chosen alternative on user input.
+   * 
+   * @param {object} e The event from form
+   */
   const handleToggle = (e) => {
     const strategy = e.target.value
 
@@ -57,13 +74,16 @@ function Retrospective() {
     renderConsequences()
   }
 
+  /**
+   * Changes HTML to consequences instead of form.
+   */
   const renderConsequences = () => {
     const div = document.querySelector('.retrospective-frame')
     const header = document.createElement('h1')
     const text = document.createElement('p')
     const constDiv = document.createElement('div')
-    let consP = document.createElement('p')
     let velP = document.createElement('p')
+    let consP
 
     let velocityCost = 0
 
@@ -74,7 +94,7 @@ function Retrospective() {
         toggle.forEach((strat) => {
           if (strat === el.strategy) {
             const randomCon = getRandomConsequence(el)
-
+            consP = document.createElement('p')
             consP.textContent += randomCon.consequence
             constDiv.appendChild(consP)
             velocityCost = velocityCost + randomCon.velocity
@@ -89,7 +109,7 @@ function Retrospective() {
         'You decided not to choose any alternatives. Your story point-score remains the same.'
     }
 
-    // Ser till att krysset visas när man klickat submit
+    // Makes sure user can click down the retrospective
     document.querySelector('.close-wrapper-retrospective').style.display =
       'flex'
 
@@ -107,6 +127,9 @@ function Retrospective() {
     }
   }
 
+  /**
+   * Calculate storypoints according to players choices.
+   */
   const addToStoryPoints = () => {
     let storypointCost = 0
 
@@ -121,11 +144,17 @@ function Retrospective() {
     setCurrentStorypoints(currentStorypoints + storypointCost)
   }
 
+
   const getRandomConsequence = (el) => {
     const randomValue = Math.floor(Math.random() * el.consequences.length)
     return el.consequences[randomValue]
   }
 
+  /**
+   * Calculates velocity according to consequence.
+   * 
+   * @param {number} velocityToAdd 
+   */
   const changeVelocity = (velocityToAdd) => {
     if (currentVelocity + velocityToAdd <= 0) {
       setCurrentVelocity(0)

@@ -10,6 +10,9 @@ import { useEffect, useState } from 'react'
 function Highscore() {
   const [highscores, setHighscores] = useState([])
 
+  /**
+   * Fetches the best 10 highscores from the database the first time components renders.
+   */
   useEffect(() => {
     fetch('https://irv6hogkji.execute-api.eu-west-1.amazonaws.com/Production')
       .then((response) => response.json())

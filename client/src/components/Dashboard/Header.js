@@ -4,8 +4,8 @@
  * @version 1.0.0
  */
 
-import { useContext } from 'react'
 import '../../styles/header.css'
+import { useContext } from 'react'
 import Options from './Options'
 import logo from '../../pictures/softhouselogo.png'
 import { HamburgerContext } from '../../global/HamburgerContext'
@@ -28,7 +28,7 @@ function Header() {
           </p>
         </div>
       </div>
-
+      
       <div className="header">
         <div className="hamburger" onClick={() => setActive(!active)}>
           <div className={(active ? 'change' : '') + ' line1'}></div>

@@ -14,7 +14,7 @@ import Cookies from 'universal-cookie'
 const cookies = new Cookies()
 
 function UsernameModal() {
-  const { username, setUsername } = useContext(UsernameContext)
+  const { setUsername } = useContext(UsernameContext)
   const [isOpen, setIsOpen] = useState(true)
 
   const usernameCookieKey = 'Username::Cookie'

@@ -7,7 +7,7 @@ import { CurrentCardContext } from '../../global/CurrentCardContext'
 import { HasAnsweredContext } from '../../global/HasAnsweredContext'
 import { HighlightContext } from '../../global/HighlightContext'
 import { VelocityContext } from '../../global/VelocityContext'
-import { VelocityListContext } from '../../global/VelocityListContext'
+// import { VelocityListContext } from '../../global/VelocityListContext'
 import { StorypointsContext } from '../../global/StorypointsContext'
 import { UsernameContext } from '../../global/UsernameContext'
 import { PlayerMoveContext } from '../../global/PlayerMoveContext'
@@ -25,29 +25,53 @@ function Dice(props) {
   )
   const { setHighlight } = useContext(HighlightContext)
   const { days } = useContext(DaysContext)
-  const { velocityList, addToVelovityList } = useContext(VelocityListContext)
+  // const { velocityList, addToVelovityList } = useContext(VelocityListContext)
   const { currentPlayerMove, setPlayerMove } = useContext(PlayerMoveContext)
   const { currentTile, setCurrentTile } = useContext(TileContext)
   const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext)
   const { currentCard, setCurrentCard } = useContext(CurrentCardContext)
   const { currentVelocity } = useContext(VelocityContext)
-  const { currentStorypoints, setCurrentStorypoints } =
-    useContext(StorypointsContext)
+  const { currentStorypoints, setCurrentStorypoints } = useContext(StorypointsContext)
   const { username } = useContext(UsernameContext)
 
   const [dice, setDice] = useState(imgs[0])
   const audio = new Audio(sound)
   const flip = new Audio(cardSound)
 
-  const rollTheDice = async () => {
+  const handleClick = async () => {
+    // Makes sure dice is not rolled if player needs to answer question or the game has ended.
     if (hasAnswered === false || currentStorypoints <= 0) return
 
+    rollDice()
+    
+    calculateStorypoints()
+
+    setPlayerState({
+      currentPositionValue,
+      currentTile,
+      currentCard,
+      currentVelocity,
+      currentStorypoints
+    })
+  }
+
+  /**
+   * Rolls dice.
+   */
+  const rollDice = () => {
     const newDice = Math.floor(Math.random() * imgs.length)
     const diceValue = newDice + 1
 
     setDice(imgs[newDice])
     setPlayerPosition(diceValue)
 
+    audio.play()
+  }
+
+  /**
+   * Changes storypoints according to velocity.
+   */
+  const calculateStorypoints = () => {
     if (currentStorypoints - currentVelocity <= 0) {
       setCurrentStorypoints(0)
       sendHighscore(username)
@@ -55,22 +79,16 @@ function Dice(props) {
     } else {
       setCurrentStorypoints(currentStorypoints - currentVelocity)
     }
-    const playerState = {
-      currentPositionValue,
-      currentTile,
-      currentCard,
-      currentVelocity,
-      currentStorypoints
-    }
-
-    setPlayerState(playerState)
-
-    audio.play()
   }
 
+  /**
+   * Posts highscore to the database.
+   * 
+   * @param {string} username 
+   */
   const sendHighscore = (username) => {
     const score = getScore()
-    console.log('Register your highscore: ' + getScore())
+    // console.log('Register your highscore: ' + getScore())
     try {
       fetch(
         'https://irv6hogkji.execute-api.eu-west-1.amazonaws.com/Production',
@@ -89,7 +107,24 @@ function Dice(props) {
     }
   }
 
+  /**
+   * Sets position of the player according to value of the rolled dice.
+   * 
+   * @param {number} diceValue 
+   */
   const setPlayerPosition = (diceValue) => {
+    calculateAmountOfPlayerMoves()
+
+    setCurrentPositionValue((prevstate) => {
+      const newPlayerPosition = prevstate + diceValue
+
+      renderCorrectCard(newPlayerPosition)
+      
+      return newPlayerPosition
+    })
+  }
+
+  const calculateAmountOfPlayerMoves = () => {
     // Kanske behövs något bättre sätt här.
     if (typeof currentPlayerMove === 'object') {
       setPlayerMove(1)
@@ -97,58 +132,76 @@ function Dice(props) {
       setPlayerMove(currentPlayerMove + 1)
     }
 
-    console.log('Testar att skriva ut: ' + currentPlayerMove)
+    //Det kommer inte gå att skriva ut här då setPlayerMove = asynkront. 
+    // console.log('Testar att skriva ut: ' + currentPlayerMove)
+    //Du kan nog istället skriva såhär:
 
-    setCurrentPositionValue((prevstate) => {
-      const newValue = prevstate + diceValue
+    // setPlayerMove((prevstate) => {
+    //   const newValue = prevstate + 1
+    //   console.log(newValue)
 
-      days.forEach((day) => {
-        if (newValue === day.number) {
-          setCurrentTile({ color: day.color, number: day.number })
-          setHasAnswered(false)
+    //   return newValue
+    // })
 
-          if (day.color === 'blue') {
-            const card = createRandomCard('customer-card')
-            doActions(true, true)
-            setCurrentCard(card)
-          } else if (day.color === 'orange') {
-            const card = createRandomCard('daily-stand-up-card')
-            doActions(true, true)
-            setCurrentCard(card)
-          } else if (day.color === 'white') {
-            const chance = 20
-            const randomNr = [Math.floor(Math.random() * 100)]
-            let card
-            let done = false
+    // Då använder du en sorts Callback funktion. Det du returnerar i din callback är det som somm sättar till current PlayerMove
+    // /Pernilla
+  }
 
-            do {
-              card = createRandomCard('normal-day-card')
+  /**
+   * Gets day according to position of player and makes sure correct card is rendered.
+   * 
+   * @param {number} playerPosition 
+   */
+  const renderCorrectCard = (playerPosition) => {
+    days.forEach((day) => {
+      if (playerPosition === day.number) {
+        setCurrentTile({ color: day.color, number: day.number })
+        setHasAnswered(false)
 
-              if (chance < randomNr && card.alternatives) {
-                done = true
-                setHasAnswered(true)
-              } else if (chance > randomNr && card.alternatives === undefined) {
-                done = true
-                setHasAnswered(true)
-              } else {
-                done = false
-              }
-            } while (!done)
+        if (day.color === 'blue') {
+          doActions(true, true)
+          setCurrentCard(createRandomCard('customer-card'))
+        } else if (day.color === 'orange') {
+          doActions(true, true)
+          setCurrentCard(createRandomCard('daily-stand-up-card'))
+        } else if (day.color === 'white') {
+          // Renders a Normal day card with alternatives 20% of the time.
+          let card
+          let done = false
+          const chance = 20
+          const randomNr = Math.floor(Math.random() * 100)
 
-            doActions(true, false)
-            setCurrentCard(card)
-          } else if (day.color === 'red') {
-            const card = createRandomCard('day-of-illness-card')
-            setHasAnswered(true)
-            doActions(true, true)
-            setCurrentCard(card)
-          }
+          do {
+            card = createRandomCard('normal-day-card')
+
+            if (randomNr <= chance && card.alternatives) {
+              setHasAnswered(false)
+              done = true
+            } else if (randomNr > chance && card.alternatives === undefined) {
+              setHasAnswered(true)
+              done = true
+            } else {
+              done = false
+            }
+          } while (!done)
+
+          doActions(true, false)
+          setCurrentCard(card)
+        } else if (day.color === 'red') {
+          setCurrentCard(createRandomCard('day-of-illness-card'))
+          setHasAnswered(true)
+          doActions(true, true)
         }
-      })
-      return newValue
+      }
     })
   }
 
+  /**
+   * Renders highlight and lays card sound according to sent in values.
+   * 
+   * @param {boolean} highlight 
+   * @param {boolean} audio 
+   */
   const doActions = (highlight, audio) => {
     setTimeout(() => {
       if (highlight && audio) {
@@ -164,6 +217,12 @@ function Dice(props) {
     }, 1000)
   }
 
+  /**
+   * Gets cards from JSON file.
+   * 
+   * @param {string} cardCategory 
+   * @returns 
+   */
   const createRandomCard = (cardCategory) => {
     const customerCards = cards.filter((el) => el.category === cardCategory)
 
@@ -183,7 +242,7 @@ function Dice(props) {
       src={dice}
       alt="Playing dice"
       className="dice"
-      onClick={() => rollTheDice()}
+      onClick={() => handleClick()}
     />
   )
 }

@@ -19,26 +19,25 @@ import { StorypointsContext } from '../../global/StorypointsContext'
 import { HasAnsweredContext } from '../../global/HasAnsweredContext'
 
 function Game() {
-  const { currentPositionValue } = useContext(
-    PlayerPositionContext
-  )
+  const { currentPositionValue } = useContext(PlayerPositionContext)
   const { currentTile } = useContext(TileContext)
   const { currentCard } = useContext(CurrentCardContext)
   const { currentStorypoints } = useContext(StorypointsContext)
   const { currentVelocity } = useContext(VelocityContext)
   const { hasAnswered } = useContext(HasAnsweredContext)
 
+  /**
+   * Saves state of the game everytime something is changing.
+   */
   useEffect(() => {
-    const playerState = {
+    setPlayerState({
       currentPositionValue,
       currentTile,
       currentCard,
       currentVelocity,
       currentStorypoints,
       hasAnswered
-    }
-
-    setPlayerState(playerState)
+    })
   }, [
     currentPositionValue,
     currentTile,

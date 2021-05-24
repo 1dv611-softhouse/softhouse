@@ -63,25 +63,25 @@ function Gameboard() {
   const getScore = () => {
     const nrOfMoves = currentPlayerMove
 
-    console.log('Kollar först antalet förflyttningar: ' + nrOfMoves)
+    // console.log('Kollar först antalet förflyttningar: ' + nrOfMoves)
 
     const sum = velocityList.reduce((a, b) => a + b, 0)
 
-    console.log('Summan av velocityn är just nu: ' + sum)
+    // console.log('Summan av velocityn är just nu: ' + sum)
 
     const average = sum / velocityList.length
 
-    console.log('Räknar ut medelvärdet av velocityn: ' + nrOfMoves)
+    // console.log('Räknar ut medelvärdet av velocityn: ' + nrOfMoves)
 
     const finalScore = Number(((average / nrOfMoves) * 100).toFixed(0))
 
-    console.log('Den slutgiltiga poängen är: ' + finalScore)
+    // console.log('Den slutgiltiga poängen är: ' + finalScore)
 
     return finalScore
   }
 
-  console.log('ANDRA')
-  console.log(currentCard)
+  // console.log('ANDRA')
+  // console.log(currentCard)
   return (
     <div className="gameboard-container">
       <ReactModal

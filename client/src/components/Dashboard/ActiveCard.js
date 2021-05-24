@@ -10,12 +10,7 @@ import { HasAnsweredContext } from '../../global/HasAnsweredContext'
 import { VelocityContext } from '../../global/VelocityContext'
 import { VelocityListContext } from '../../global/VelocityListContext'
 import { HighlightContext } from '../../global/HighlightContext'
-// import { PlayerPositionContext } from '../../global/PlayerPositionContext'
-// import { TileContext } from '../../global/TileContext'
-// import { StorypointsContext } from '../../global/StorypointsContext'
 import info from '../../pictures/info.png'
-
-// import { setPlayerState } from '../../Models/StateModel'
 
 import { useContext, useState, useEffect } from 'react'
 
@@ -30,6 +25,9 @@ function ActiveCard() {
   const [consequence, setConsequence] = useState('')
   const [points, setPoints] = useState(0)
 
+  /**
+   * Changes Velocity everytime player ends up on card with absolute event.
+   */
   useEffect(() => {
     // TODO: Tycker det är fult att denna if-sats görs både här och nere i renderNoAlternatives(). Men vet inte hur jag ska göra.
     // Om jag gör changeVelocity(currentCard.velocity) i renderNoAlternatives() tas det bort velocity poäng flera ggr.
@@ -52,6 +50,11 @@ function ActiveCard() {
     }
   }
 
+  /**
+   * Renders card with alternatives.
+   * 
+   * @returns JSX for correct card.
+   */
   const renderAlternatives = () => {
     if (!hasAnswered) {
       return (
@@ -86,6 +89,11 @@ function ActiveCard() {
     }
   }
 
+  /**
+   * Renders card without alternatives.
+   * 
+   * @returns JSX for correct card.
+   */
   const renderNoAlternatives = () => {
     if (currentCard.category === 'normal-day-card') {
       return renderNormalDay()
@@ -112,6 +120,9 @@ function ActiveCard() {
     }
   }
 
+  /**
+   * @returns JSX for normal day card.
+   */
   const renderNormalDay = () => {
     return (
       <>
@@ -134,6 +145,10 @@ function ActiveCard() {
     setToggle(e.target.value)
   }
 
+  /**
+   * 
+   * @param {object} e The event from the form.
+   */
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -151,6 +166,11 @@ function ActiveCard() {
     setHasAnswered(true)
   }
 
+  /**
+   * Calculate velocity according to consequence.
+   * 
+   * @param {number} velocityToAdd 
+   */
   const changeVelocity = (velocityToAdd) => {
     if (currentVelocity + velocityToAdd <= 0) {
       setCurrentVelocity(0)
