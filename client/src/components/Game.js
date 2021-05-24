@@ -11,6 +11,7 @@ import { VelocityContext } from '../global/VelocityContext'
 import { TileContext } from '../global/TileContext'
 import { CurrentCardContext } from '../global/CurrentCardContext'
 import { StorypointsContext } from '../global/StorypointsContext'
+import { HasAnsweredContext } from '../global/HasAnsweredContext'
 
 function Game() {
   const { currentPositionValue, setCurrentPositionValue } = useContext(
@@ -21,21 +22,7 @@ function Game() {
   const { currentStorypoints, setCurrentStorypoints } =
     useContext(StorypointsContext)
   const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
-
-  useEffect(() => {
-    const state = getPlayerState()
-
-    console.log('STATE: ')
-    console.log(state)
-    console.log(state.currentCard)
-    if (state) {
-      // setCurrentPositionValue(state.currentPositionValue)
-      // setCurrentTile(state.currentTile)
-      // setCurrentCard(state.currentCard)
-      // setCurrentVelocity(state.currentVelocity)
-      // setCurrentStorypoints(state.currentStorypoints)
-    }
-  }, [])
+  const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext)
 
   useEffect(() => {
     const playerState = {
@@ -43,7 +30,8 @@ function Game() {
       currentTile,
       currentCard,
       currentVelocity,
-      currentStorypoints
+      currentStorypoints,
+      hasAnswered
     }
 
     setPlayerState(playerState)
@@ -52,7 +40,8 @@ function Game() {
     currentTile,
     currentCard,
     currentVelocity,
-    currentStorypoints
+    currentStorypoints,
+    hasAnswered
   ])
 
   return (
