@@ -1,3 +1,9 @@
+/**
+ * Where the player enters its Username in the beginning of the game.
+ *
+ * @version 1.0.0
+ */
+
 import '../../styles/username.css'
 import { UsernameContext } from '../../global/UsernameContext'
 import { useEffect, useState, useContext } from 'react'

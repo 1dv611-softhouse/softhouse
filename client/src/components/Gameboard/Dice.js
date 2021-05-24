@@ -98,6 +98,7 @@ function Dice(props) {
     }
 
     console.log('Testar att skriva ut: ' + currentPlayerMove)
+
     setCurrentPositionValue((prevstate) => {
       const newValue = prevstate + diceValue
 
@@ -125,6 +126,7 @@ function Dice(props) {
 
               if (chance < randomNr && card.alternatives) {
                 done = true
+                setHasAnswered(true)
               } else if (chance > randomNr && card.alternatives === undefined) {
                 done = true
                 setHasAnswered(true)

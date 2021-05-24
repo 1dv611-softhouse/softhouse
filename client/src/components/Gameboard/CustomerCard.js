@@ -1,3 +1,9 @@
+/**
+ * The card pile for customer cards.
+ *
+ * @version 1.0.0
+ */
+
 import '../../styles/cards.css'
 import customers from '../../pictures/customer.png'
 

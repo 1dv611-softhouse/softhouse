@@ -1,3 +1,9 @@
+/**
+ * The tiles of the Gameboard.
+ *
+ * @version 1.0.0
+ */
+
 import '../../styles/tiles.css'
 import player from '../../pictures/user.png'
 import { PlayerPositionContext } from '../../global/PlayerPositionContext'

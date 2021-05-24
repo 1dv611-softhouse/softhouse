@@ -1,3 +1,9 @@
+/**
+ * The Gameboard - right side of the browser.
+ *
+ * @version 1.0.0
+ */
+
 import '../../styles/gameboard.css'
 import Dice from './Dice'
 import Tiles from './Tiles'
@@ -20,18 +26,18 @@ import { CurrentCardContext } from '../../global/CurrentCardContext'
 import { StorypointsContext } from '../../global/StorypointsContext'
 
 function Gameboard() {
-  const { days, setDays } = useContext(DaysContext)
+  const { days } = useContext(DaysContext)
   const { currentPositionValue, setCurrentPositionValue } = useContext(
     PlayerPositionContext
   )
   const { currentTile, setCurrentTile } = useContext(TileContext)
-  const { currentCard, setCurrentCard } = useContext(CurrentCardContext)
+  const { currentCard } = useContext(CurrentCardContext)
   const { currentStorypoints, setCurrentStorypoints } =
     useContext(StorypointsContext)
   const { retrospective, setRetrospective } = useContext(RetrospectiveContext)
   const { setCurrentVelocity, currentVelocity } = useContext(VelocityContext)
   const { velocityList, addToVelovityList } = useContext(VelocityListContext)
-  const { currentPlayerMove, setPlayerMove } = useContext(PlayerMoveContext)
+  const { currentPlayerMove } = useContext(PlayerMoveContext)
 
   const [isOpen, setIsOpen] = useState(false)
 

@@ -1,3 +1,9 @@
+/**
+ * The scoreboard that holds the game logic in the profile.
+ *
+ * @version 1.0.0
+ */
+
 import '../../styles/scoreboard.css'
 import ActiveCard from './ActiveCard'
 import { VelocityContext } from '../../global/VelocityContext'

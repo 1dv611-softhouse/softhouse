@@ -1,3 +1,9 @@
+/**
+ * The players profile during the game.
+ *
+ * @version 1.0.0
+ */
+
 import '../../styles/profile.css'
 import Scoreboard from './Scoreboard.js'
 import { useSpring, animated } from 'react-spring'

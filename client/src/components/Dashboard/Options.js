@@ -1,3 +1,9 @@
+/**
+ * The menu that appears when clicking on the hamburger.
+ *
+ * @version 1.0.0
+ */
+
 import '../../styles/options.css'
 import { useContext } from 'react'
 import socials from '../../pictures/socials/images2'

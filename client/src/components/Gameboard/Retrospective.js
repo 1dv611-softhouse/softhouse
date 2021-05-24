@@ -1,3 +1,9 @@
+/**
+ * The Retrospective component.
+ *
+ * @version 1.0.0
+ */
+
 import '../../styles/retrospective.css'
 import retrospectiveJSON from '../../retrospective.json'
 import { VelocityContext } from '../../global/VelocityContext'

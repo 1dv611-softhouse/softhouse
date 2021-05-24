@@ -1,33 +1,30 @@
+/**
+ * The holder for the open cards.
+ *
+ * @version 1.0.0
+ */
+
 import '../../styles/active-card.css'
 import { CurrentCardContext } from '../../global/CurrentCardContext'
 import { HasAnsweredContext } from '../../global/HasAnsweredContext'
 import { VelocityContext } from '../../global/VelocityContext'
 import { VelocityListContext } from '../../global/VelocityListContext'
 import { HighlightContext } from '../../global/HighlightContext'
-import { PlayerPositionContext } from '../../global/PlayerPositionContext'
-import { TileContext } from '../../global/TileContext'
-import { StorypointsContext } from '../../global/StorypointsContext'
+// import { PlayerPositionContext } from '../../global/PlayerPositionContext'
+// import { TileContext } from '../../global/TileContext'
+// import { StorypointsContext } from '../../global/StorypointsContext'
 import info from '../../pictures/info.png'
 
-import { setPlayerState } from '../../Models/StateModel'
+// import { setPlayerState } from '../../Models/StateModel'
 
 import { useContext, useState, useEffect } from 'react'
 
 function ActiveCard() {
-  // const { currentCard } = useContext(CurrentCardContext)
+  const { currentCard } = useContext(CurrentCardContext)
   const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext)
-  // const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
+  const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
   const { velocityList, addToVelovityList } = useContext(VelocityListContext)
   const { highlight } = useContext(HighlightContext)
-
-  const { currentPositionValue, setCurrentPositionValue } = useContext(
-    PlayerPositionContext
-  )
-  const { currentTile, setCurrentTile } = useContext(TileContext)
-  const { currentCard, setCurrentCard } = useContext(CurrentCardContext)
-  const { currentStorypoints, setCurrentStorypoints } =
-    useContext(StorypointsContext)
-  const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
 
   const [toggle, setToggle] = useState('')
   const [consequence, setConsequence] = useState('')

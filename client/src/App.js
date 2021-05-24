@@ -1,6 +1,13 @@
+/**
+ * The starting point of the react application.
+ *
+ * @version 1.0.0
+ */
+
 import './styles/style.css'
 import Game from './components/Gameboard/Game'
 
+// Provider imports
 import { HeaderProvider } from './global/HeaderContext'
 import { HamburgerProvider } from './global/HamburgerContext'
 import { PlayerPositionProvider } from './global/PlayerPositionContext'

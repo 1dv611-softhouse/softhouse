@@ -1,5 +1,10 @@
-import '../../styles/highscore.css'
+/**
+ * The highscore component.
+ *
+ * @version 1.0.0
+ */
 
+import '../../styles/highscore.css'
 import { useEffect, useState } from 'react'
 
 function Highscore() {

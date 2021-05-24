@@ -1,3 +1,9 @@
+/**
+ * The entire dashboard - left side of the browser.
+ *
+ * @version 1.0.0
+ */
+
 import '../../styles/dashboard.css'
 import Header from './Header'
 import Highscore from './Highscore'

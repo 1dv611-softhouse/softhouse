@@ -1,3 +1,9 @@
+/**
+ * The card pile for daily standUp cards.
+ *
+ * @version 1.0.0
+ */
+
 import '../../styles/cards.css'
 import customers from '../../pictures/customers.png'
 

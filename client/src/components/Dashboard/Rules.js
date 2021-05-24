@@ -1,3 +1,9 @@
+/**
+ * The rules for the game.
+ *
+ * @version 1.0.0
+ */
+
 import '../../styles/rules.css'
 
 function Rules() {
