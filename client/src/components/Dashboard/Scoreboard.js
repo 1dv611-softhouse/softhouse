@@ -1,7 +1,7 @@
-import '../styles/scoreboard.css'
+import '../../styles/scoreboard.css'
 import ActiveCard from './ActiveCard'
-import { VelocityContext } from '../global/VelocityContext'
-import { StorypointsContext } from '../global/StorypointsContext'
+import { VelocityContext } from '../../global/VelocityContext'
+import { StorypointsContext } from '../../global/StorypointsContext'
 import { useContext } from 'react'
 
 function Scoreboard() {

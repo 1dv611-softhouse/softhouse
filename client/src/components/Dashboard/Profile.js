@@ -1,8 +1,8 @@
-import '../styles/profile.css'
+import '../../styles/profile.css'
 import Scoreboard from './Scoreboard.js'
 import { useSpring, animated } from 'react-spring'
 import { useContext } from 'react'
-import { UsernameContext } from '../global/UsernameContext'
+import { UsernameContext } from '../../global/UsernameContext'
 
 function Profile() {
   const props = useSpring({

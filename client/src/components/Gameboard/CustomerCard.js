@@ -1,7 +1,7 @@
-import "../styles/cards.css";
-import customers from "../pictures/customer.png";
+import '../../styles/cards.css'
+import customers from '../../pictures/customer.png'
 
-function CostumerCard() {
+function CustomerCard() {
   return (
     <div className="card-holder customer-card">
       <img
@@ -11,7 +11,7 @@ function CostumerCard() {
         className="customersPic"
       />
     </div>
-  );
+  )
 }
 
-export default CostumerCard;
+export default CustomerCard

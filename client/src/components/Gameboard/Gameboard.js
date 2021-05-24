@@ -1,23 +1,23 @@
-import '../styles/gameboard.css'
+import '../../styles/gameboard.css'
 import Dice from './Dice'
 import Tiles from './Tiles'
-import CostumerCard from './CostumerCard'
+import CustomerCard from './CustomerCard'
 import DailyStandupCard from './DailyStandupCard'
 import Retrospective from './Retrospective'
-import { PlayerPositionContext } from '../global/PlayerPositionContext'
-import { DaysContext } from '../global/DaysContext'
-import { RetrospectiveContext } from '../global/RetrospectiveContext'
-import { VelocityContext } from '../global/VelocityContext'
-import { VelocityListContext } from '../global/VelocityListContext'
-import { PlayerMoveContext } from '../global/PlayerMoveContext'
+import { PlayerPositionContext } from '../../global/PlayerPositionContext'
+import { DaysContext } from '../../global/DaysContext'
+import { RetrospectiveContext } from '../../global/RetrospectiveContext'
+import { VelocityContext } from '../../global/VelocityContext'
+import { VelocityListContext } from '../../global/VelocityListContext'
+import { PlayerMoveContext } from '../../global/PlayerMoveContext'
 
 import { useContext, useEffect, useState } from 'react'
 import ReactModal from 'react-modal'
 
-import { deletePlayerState } from '../Models/StateModel'
-import { TileContext } from '../global/TileContext'
-import { CurrentCardContext } from '../global/CurrentCardContext'
-import { StorypointsContext } from '../global/StorypointsContext'
+import { deletePlayerState } from '../../Models/StateModel'
+import { TileContext } from '../../global/TileContext'
+import { CurrentCardContext } from '../../global/CurrentCardContext'
+import { StorypointsContext } from '../../global/StorypointsContext'
 
 function Gameboard() {
   const { days, setDays } = useContext(DaysContext)
@@ -139,7 +139,7 @@ function Gameboard() {
           </div>
           {/* TODO Cards * 2 */}
           <DailyStandupCard />
-          <CostumerCard />
+          <CustomerCard />
           <div className="column-div-tiles1">
             {days.map((day, index) => {
               return index >= 7 && index <= 10 ? (

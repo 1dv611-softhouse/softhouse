@@ -1,5 +1,5 @@
 import './styles/style.css'
-import Game from './components/Game'
+import Game from './components/Gameboard/Game'
 
 import { HeaderProvider } from './global/HeaderContext'
 import { HamburgerProvider } from './global/HamburgerContext'

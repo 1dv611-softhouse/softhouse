@@ -1,8 +1,7 @@
-import "../styles/cards.css";
-import customers from "../pictures/customers.png";
+import '../../styles/cards.css'
+import customers from '../../pictures/customers.png'
 
 function DailyStandupCard() {
-
   return (
     <div className="card-holder daily-standup-card">
       <img
@@ -12,7 +11,7 @@ function DailyStandupCard() {
         className="customerPic"
       />
     </div>
-  );
+  )
 }
 
-export default DailyStandupCard;
+export default DailyStandupCard

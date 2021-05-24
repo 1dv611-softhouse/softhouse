@@ -1,8 +1,8 @@
-import '../styles/options.css'
+import '../../styles/options.css'
 import { useContext } from 'react'
-import socials from '../pictures/socials/images2'
-import { HeaderContext } from '../global/HeaderContext'
-import { HamburgerContext } from '../global/HamburgerContext'
+import socials from '../../pictures/socials/images2'
+import { HeaderContext } from '../../global/HeaderContext'
+import { HamburgerContext } from '../../global/HamburgerContext'
 
 function Options() {
   const { setCurrentComponent } = useContext(HeaderContext)

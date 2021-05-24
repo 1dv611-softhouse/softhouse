@@ -1,4 +1,4 @@
-import '../styles/highscore.css'
+import '../../styles/highscore.css'
 
 import { useEffect, useState } from 'react'
 

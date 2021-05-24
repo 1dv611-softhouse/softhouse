@@ -1,9 +1,9 @@
-import '../styles/dashboard.css'
+import '../../styles/dashboard.css'
 import Header from './Header'
 import Highscore from './Highscore'
 import Rules from './Rules'
 import Profile from './Profile'
-import { HeaderContext } from '../global/HeaderContext'
+import { HeaderContext } from '../../global/HeaderContext'
 import { useContext } from 'react'
 
 function Dashboard() {

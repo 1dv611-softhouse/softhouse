@@ -1,4 +1,4 @@
-import "../styles/rules.css";
+import '../../styles/rules.css'
 
 function Rules() {
   return (
@@ -42,7 +42,7 @@ function Rules() {
         positively or negatively, nor how much.
       </p>
     </div>
-  );
+  )
 }
 
-export default Rules;
+export default Rules

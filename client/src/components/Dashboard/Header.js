@@ -1,9 +1,9 @@
-import '../styles/header.css'
+import '../../styles/header.css'
 import { useContext } from 'react'
-import { HamburgerContext } from '../global/HamburgerContext'
-import socials from '../pictures/socials/images2'
+import { HamburgerContext } from '../../global/HamburgerContext'
+import socials from '../../pictures/socials/images2'
 import Options from './Options'
-import logo from '../pictures/softhouselogo.png'
+import logo from '../../pictures/softhouselogo.png'
 
 function Header() {
   const { active, setActive } = useContext(HamburgerContext)

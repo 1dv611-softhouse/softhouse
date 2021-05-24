@@ -1,5 +1,5 @@
-import '../styles/username.css'
-import { UsernameContext } from '../global/UsernameContext'
+import '../../styles/username.css'
+import { UsernameContext } from '../../global/UsernameContext'
 import { useEffect, useState, useContext } from 'react'
 
 import React from 'react'

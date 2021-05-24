@@ -1,9 +1,9 @@
-import '../styles/retrospective.css'
-import retrospectiveJSON from '../retrospective.json'
-import { VelocityContext } from '../global/VelocityContext'
-import { StorypointsContext } from '../global/StorypointsContext'
-import { RetrospectiveContext } from '../global/RetrospectiveContext'
-import { VelocityListContext } from '../global/VelocityListContext'
+import '../../styles/retrospective.css'
+import retrospectiveJSON from '../../retrospective.json'
+import { VelocityContext } from '../../global/VelocityContext'
+import { StorypointsContext } from '../../global/StorypointsContext'
+import { RetrospectiveContext } from '../../global/RetrospectiveContext'
+import { VelocityListContext } from '../../global/VelocityListContext'
 import { useState, useContext } from 'react'
 
 function Retrospective() {

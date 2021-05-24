@@ -1,17 +1,17 @@
-import Dashboard from '../components/Dashboard'
-import Gameboard from '../components/Gameboard'
-import UsernameModal from '../components/UsernameModal'
+import Dashboard from '../Dashboard/Dashboard'
+import Gameboard from './Gameboard'
+import UsernameModal from './UsernameModal'
 
 import { useEffect, useContext } from 'react'
-import { getPlayerState, setPlayerState } from '../Models/StateModel'
+import { getPlayerState, setPlayerState } from '../../Models/StateModel'
 
-import { PlayerPositionContext } from '../global/PlayerPositionContext'
-import { DaysContext } from '../global/DaysContext'
-import { VelocityContext } from '../global/VelocityContext'
-import { TileContext } from '../global/TileContext'
-import { CurrentCardContext } from '../global/CurrentCardContext'
-import { StorypointsContext } from '../global/StorypointsContext'
-import { HasAnsweredContext } from '../global/HasAnsweredContext'
+import { PlayerPositionContext } from '../../global/PlayerPositionContext'
+import { DaysContext } from '../../global/DaysContext'
+import { VelocityContext } from '../../global/VelocityContext'
+import { TileContext } from '../../global/TileContext'
+import { CurrentCardContext } from '../../global/CurrentCardContext'
+import { StorypointsContext } from '../../global/StorypointsContext'
+import { HasAnsweredContext } from '../../global/HasAnsweredContext'
 
 function Game() {
   const { currentPositionValue, setCurrentPositionValue } = useContext(
