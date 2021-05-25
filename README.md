@@ -15,6 +15,9 @@ git clone https://github.com/1dv611-softhouse/softhouse.git (HTTPS)
 
 ```bash
 # Enter the folder
+cd softhouse
+
+# Enter the folder
 cd client
 
 # Install the packages
