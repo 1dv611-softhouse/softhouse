@@ -7,32 +7,35 @@ import { CurrentCardContext } from '../../global/CurrentCardContext'
 import { HasAnsweredContext } from '../../global/HasAnsweredContext'
 import { HighlightContext } from '../../global/HighlightContext'
 import { VelocityContext } from '../../global/VelocityContext'
-// import { VelocityListContext } from '../../global/VelocityListContext'
+import { VelocityListContext } from '../../global/VelocityListContext'
 import { StorypointsContext } from '../../global/StorypointsContext'
 import { UsernameContext } from '../../global/UsernameContext'
 import { PlayerMoveContext } from '../../global/PlayerMoveContext'
-
-import { setPlayerState } from '../../Models/StateModel'
+import { PointsContext } from '../../global/PointsContext'
+import { FinalScoreContext } from '../../global/FinalScoreContext'
 
 import sound from '../../diceroll.mp3'
 import cardSound from '../../flip.mp3'
 import cards from '../../cards.json'
 
 function Dice(props) {
-  const { changeModalState, getScore } = props
+  const { changeModalState } = props
   const { currentPositionValue, setCurrentPositionValue } = useContext(
     PlayerPositionContext
   )
   const { setHighlight } = useContext(HighlightContext)
   const { days } = useContext(DaysContext)
-  // const { velocityList, addToVelovityList } = useContext(VelocityListContext)
+  const { velocityList, addToVelovityList } = useContext(VelocityListContext)
   const { currentPlayerMove, setPlayerMove } = useContext(PlayerMoveContext)
   const { currentTile, setCurrentTile } = useContext(TileContext)
   const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext)
   const { currentCard, setCurrentCard } = useContext(CurrentCardContext)
+  const { finalScore, setFinalScore } = useContext(FinalScoreContext)
   const { currentVelocity } = useContext(VelocityContext)
-  const { currentStorypoints, setCurrentStorypoints } = useContext(StorypointsContext)
+  const { currentStorypoints, setCurrentStorypoints } =
+    useContext(StorypointsContext)
   const { username } = useContext(UsernameContext)
+  const { points } = useContext(PointsContext)
 
   const [dice, setDice] = useState(imgs[0])
   const audio = new Audio(sound)
@@ -43,16 +46,8 @@ function Dice(props) {
     if (hasAnswered === false || currentStorypoints <= 0) return
 
     rollDice()
-    
-    calculateStorypoints()
 
-    setPlayerState({
-      currentPositionValue,
-      currentTile,
-      currentCard,
-      currentVelocity,
-      currentStorypoints
-    })
+    calculateStorypoints()
   }
 
   /**
@@ -71,9 +66,10 @@ function Dice(props) {
   /**
    * Changes storypoints according to velocity.
    */
-  const calculateStorypoints = () => {
+  const calculateStorypoints = async () => {
     if (currentStorypoints - currentVelocity <= 0) {
       setCurrentStorypoints(0)
+      calculateScore()
       sendHighscore(username)
       changeModalState(true)
     } else {
@@ -82,13 +78,28 @@ function Dice(props) {
   }
 
   /**
+   * Calculate the score of the round.
+   *
+   */
+  const calculateScore = () => {
+    const nrOfMoves = currentPlayerMove
+    const sum = velocityList.reduce((a, b) => a + b, 0)
+    const average = sum / velocityList.length
+    const totalScore = Number(((average / nrOfMoves) * 100).toFixed(0))
+
+    setFinalScore(totalScore + points)
+    // return finalScore + points
+    console.log('I calculateScore: ' + finalScore)
+  }
+
+  /**
    * Posts highscore to the database.
-   * 
-   * @param {string} username 
+   *
+   * @param {string} username
    */
   const sendHighscore = (username) => {
-    const score = getScore()
-    // console.log('Register your highscore: ' + getScore())
+    console.log('Send score of: ' + finalScore)
+
     try {
       fetch(
         'https://irv6hogkji.execute-api.eu-west-1.amazonaws.com/Production',
@@ -96,7 +107,7 @@ function Dice(props) {
           method: 'POST',
           body: JSON.stringify({
             username,
-            score
+            score: finalScore
           })
         }
       )
@@ -109,8 +120,8 @@ function Dice(props) {
 
   /**
    * Sets position of the player according to value of the rolled dice.
-   * 
-   * @param {number} diceValue 
+   *
+   * @param {number} diceValue
    */
   const setPlayerPosition = (diceValue) => {
     calculateAmountOfPlayerMoves()
@@ -119,7 +130,7 @@ function Dice(props) {
       const newPlayerPosition = prevstate + diceValue
 
       renderCorrectCard(newPlayerPosition)
-      
+
       return newPlayerPosition
     })
   }
@@ -132,7 +143,7 @@ function Dice(props) {
       setPlayerMove(currentPlayerMove + 1)
     }
 
-    //Det kommer inte gå att skriva ut här då setPlayerMove = asynkront. 
+    //Det kommer inte gå att skriva ut här då setPlayerMove = asynkront.
     // console.log('Testar att skriva ut: ' + currentPlayerMove)
     //Du kan nog istället skriva såhär:
 
@@ -149,8 +160,8 @@ function Dice(props) {
 
   /**
    * Gets day according to position of player and makes sure correct card is rendered.
-   * 
-   * @param {number} playerPosition 
+   *
+   * @param {number} playerPosition
    */
   const renderCorrectCard = (playerPosition) => {
     days.forEach((day) => {
@@ -198,9 +209,9 @@ function Dice(props) {
 
   /**
    * Renders highlight and lays card sound according to sent in values.
-   * 
-   * @param {boolean} highlight 
-   * @param {boolean} audio 
+   *
+   * @param {boolean} highlight
+   * @param {boolean} audio
    */
   const doActions = (highlight, audio) => {
     setTimeout(() => {
@@ -219,9 +230,9 @@ function Dice(props) {
 
   /**
    * Gets cards from JSON file.
-   * 
-   * @param {string} cardCategory 
-   * @returns 
+   *
+   * @param {string} cardCategory
+   * @returns
    */
   const createRandomCard = (cardCategory) => {
     const customerCards = cards.filter((el) => el.category === cardCategory)

@@ -10,9 +10,15 @@ import { HasAnsweredContext } from '../../global/HasAnsweredContext'
 import { VelocityContext } from '../../global/VelocityContext'
 import { VelocityListContext } from '../../global/VelocityListContext'
 import { HighlightContext } from '../../global/HighlightContext'
+import { PointsContext } from '../../global/PointsContext'
 import info from '../../pictures/info.png'
 
 import { useContext, useState, useEffect } from 'react'
+
+import Cookies from 'universal-cookie'
+const cookies = new Cookies()
+
+const cookieName = 'ConsequenceCookie::ActiveCard'
 
 function ActiveCard() {
   const { currentCard } = useContext(CurrentCardContext)
@@ -22,9 +28,11 @@ function ActiveCard() {
   const { highlight } = useContext(HighlightContext)
 
   const [toggle, setToggle] = useState('')
-  const [consequence, setConsequence] = useState('')
+  const [consequence, setConsequence] = useState(
+    cookies.get(cookieName) ? cookies.get(cookieName) : ''
+  )
   // TODO: gör om till Context så det kan användas i Dice för Highscore algoritmen
-  const [points, setPoints] = useState(0)
+  const { points, setPoints } = useContext(PointsContext)
 
   /**
    * Changes Velocity everytime player ends up on card with absolute event.
@@ -33,7 +41,7 @@ function ActiveCard() {
     // TODO: Tycker det är fult att denna if-sats görs både här och nere i renderNoAlternatives(). Men vet inte hur jag ska göra.
     // Om jag gör changeVelocity(currentCard.velocity) i renderNoAlternatives() tas det bort velocity poäng flera ggr.
 
-    //Testa if(currentvCard.category != 'normal-day-card) 
+    //Testa if(currentvCard.category != 'normal-day-card)
     if (
       currentCard.category === 'day-of-illness-card' ||
       currentCard.category === 'customer-card' ||
@@ -53,9 +61,13 @@ function ActiveCard() {
     }
   }
 
+  useEffect(() => {
+    cookies.set(cookieName, consequence)
+  }, [consequence])
+
   /**
    * Renders card with alternatives.
-   * 
+   *
    * @returns JSX for correct card.
    */
   const renderAlternatives = () => {
@@ -94,7 +106,7 @@ function ActiveCard() {
 
   /**
    * Renders card without alternatives.
-   * 
+   *
    * @returns JSX for correct card.
    */
   const renderNoAlternatives = () => {
@@ -149,7 +161,7 @@ function ActiveCard() {
   }
 
   /**
-   * 
+   *
    * @param {object} e The event from the form.
    */
   const handleSubmit = (e) => {
@@ -171,8 +183,8 @@ function ActiveCard() {
 
   /**
    * Calculate velocity according to consequence.
-   * 
-   * @param {number} velocityToAdd 
+   *
+   * @param {number} velocityToAdd
    */
   const changeVelocity = (velocityToAdd) => {
     if (currentVelocity + velocityToAdd <= 0) {

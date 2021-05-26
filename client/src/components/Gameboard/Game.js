@@ -9,7 +9,7 @@ import Gameboard from './Gameboard'
 import UsernameModal from './UsernameModal'
 
 import { useEffect, useContext } from 'react'
-import { getPlayerState, setPlayerState } from '../../Models/StateModel'
+import { setPlayerState } from '../../Models/StateModel'
 
 import { PlayerPositionContext } from '../../global/PlayerPositionContext'
 import { VelocityContext } from '../../global/VelocityContext'
@@ -17,6 +17,9 @@ import { TileContext } from '../../global/TileContext'
 import { CurrentCardContext } from '../../global/CurrentCardContext'
 import { StorypointsContext } from '../../global/StorypointsContext'
 import { HasAnsweredContext } from '../../global/HasAnsweredContext'
+import { PointsContext } from '../../global/PointsContext'
+import { VelocityListContext } from '../../global/VelocityListContext'
+import { PlayerMoveContext } from '../../global/PlayerMoveContext'
 
 function Game() {
   const { currentPositionValue } = useContext(PlayerPositionContext)
@@ -25,6 +28,9 @@ function Game() {
   const { currentStorypoints } = useContext(StorypointsContext)
   const { currentVelocity } = useContext(VelocityContext)
   const { hasAnswered } = useContext(HasAnsweredContext)
+  const { points } = useContext(PointsContext)
+  const { velocityList } = useContext(VelocityListContext)
+  const { currentPlayerMove } = useContext(PlayerMoveContext)
 
   /**
    * Saves state of the game everytime something is changing.
@@ -36,7 +42,10 @@ function Game() {
       currentCard,
       currentVelocity,
       currentStorypoints,
-      hasAnswered
+      hasAnswered,
+      points,
+      velocityList,
+      currentPlayerMove
     })
   }, [
     currentPositionValue,
@@ -44,7 +53,10 @@ function Game() {
     currentCard,
     currentVelocity,
     currentStorypoints,
-    hasAnswered
+    hasAnswered,
+    points,
+    velocityList,
+    currentPlayerMove
   ])
 
   return (

@@ -135,7 +135,7 @@
         "answer": "RÄTT SVAR",
         "correct": true,
         "points": 10,
-        "consequence": "Correct! Your earn 5 points to your highscore."
+        "consequence": "Correct! Your earn 10 points to your highscore."
       },
       {
         "answer": "FEL SVAR",
@@ -166,7 +166,7 @@
         "answer": "RÄTT SVAR",
         "correct": true,
         "points": 10,
-        "consequence": "Correct! Your earn 5 points to your highscore."
+        "consequence": "Correct! Your earn 10 points to your highscore."
       },
       {
         "answer": "FEL SVAR",
@@ -191,7 +191,7 @@
         "answer": "RÄTT SVAR",
         "correct": true,
         "points": 10,
-        "consequence": "Correct! Your earn 5 points to your highscore."
+        "consequence": "Correct! Your earn 10 points to your highscore."
       },
       {
         "answer": "FEL SVAR",
@@ -216,7 +216,7 @@
         "answer": "RÄTT SVAR",
         "correct": true,
         "points": 10,
-        "consequence": "Correct! Your earn 5 points to your highscore."
+        "consequence": "Correct! Your earn 10 points to your highscore."
       },
       {
         "answer": "FEL SVAR",

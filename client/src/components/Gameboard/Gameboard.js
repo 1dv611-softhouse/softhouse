@@ -13,9 +13,11 @@ import Retrospective from './Retrospective'
 import { PlayerPositionContext } from '../../global/PlayerPositionContext'
 import { DaysContext } from '../../global/DaysContext'
 import { RetrospectiveContext } from '../../global/RetrospectiveContext'
-import { VelocityContext } from '../../global/VelocityContext'
-import { VelocityListContext } from '../../global/VelocityListContext'
-import { PlayerMoveContext } from '../../global/PlayerMoveContext'
+import { PointsContext } from '../../global/PointsContext'
+import { FinalScoreContext } from '../../global/FinalScoreContext'
+// import { VelocityContext } from '../../global/VelocityContext'
+// import { VelocityListContext } from '../../global/VelocityListContext'
+// import { PlayerMoveContext } from '../../global/PlayerMoveContext'
 
 import { useContext, useEffect, useState } from 'react'
 import ReactModal from 'react-modal'
@@ -27,6 +29,7 @@ import { StorypointsContext } from '../../global/StorypointsContext'
 
 function Gameboard() {
   const { days } = useContext(DaysContext)
+  const { points } = useContext(PointsContext)
   const { currentPositionValue, setCurrentPositionValue } = useContext(
     PlayerPositionContext
   )
@@ -35,9 +38,7 @@ function Gameboard() {
   const { currentStorypoints, setCurrentStorypoints } =
     useContext(StorypointsContext)
   const { retrospective, setRetrospective } = useContext(RetrospectiveContext)
-  const { setCurrentVelocity, currentVelocity } = useContext(VelocityContext)
-  const { velocityList, addToVelovityList } = useContext(VelocityListContext)
-  const { currentPlayerMove } = useContext(PlayerMoveContext)
+  const { finalScore } = useContext(FinalScoreContext)
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -58,26 +59,6 @@ function Gameboard() {
 
     deletePlayerState()
     throw new Error()
-  }
-
-  const getScore = () => {
-    const nrOfMoves = currentPlayerMove
-
-    // console.log('Kollar först antalet förflyttningar: ' + nrOfMoves)
-
-    const sum = velocityList.reduce((a, b) => a + b, 0)
-
-    // console.log('Summan av velocityn är just nu: ' + sum)
-
-    const average = sum / velocityList.length
-
-    // console.log('Räknar ut medelvärdet av velocityn: ' + nrOfMoves)
-
-    const finalScore = Number(((average / nrOfMoves) * 100).toFixed(0))
-
-    // console.log('Den slutgiltiga poängen är: ' + finalScore)
-
-    return finalScore
   }
 
   // console.log('ANDRA')
@@ -113,7 +94,7 @@ function Gameboard() {
       >
         <div className="endscreen">
           <h1>Game finished!</h1>
-          <h1>You got a score of {getScore()}</h1>
+          <h1>You got a score of: {finalScore} </h1>
 
           <a href="" onClick={(e) => resetGame(e)}>
             Play again
@@ -122,7 +103,7 @@ function Gameboard() {
       </ReactModal>
 
       <div className="gameboard">
-        <Dice changeModalState={setIsOpen} getScore={getScore} />
+        <Dice changeModalState={setIsOpen} />
         <div className="row-div-tiles">
           {days.map((day, index) => {
             return index >= 0 && index <= 6 ? (

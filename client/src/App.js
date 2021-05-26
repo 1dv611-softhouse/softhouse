@@ -22,6 +22,8 @@ import { RetrospectiveProvider } from './global/RetrospectiveContext'
 import { UsernameProvider } from './global/UsernameContext'
 import { VelocityListProvider } from './global/VelocityListContext'
 import { PlayerMoveProvider } from './global/PlayerMoveContext'
+import { PointsProvider } from './global/PointsContext'
+import { FinalScoreProvider } from './global/FinalScoreContext'
 
 function App() {
   return (
@@ -39,9 +41,13 @@ function App() {
                           <UsernameProvider>
                             <VelocityListProvider>
                               <PlayerMoveProvider>
-                                <div className="container">
-                                  <Game />
-                                </div>
+                                <PointsProvider>
+                                  <FinalScoreProvider>
+                                    <div className="container">
+                                      <Game />
+                                    </div>
+                                  </FinalScoreProvider>
+                                </PointsProvider>
                               </PlayerMoveProvider>
                             </VelocityListProvider>
                           </UsernameProvider>
