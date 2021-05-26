@@ -23,6 +23,7 @@ function ActiveCard() {
 
   const [toggle, setToggle] = useState('')
   const [consequence, setConsequence] = useState('')
+  // TODO: gör om till Context så det kan användas i Dice för Highscore algoritmen
   const [points, setPoints] = useState(0)
 
   /**
@@ -31,6 +32,8 @@ function ActiveCard() {
   useEffect(() => {
     // TODO: Tycker det är fult att denna if-sats görs både här och nere i renderNoAlternatives(). Men vet inte hur jag ska göra.
     // Om jag gör changeVelocity(currentCard.velocity) i renderNoAlternatives() tas det bort velocity poäng flera ggr.
+
+    //Testa if(currentvCard.category != 'normal-day-card) 
     if (
       currentCard.category === 'day-of-illness-card' ||
       currentCard.category === 'customer-card' ||
