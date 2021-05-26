@@ -5,7 +5,7 @@
  */
 
 import './styles/style.css'
-import Game from './components/Gameboard/Game'
+import Game from './components/Game'
 
 // Provider imports
 import { HeaderProvider } from './global/HeaderContext'

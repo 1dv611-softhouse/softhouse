@@ -4,22 +4,22 @@
  * @version 1.0.0
  */
 
-import Dashboard from '../Dashboard/Dashboard'
-import Gameboard from './Gameboard'
-import UsernameModal from './UsernameModal'
+import Dashboard from './Dashboard/Dashboard'
+import Gameboard from './Gameboard/Gameboard'
+import UsernameModal from './Gameboard/UsernameModal'
 
 import { useEffect, useContext } from 'react'
-import { setPlayerState } from '../../Models/StateModel'
+import { setPlayerState } from '../Models/StateModel'
 
-import { PlayerPositionContext } from '../../global/PlayerPositionContext'
-import { VelocityContext } from '../../global/VelocityContext'
-import { TileContext } from '../../global/TileContext'
-import { CurrentCardContext } from '../../global/CurrentCardContext'
-import { StorypointsContext } from '../../global/StorypointsContext'
-import { HasAnsweredContext } from '../../global/HasAnsweredContext'
-import { PointsContext } from '../../global/PointsContext'
-import { VelocityListContext } from '../../global/VelocityListContext'
-import { PlayerMoveContext } from '../../global/PlayerMoveContext'
+import { PlayerPositionContext } from '../global/PlayerPositionContext'
+import { VelocityContext } from '../global/VelocityContext'
+import { TileContext } from '../global/TileContext'
+import { CurrentCardContext } from '../global/CurrentCardContext'
+import { StorypointsContext } from '../global/StorypointsContext'
+import { HasAnsweredContext } from '../global/HasAnsweredContext'
+import { PointsContext } from '../global/PointsContext'
+import { VelocityListContext } from '../global/VelocityListContext'
+import { PlayerMoveContext } from '../global/PlayerMoveContext'
 
 function Game() {
   const { currentPositionValue } = useContext(PlayerPositionContext)
