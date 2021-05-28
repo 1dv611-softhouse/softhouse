@@ -54,6 +54,13 @@ The application was built with
 To run the unit tests type the following command.
 
 ```bash
+
+# Enter the folder
+cd softhouse
+
+# Enter the folder
+cd client
+
 npm run test
 ```
 
