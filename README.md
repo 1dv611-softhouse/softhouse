@@ -65,16 +65,6 @@ cd client
 npm run test
 ```
 
-## ⚙️ Commands & Options
-
-### `create`
-
-CLI command for create a new project with the interactive console UI.
-
-```bash
-cgapp create [OPTION]
-```
-
 <!-- LICENSE -->
 
 ## 📖 License
