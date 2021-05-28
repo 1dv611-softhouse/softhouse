@@ -31,7 +31,6 @@ That's all you need to know to start! 🎉
 
 ## 📖 Project Documentation
 
-The documentation can be accessed [here](https://docs.google.com/document/d/15scNXGHtLyxv0trhuyF9R5psv6IBF1i3wFhWJvAXQis/edit?usp=drive_web&ouid=100534776335591151644)
 - [Project plan](https://docs.google.com/document/d/1krDNAtWzhN3UHhAP5eA0PsYFGF771Tc3PIH_KPXQtFw/edit?usp=sharing)
 - [Vision](https://docs.google.com/document/d/1ZaktWakyn4ql5MCiVRBpo_TbHa4nBPeZc1wCP2TX7_8/edit?usp=sharing)
 - [Risks](https://docs.google.com/document/d/1Skd2Ikd0c-YDpupH6QlPo4mq9f4FUYYD2QXYClM2iT0/edit?usp=sharing)
