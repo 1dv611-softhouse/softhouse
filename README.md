@@ -61,6 +61,7 @@ cd softhouse
 # Enter the folder
 cd client
 
+# Run the command
 npm run test
 ```
 
