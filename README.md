@@ -49,7 +49,7 @@ The application was built with
 To runt the unit tests type the following command.
 
 ```bash
-Något kommando för att köra testerna behöver läggas till här...
+npm run test
 ```
 
 ## ⚙️ Commands & Options
