@@ -41,6 +41,7 @@ function Dice(props) {
   const audio = new Audio(sound)
   const flip = new Audio(cardSound)
 
+  // Sends the highscore to the database whenever the final score is calculated
   useEffect(() => {
     sendHighscore()
   }, [finalScore])
@@ -74,7 +75,6 @@ function Dice(props) {
     if (currentStorypoints - currentVelocity <= 0) {
       setCurrentStorypoints(0)
       calculateScore()
-      // sendHighscore()
       changeModalState(true)
     } else {
       setCurrentStorypoints(currentStorypoints - currentVelocity)
