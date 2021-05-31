@@ -17,6 +17,7 @@ function Highscore() {
     fetch('https://irv6hogkji.execute-api.eu-west-1.amazonaws.com/Production')
       .then((response) => response.json())
       .then((data) => {
+        console.log(data.body.Items)
         const sortedHighscores = data.body.Items.sort(
           (a, b) => b.score - a.score
         ).slice(0, 10)

@@ -70,7 +70,77 @@
             "consequence": "Good try! However, the customer does not have time to talk more than you already do."
           }
         ]
+      }
+    ],
+    "level2": [
+      {
+        "strategy": "Cancel the daily standups",
+        "cost": 100,
+        "consequences": [
+          {
+            "velocity": -20,
+            "consequence": "Oh no, since the canceling of the daily standups there has been a lot of confusion."
+          },
+          {
+            "velocity": -15,
+            "consequence": "Unfortunately, it was not a good decision. There has been a lot of duplication of work due to the reduced communication."
+          },
+          {
+            "velocity": -25,
+            "consequence": "Your suggestion was not appreciated by the manager. Communication is important for the agile process to work."
+          },
+          {
+            "velocity": 10,
+            "consequence": "Luckily no one heard your suggestion! The outcome had not benefited the company."
+          }
+        ]
       },
+      {
+        "strategy": "Invest in a Scrum Board",
+        "cost": 150,
+        "consequences": [
+          {
+            "velocity": 10,
+            "consequence": "Yes, that is a great idea! The staff feel that they have a good overview of the project."
+          },
+          {
+            "velocity": -15,
+            "consequence": "Good idea! However, The Schrum board has been hidden since you bought it. It is important that it is visible."
+          },
+          {
+            "velocity": 10,
+            "consequence": "What a great idea! Everyone knows what to do!"
+          },
+          {
+            "velocity": -10,
+            "consequence": "Good idea! Unfortunately, all post-it notes have fallen off the board. Some information has disappeared!"
+          }
+        ]
+      },
+      {
+        "strategy": "Produca a burndown chart",
+        "cost": 200,
+        "consequences": [
+          {
+            "velocity": 10,
+            "consequence": "Good idea! The burn down chart enabled the completion of the project before the deadline!"
+          },
+          {
+            "velocity": 5,
+            "consequence": "Good idea! It is now easy for the staff to see what tasks need to be performed."
+          },
+          {
+            "velocity": 15,
+            "consequence": "Really good idea. Unfortunately, the burndown chart has not been updated according to additional changes. It has therefore become misleading."
+          },
+          {
+            "velocity": -10,
+            "consequence": "To bad! The burndown chart has disappeared."
+          }
+        ]
+      }
+    ],
+    "level3": [
       {
         "strategy": "Try to convince the boss that you should abandon the agile working method",
         "cost": 75,
@@ -93,8 +163,6 @@
           }
         ]
       }
-    ],
-    "level2": [],
-    "level3": []
+    ]
   }
 }

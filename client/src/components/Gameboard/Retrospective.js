@@ -23,7 +23,7 @@ function Retrospective() {
   const [level, setLevel] = useState('level' + retrospective.level)
 
   /**
-   * 
+   *
    * @returns The title of the Retrospective.
    */
   const getTitle = () => {
@@ -31,7 +31,7 @@ function Retrospective() {
   }
 
   /**
-   * 
+   *
    * @returns The description of the Retrospective.
    */
   const getPreamble = () => {
@@ -39,7 +39,7 @@ function Retrospective() {
   }
 
   /**
-   * 
+   *
    * @returns The alternatives of the Retrospective according to level.
    */
   const generateLevelStrategies = () => {
@@ -48,7 +48,7 @@ function Retrospective() {
 
   /**
    * Change chosen alternative on user input.
-   * 
+   *
    * @param {object} e The event from form
    */
   const handleToggle = (e) => {
@@ -144,7 +144,6 @@ function Retrospective() {
     setCurrentStorypoints(currentStorypoints + storypointCost)
   }
 
-
   const getRandomConsequence = (el) => {
     const randomValue = Math.floor(Math.random() * el.consequences.length)
     return el.consequences[randomValue]
@@ -152,8 +151,8 @@ function Retrospective() {
 
   /**
    * Calculates velocity according to consequence.
-   * 
-   * @param {number} velocityToAdd 
+   *
+   * @param {number} velocityToAdd
    */
   const changeVelocity = (velocityToAdd) => {
     if (currentVelocity + velocityToAdd <= 0) {

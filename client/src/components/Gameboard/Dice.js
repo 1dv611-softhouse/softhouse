@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import imgs from '../../pictures/images'
 import { PlayerPositionContext } from '../../global/PlayerPositionContext'
 import { DaysContext } from '../../global/DaysContext'
@@ -41,6 +41,10 @@ function Dice(props) {
   const audio = new Audio(sound)
   const flip = new Audio(cardSound)
 
+  useEffect(() => {
+    sendHighscore()
+  }, [finalScore])
+
   const handleClick = async () => {
     // Makes sure dice is not rolled if player needs to answer question or the game has ended.
     if (hasAnswered === false || currentStorypoints <= 0) return
@@ -70,7 +74,7 @@ function Dice(props) {
     if (currentStorypoints - currentVelocity <= 0) {
       setCurrentStorypoints(0)
       calculateScore()
-      sendHighscore(username)
+      // sendHighscore()
       changeModalState(true)
     } else {
       setCurrentStorypoints(currentStorypoints - currentVelocity)
@@ -88,31 +92,27 @@ function Dice(props) {
     const totalScore = Number(((average / nrOfMoves) * 100).toFixed(0))
 
     setFinalScore(totalScore + points)
-    // return finalScore + points
-    console.log('I calculateScore: ' + finalScore)
   }
 
   /**
    * Posts highscore to the database.
-   *
-   * @param {string} username
    */
-  const sendHighscore = (username) => {
-    console.log('Send score of: ' + finalScore)
-
+  const sendHighscore = () => {
     try {
-      fetch(
-        'https://irv6hogkji.execute-api.eu-west-1.amazonaws.com/Production',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            username,
-            score: finalScore
-          })
-        }
-      )
-        .then((response) => response.json())
-        .then((r) => console.log(r))
+      if (typeof finalScore === 'number' && finalScore > 0) {
+        fetch(
+          'https://irv6hogkji.execute-api.eu-west-1.amazonaws.com/Production',
+          {
+            method: 'POST',
+            body: JSON.stringify({
+              username: username,
+              score: finalScore
+            })
+          }
+        )
+          .then((response) => response.json())
+          .then((r) => console.log(r))
+      }
     } catch (error) {
       console.log(error.message)
     }
