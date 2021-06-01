@@ -48,7 +48,6 @@ function ActiveCard() {
       currentCard.category === 'daily-stand-up-card'
     ) {
       if (currentCard.alternatives === undefined) {
-        console.log('HÄR!!!!!!!!')
         changeVelocity(currentCard.velocity)
       }
     }

@@ -13,29 +13,20 @@ import Retrospective from './Retrospective'
 import { PlayerPositionContext } from '../../global/PlayerPositionContext'
 import { DaysContext } from '../../global/DaysContext'
 import { RetrospectiveContext } from '../../global/RetrospectiveContext'
-import { PointsContext } from '../../global/PointsContext'
 import { FinalScoreContext } from '../../global/FinalScoreContext'
 
 import { useContext, useEffect, useState } from 'react'
 import ReactModal from 'react-modal'
 
 import { deletePlayerState } from '../../Models/StateModel'
-import { TileContext } from '../../global/TileContext'
-import { CurrentCardContext } from '../../global/CurrentCardContext'
-import { StorypointsContext } from '../../global/StorypointsContext'
 
 function Gameboard(props) {
   const { resetState } = props
 
   const { days } = useContext(DaysContext)
-  const { points, setPoints } = useContext(PointsContext)
   const { currentPositionValue, setCurrentPositionValue } = useContext(
     PlayerPositionContext
   )
-  const { currentTile, setCurrentTile } = useContext(TileContext)
-  const { currentCard } = useContext(CurrentCardContext)
-  const { currentStorypoints, setCurrentStorypoints } =
-    useContext(StorypointsContext)
   const { retrospective, setRetrospective } = useContext(RetrospectiveContext)
   const { finalScore } = useContext(FinalScoreContext)
 

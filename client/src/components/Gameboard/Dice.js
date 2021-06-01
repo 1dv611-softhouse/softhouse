@@ -20,16 +20,14 @@ import cards from '../../cards.json'
 
 function Dice(props) {
   const { changeModalState } = props
-  const { currentPositionValue, setCurrentPositionValue } = useContext(
-    PlayerPositionContext
-  )
+  const { setCurrentPositionValue } = useContext(PlayerPositionContext)
   const { setHighlight } = useContext(HighlightContext)
   const { days } = useContext(DaysContext)
-  const { velocityList, addToVelovityList } = useContext(VelocityListContext)
+  const { velocityList } = useContext(VelocityListContext)
   const { currentPlayerMove, setPlayerMove } = useContext(PlayerMoveContext)
-  const { currentTile, setCurrentTile } = useContext(TileContext)
+  const { setCurrentTile } = useContext(TileContext)
   const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext)
-  const { currentCard, setCurrentCard } = useContext(CurrentCardContext)
+  const { setCurrentCard } = useContext(CurrentCardContext)
   const { finalScore, setFinalScore } = useContext(FinalScoreContext)
   const { currentVelocity } = useContext(VelocityContext)
   const { currentStorypoints, setCurrentStorypoints } =

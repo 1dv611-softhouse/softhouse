@@ -20,7 +20,7 @@ function Retrospective() {
   const { retrospective, setRetrospective } = useContext(RetrospectiveContext)
 
   const [toggle, setToggle] = useState([])
-  const [level, setLevel] = useState('level' + retrospective.level)
+  const [level] = useState('level' + retrospective.level)
 
   /**
    *
