@@ -40,6 +40,8 @@ function ActiveCard() {
     // TODO: Tycker det är fult att denna if-sats görs både här och nere i renderNoAlternatives(). Men vet inte hur jag ska göra.
     // Om jag gör changeVelocity(currentCard.velocity) i renderNoAlternatives() tas det bort velocity poäng flera ggr.
 
+    // Vi tror att det är denna kod som skapar buggen att man kan få Velocity när man renderar om sidan.
+
     if (
       currentCard.category === 'day-of-illness-card' ||
       currentCard.category === 'customer-card' ||
