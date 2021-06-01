@@ -134,26 +134,11 @@ function Dice(props) {
   }
 
   const calculateAmountOfPlayerMoves = () => {
-    // Kanske behövs något bättre sätt här.
     if (typeof currentPlayerMove === 'object') {
       setPlayerMove(1)
     } else {
       setPlayerMove(currentPlayerMove + 1)
     }
-
-    //Det kommer inte gå att skriva ut här då setPlayerMove = asynkront.
-    // console.log('Testar att skriva ut: ' + currentPlayerMove)
-    //Du kan nog istället skriva såhär:
-
-    // setPlayerMove((prevstate) => {
-    //   const newValue = prevstate + 1
-    //   console.log(newValue)
-
-    //   return newValue
-    // })
-
-    // Då använder du en sorts Callback funktion. Det du returnerar i din callback är det som somm sättar till current PlayerMove
-    // /Pernilla
   }
 
   /**
