@@ -20,17 +20,22 @@ import { HasAnsweredContext } from '../global/HasAnsweredContext'
 import { PointsContext } from '../global/PointsContext'
 import { VelocityListContext } from '../global/VelocityListContext'
 import { PlayerMoveContext } from '../global/PlayerMoveContext'
+import { RetrospectiveContext } from '../global/RetrospectiveContext'
 
 function Game() {
-  const { currentPositionValue } = useContext(PlayerPositionContext)
-  const { currentTile } = useContext(TileContext)
-  const { currentCard } = useContext(CurrentCardContext)
-  const { currentStorypoints } = useContext(StorypointsContext)
-  const { currentVelocity } = useContext(VelocityContext)
-  const { hasAnswered } = useContext(HasAnsweredContext)
-  const { points } = useContext(PointsContext)
-  const { velocityList } = useContext(VelocityListContext)
-  const { currentPlayerMove } = useContext(PlayerMoveContext)
+  const { currentPositionValue, setCurrentPositionValue } = useContext(
+    PlayerPositionContext
+  )
+  const { currentTile, setCurrentTile } = useContext(TileContext)
+  const { currentCard, setCurrentCard } = useContext(CurrentCardContext)
+  const { currentStorypoints, setCurrentStorypoints } =
+    useContext(StorypointsContext)
+  const { currentVelocity, setCurrentVelocity } = useContext(VelocityContext)
+  const { hasAnswered, setHasAnswered } = useContext(HasAnsweredContext)
+  const { points, setPoints } = useContext(PointsContext)
+  const { velocityList, addToVelovityList } = useContext(VelocityListContext)
+  const { currentPlayerMove, setPlayerMove } = useContext(PlayerMoveContext)
+  const { retrospective, setRetrospective } = useContext(RetrospectiveContext)
 
   /**
    * Saves state of the game everytime something is changing.
@@ -45,7 +50,8 @@ function Game() {
       hasAnswered,
       points,
       velocityList,
-      currentPlayerMove
+      currentPlayerMove,
+      retrospective
     })
   }, [
     currentPositionValue,
@@ -56,13 +62,30 @@ function Game() {
     hasAnswered,
     points,
     velocityList,
-    currentPlayerMove
+    currentPlayerMove,
+    retrospective
   ])
+
+  const resetState = () => {
+    setCurrentPositionValue(1)
+    setCurrentTile({})
+    setCurrentCard({})
+    setCurrentVelocity(5)
+    setCurrentStorypoints(200)
+    setHasAnswered(true)
+    setPoints(0)
+    addToVelovityList([])
+    setPlayerMove({})
+    setRetrospective({
+      state: false,
+      level: 1
+    })
+  }
 
   return (
     <>
       <Dashboard />
-      <Gameboard />
+      <Gameboard resetState={resetState} />
       <UsernameModal />
     </>
   )

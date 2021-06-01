@@ -15,9 +15,6 @@ import { DaysContext } from '../../global/DaysContext'
 import { RetrospectiveContext } from '../../global/RetrospectiveContext'
 import { PointsContext } from '../../global/PointsContext'
 import { FinalScoreContext } from '../../global/FinalScoreContext'
-// import { VelocityContext } from '../../global/VelocityContext'
-// import { VelocityListContext } from '../../global/VelocityListContext'
-// import { PlayerMoveContext } from '../../global/PlayerMoveContext'
 
 import { useContext, useEffect, useState } from 'react'
 import ReactModal from 'react-modal'
@@ -27,9 +24,11 @@ import { TileContext } from '../../global/TileContext'
 import { CurrentCardContext } from '../../global/CurrentCardContext'
 import { StorypointsContext } from '../../global/StorypointsContext'
 
-function Gameboard() {
+function Gameboard(props) {
+  const { resetState } = props
+
   const { days } = useContext(DaysContext)
-  const { points } = useContext(PointsContext)
+  const { points, setPoints } = useContext(PointsContext)
   const { currentPositionValue, setCurrentPositionValue } = useContext(
     PlayerPositionContext
   )
@@ -58,11 +57,10 @@ function Gameboard() {
     e.preventDefault()
 
     deletePlayerState()
-    throw new Error()
+    resetState()
+    setIsOpen(false)
   }
 
-  // console.log('ANDRA')
-  // console.log(currentCard)
   return (
     <div className="gameboard-container">
       <ReactModal
