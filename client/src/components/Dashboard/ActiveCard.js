@@ -48,6 +48,7 @@ function ActiveCard() {
       currentCard.category === 'daily-stand-up-card'
     ) {
       if (currentCard.alternatives === undefined) {
+        console.log('HÄR!!!!!!!!')
         changeVelocity(currentCard.velocity)
       }
     }
@@ -79,8 +80,8 @@ function ActiveCard() {
           <p className="active-card-question">{currentCard.question}</p>
 
           <form onSubmit={(e) => handleSubmit(e)}>
-            {currentCard.alternatives.map((alternative) => (
-              <>
+            {currentCard.alternatives.map((alternative, index) => (
+              <div key={index}>
                 <label className="card-label-container">
                   {alternative.answer}
                   <input
@@ -92,7 +93,7 @@ function ActiveCard() {
                   />
                   <span className="alt"></span>
                 </label>
-              </>
+              </div>
             ))}
 
             <input type="submit" value="Reply" className="btn" />
