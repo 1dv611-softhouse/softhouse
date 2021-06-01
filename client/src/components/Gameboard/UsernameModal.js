@@ -78,7 +78,7 @@ function UsernameModal() {
         <h1>Select username</h1>
         <form className="username-form" onSubmit={(e) => submitUsername(e)}>
           <div className="username-row">
-            <label for="username">Username</label>
+            <label htmlFor="username">Username</label>
             <input type="text" className="input-data" id="username" />
           </div>
 

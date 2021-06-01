@@ -5,4 +5,5 @@ import dice4 from './dice-4.png'
 import dice5 from './dice-5.png'
 import dice6 from './dice-6.png'
 
-export default [dice1, dice2, dice3, dice4, dice5, dice6]
+const images = [dice1, dice2, dice3, dice4, dice5, dice6]
+export default images
