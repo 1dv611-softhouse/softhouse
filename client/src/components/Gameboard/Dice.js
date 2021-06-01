@@ -14,9 +14,9 @@ import { PlayerMoveContext } from '../../global/PlayerMoveContext'
 import { PointsContext } from '../../global/PointsContext'
 import { FinalScoreContext } from '../../global/FinalScoreContext'
 
-import sound from '../../diceroll.mp3'
-import cardSound from '../../flip.mp3'
-import cards from '../../cards.json'
+import sound from '../../audio/diceroll.mp3'
+import cardSound from '../../audio/flip.mp3'
+import cards from '../../JSON/cards.json'
 
 function Dice(props) {
   const { changeModalState } = props

@@ -5,7 +5,7 @@
  */
 
 import '../../styles/retrospective.css'
-import retrospectiveJSON from '../../retrospective.json'
+import retrospectiveJSON from '../../JSON/retrospective.json'
 import { VelocityContext } from '../../global/VelocityContext'
 import { StorypointsContext } from '../../global/StorypointsContext'
 import { RetrospectiveContext } from '../../global/RetrospectiveContext'
